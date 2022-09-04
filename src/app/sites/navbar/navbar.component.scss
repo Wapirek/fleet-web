@@ -10,15 +10,44 @@
       margin: 0 auto;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       padding: 0 20px;
       box-sizing: border-box;
 
       .left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        &__logo {
+          border-radius: 5px;
+          width: 40px;
+        }
 
         &__title {
           font-weight: 400;
           font-size: 1.7rem;
           color: $my-cool-blue;
+        }
+      }
+
+      .right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: space-between;
+        flex-direction: row;
+        cursor: pointer;
+
+        &__username {
+          color: $my-navy-blue;
+          font-size: 1.1rem;
+          font-weight: 500;
+        }
+
+        &__icon {
+          color: $my-navy-blue;
+          font-size: 1.7rem;
         }
       }
     }
