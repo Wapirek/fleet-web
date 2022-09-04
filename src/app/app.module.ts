@@ -8,6 +8,7 @@ import { DashboardComponent } from './sites/dashboard/dashboard.component';
 import { NavbarComponent } from './sites/navbar/navbar.component';
 import { SettingsComponent } from './sites/settings/settings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FontAwesomeModule
   ],
   bootstrap: [AppComponent]
 })
