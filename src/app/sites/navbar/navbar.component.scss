@@ -1,0 +1,26 @@
+@import "src/app/shared/styles/variables";
+
+@media (min-width: 0) {
+  .full-bar {
+    background-color: $my-white;
+
+    .wrapper {
+      max-width: $width-site;
+      height: 60px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+
+      .left {
+
+        &__title {
+          font-weight: 400;
+          font-size: 1.7rem;
+          color: $my-cool-blue;
+        }
+      }
+    }
+  }
+}
