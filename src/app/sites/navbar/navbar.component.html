@@ -1,1 +1,21 @@
-<p>navbar works!</p>
+<nav class="full-bar">
+
+  <div class="wrapper">
+
+    <div class="left">
+      <img src="assets/images/logo.png" class="left__logo" alt="logo statek">
+      <div class="left__title">Fleet App</div>
+    </div>
+
+    <div class="right" [matMenuTriggerFor]="belowMenu">
+      <div class="right__username">Artur</div>
+      <fa-icon class="right__icon" [icon]="faCircleUser"></fa-icon>
+    </div>
+
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item>Dupa</button>
+    </mat-menu>
+
+  </div>
+
+</nav>
