@@ -72,3 +72,6 @@
     }
   }
 }
+@media (min-width: $width-site + 40px) {
+  .full-bar .wrapper { padding: 0; }
+}

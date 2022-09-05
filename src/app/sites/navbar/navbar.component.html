@@ -7,10 +7,14 @@
       <div class="left__title">Fleet App</div>
     </div>
 
-    <div class="right">
+    <div class="right" [matMenuTriggerFor]="belowMenu">
       <div class="right__username">Artur</div>
       <fa-icon class="right__icon" [icon]="faCircleUser"></fa-icon>
     </div>
+
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item>Dupa</button>
+    </mat-menu>
 
   </div>
 
