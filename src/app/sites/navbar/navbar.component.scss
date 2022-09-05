@@ -38,6 +38,25 @@
         justify-content: space-between;
         flex-direction: row;
         cursor: pointer;
+        padding: 5px 10px;
+        position: relative;
+        background-color: transparent;
+        z-index: 1;
+
+        &::after {
+          content: '';
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          opacity: 0;
+          position: absolute;
+          left: 0;
+          border-radius: 5px;
+          z-index: -1;
+          transition: .3s ease-in opacity;
+        }
+
+        &:hover:after { opacity: 1; }
 
         &__username {
           color: $my-navy-blue;
