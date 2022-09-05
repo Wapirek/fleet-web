@@ -8,8 +8,7 @@ import { DashboardComponent } from './sites/dashboard/dashboard.component';
 import { NavbarComponent } from './sites/navbar/navbar.component';
 import { SettingsComponent } from './sites/settings/settings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatMenuModule } from '@angular/material/menu';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,11 +19,10 @@ import { MatMenuModule } from '@angular/material/menu';
     SettingsComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    FontAwesomeModule,
-    MatMenuModule
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
