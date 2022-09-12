@@ -1,0 +1,16 @@
+@import "src/app/shared/styles/variables";
+
+.wrapper {
+  max-width: 500px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, .1);
+  margin: 100px auto;
+
+  .logo-area {
+    max-width: 150px;
+    max-height: 150px;
+    background-color: rgba($my-white, .1);
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+}

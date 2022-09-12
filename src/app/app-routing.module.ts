@@ -23,6 +23,10 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'autoryzacja',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  }
 ];
 
 @NgModule({

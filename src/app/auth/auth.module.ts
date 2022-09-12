@@ -1,7 +1,21 @@
 import { NgModule } from '@angular/core';
-import { AuthComponent } from 'src/app/auth/auth.component';
+import { Route, RouterModule } from '@angular/router';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignOutComponent } from './sign-out/sign-out.component';
+
+
+const routes: Route[] = [
+  { path: 'logowanie', component: SignInComponent },
+  { path: 'wylogowanie', component: SignOutComponent }
+];
 
 @NgModule({
-  declarations: [AuthComponent]
+  declarations: [
+    SignInComponent,
+    SignOutComponent
+  ],
+  imports: [
+    RouterModule.forChild(routes)
+  ]
 })
 export class AuthModule {}
