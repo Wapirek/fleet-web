@@ -1,19 +1,21 @@
 <div class="wrapper">
 
-  <form class="form" action="">
+  <form class="form" [formGroup]="mainForm" (ngSubmit)="login()">
 
     <div class="form__row">
       <label for="username" class="form__row__label">Logowanie</label>
-      <input type="text" class="form__row__input" id="username">
+      <input formControlName="username" type="text" class="form__row__input" id="username">
     </div>
 
     <div class="form__row">
       <label for="password" class="form__row__label">Hasło</label>
-      <input type="password" class="form__row__input" id="password">
+      <input formControlName="password" type="password" class="form__row__input" id="password">
     </div>
 
     <div class="form__bottom">
-      <button class="form__bottom__submit">Zaloguj się</button>
+      <button type="submit" class="form__bottom__submit" [disabled]="!mainForm.valid">
+        Zaloguj się
+      </button>
     </div>
 
   </form>
