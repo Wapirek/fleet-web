@@ -3,11 +3,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SitesComponent } from 'src/app/sites/sites.component';
 import { SettingsComponent } from 'src/app/sites/settings/settings.component';
 import { DashboardComponent } from 'src/app/sites/dashboard/dashboard.component';
+import { AuthGuard } from 'src/app/auth/_guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: SitesComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: DashboardComponent },
       { path: 'ustawienia', component: SettingsComponent },
@@ -23,6 +25,10 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'autoryzacja',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  }
 ];
 
 @NgModule({
