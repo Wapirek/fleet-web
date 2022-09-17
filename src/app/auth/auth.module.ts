@@ -3,10 +3,11 @@ import { Route, RouterModule } from '@angular/router';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 const routes: Route[] = [
-  { path: 'logowanie', component: SignInComponent },
+  { path: '', component: SignInComponent },
   { path: 'wylogowanie', component: SignOutComponent }
 ];
 
@@ -17,7 +18,8 @@ const routes: Route[] = [
   ],
   imports: [
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ]
 })
 export class AuthModule {}
