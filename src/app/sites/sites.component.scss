@@ -2,13 +2,15 @@
 
 @media (min-width: 0) {
   .center {
-    margin: 0;
+    margin: 0 10px;
     max-width: $width-site;
   }
 }
 
 @media (min-width: $min-desktop) {
-  .center {
-    margin: 0 auto 100px;
-  }
+  .center { margin: 0 15px 100px; }
+}
+
+@media (min-width: $width-site + 30px) {
+  .center { margin: 0 auto 100px; }
 }
