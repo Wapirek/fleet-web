@@ -1,0 +1,8 @@
+@import "src/app/shared/styles/variables";
+
+@mixin templateBg1 {
+  background-color: $my-bg-blue-dark;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: $box-shadow-1;
+}
