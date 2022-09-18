@@ -3,8 +3,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { MyCard1Component } from 'src/app/shared/components/widgets/my-card-1/my-card-1.component';
 
 @NgModule({
+  declarations: [
+    MyCard1Component
+  ],
   imports: [
 
     // angular material
@@ -16,6 +20,10 @@ import { MatIconModule } from '@angular/material/icon';
     FontAwesomeModule
   ],
   exports: [
+
+    // created
+    MyCard1Component,
+
     // angular material
     MatIconModule,
     MatMenuModule,
