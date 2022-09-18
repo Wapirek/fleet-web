@@ -2,9 +2,9 @@
 $my-cool-blue: rgba(0, 194, 203, 1);
 $my-white: rgba(238, 229, 233, 1);
 $my-navy-blue: rgba(5, 10, 48, 1);
+$my-dark-blue: rgba(4, 32, 67, 1);
 $my-grey: rgba(159, 154, 164, 1);
 $my-grey-2: rgba(24, 35, 69, 1);
-$my-bg-blue-dark: rgba(4, 32, 67, 1);
 
 // situation colors - neutral, confirm and reject
 $my-light-blue: rgba(167, 219, 224, 1);
@@ -23,3 +23,8 @@ $width-site: 1440px;
 
 // box-shadow styles
 $box-shadow-1: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+// linear styles
+$my-dark-blue-linear:
+  linear-gradient(90deg, rgba(4, 32, 67, 1) 0%,
+    rgba(4,32,67,1) 35%, rgba(5, 10, 48, 1) 100%);

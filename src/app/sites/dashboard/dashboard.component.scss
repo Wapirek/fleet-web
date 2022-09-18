@@ -20,7 +20,7 @@
       @include templateBg1;
       grid-area: header;
       display: flex;
-      background: linear-gradient(90deg, rgba(4, 32, 67, 1) 0%, rgba(4,32,67,1) 35%, rgba(5, 10, 48, 1) 100%);
+      background: $my-dark-blue-linear;
       align-items: center;
       padding: 15px 20px;
       font-size: 1.2rem;
