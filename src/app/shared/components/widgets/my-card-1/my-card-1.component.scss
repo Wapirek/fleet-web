@@ -1,0 +1,105 @@
+@import "src/app/shared/styles/variables";
+
+.container {
+  background-color: $my-grey-2;
+  width: 220px;
+  height: 110px;
+  border-radius: 5px;
+  box-shadow: $box-shadow-1;
+  display: flex;
+  padding: 0 10px;
+  align-items: stretch;
+
+  &__strip {
+    background-color: $my-grey;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon { color: $my-grey-2; }
+
+    &--class-green { background-color: $my-green; }
+    &--class-light-blue { background-color: $my-light-blue; }
+    &--class-red { background-color: $my-red; }
+  }
+
+  &__inner {
+    padding: 5px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    &__row-up {
+      display: flex;
+      flex: .8;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+
+      &__period {
+        color: $my-grey;
+        font-size: .9rem;
+      }
+    }
+
+    &__row-down {
+      display: flex;
+      flex: 1.2;
+      justify-content: flex-end;
+      gap: 25px;
+      align-items: center;
+
+      &__score {
+        color: $my-grey;
+        font-size: 1.7rem;
+        position: relative;
+        top: -5px;
+        min-width: 90px;
+        text-align: center;
+
+        &--class-green { color: $my-green; }
+        &--class-light-blue { color: $my-light-blue; }
+        &--class-red { color: $my-red; }
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: -5px;
+          top: 5px;
+          width: calc(100% + 10px);
+          height: 100%;
+          border-bottom: 2px solid $my-green;
+        }
+
+        &--class-green::before { border-bottom: 2px solid $my-green; }
+        &--class-light-blue::before { border-bottom: 2px solid $my-light-blue; }
+        &--class-red::before { border-bottom: 2px solid $my-red; }
+      }
+
+      &__chart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &--positive { color: $my-green; }
+        &--negative { color: $my-red; }
+
+        &__icon {
+          transition: transform .3s ease-in-out;
+
+          &--negative { transform: rotateY(180deg); }
+        }
+
+        &__percent {
+          border-top: 2px solid $my-red;
+          padding: 3px;
+          font-size: 1.1rem;
+
+          &--positive { border-top: 2px solid $my-green; }
+          &--negative { border-top: 2px solid $my-red; }
+        }
+      }
+    }
+  }
+}

@@ -5,7 +5,30 @@
     {{skeletonHtml.header.title}}
   </div>
 
-  <section class="widgets"></section>
+  <section class="widgets">
+
+    <app-my-card-1
+      [theme]="skeletonHtml.cards.profit.theme"
+      [score]="skeletonHtml.cards.profit.score"
+      [genre]="skeletonHtml.cards.profit.genre"
+      [percent]="skeletonHtml.cards.profit.percent"
+    ></app-my-card-1>
+
+    <app-my-card-1
+      [theme]="skeletonHtml.cards.transactions.theme"
+      [score]="skeletonHtml.cards.transactions.score"
+      [genre]="skeletonHtml.cards.transactions.genre"
+      [percent]="skeletonHtml.cards.transactions.percent"
+    ></app-my-card-1>
+
+    <app-my-card-1
+      [theme]="skeletonHtml.cards.toll.theme"
+      [score]="skeletonHtml.cards.toll.score"
+      [genre]="skeletonHtml.cards.toll.genre"
+      [percent]="skeletonHtml.cards.toll.percent"
+    ></app-my-card-1>
+
+  </section>
 
   <section class="main"></section>
 

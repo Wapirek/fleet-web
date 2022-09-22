@@ -1,0 +1,43 @@
+<div class="container">
+
+  <div
+    class="container__strip"
+    [ngClass]="'container__strip--' + theme.class"
+  >
+    <mat-icon>{{theme.iconStrip}}</mat-icon>
+  </div>
+
+  <div class="container__inner">
+
+    <div class="container__inner__row-up">
+      <div class="container__inner__row-up__period">- ostatni miesiac</div>
+      <div class="container__inner__row-up__description">{{theme.description}}</div>
+    </div>
+
+    <div class="container__inner__row-down">
+
+      <div
+        class="container__inner__row-down__score"
+        [ngClass]="'container__inner__row-down__score--' + theme.class"
+      >{{score}}</div>
+
+      <div
+        class="container__inner__row-down__chart"
+        [ngClass]="'container__inner__row-down__chart--' + genre"
+      >
+        <mat-icon
+          class="container__inner__row-down__chart__icon"
+          [ngClass]="'container__inner__row-down__chart__icon--' + genre"
+        >show_chart</mat-icon>
+
+        <span
+          class="container__inner__row-down__chart__percent"
+          [ngClass]="'container__inner__row-down__chart__percent--' + genre"
+        >{{percent}}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
