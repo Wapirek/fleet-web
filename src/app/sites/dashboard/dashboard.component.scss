@@ -16,7 +16,7 @@
       "features"
       "sidebar";
 
-    .shorts, .chart, .features, .right-side { @include templateBg1; }
+    .shorts, .chart, .features { @include templateBg1; }
 
     .header {
       @include templateBg1;
@@ -63,9 +63,7 @@
       }
     }
 
-    .chart {
-      grid-area: chart;
-    }
+    .chart { grid-area: chart; }
 
     .features {
       grid-area: features;
@@ -96,6 +94,47 @@
 
     .right-side {
       grid-area: sidebar;
+
+      .my-goals {
+        @include templateBg1;
+
+        &__list {
+          margin-top: 10px;
+
+          &__item {
+            display: flex;
+            flex-direction: column;
+
+            &__percent {
+              font-size: 1.1rem;
+              color: $my-white;
+              text-align: right;
+            }
+
+            &__caption {
+              display: flex;
+              justify-content: center;
+              padding: 10px;
+              background-color: $my-navy-blue;
+              border-radius: 5px;
+              position: relative;
+              z-index: 1;
+
+              &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: $my-purple;
+                height: 100%;
+                width: 68%;
+                border-radius: 5px;
+                z-index: -1;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -109,6 +148,6 @@
     "widgets . sidebar"
     "shorts . sidebar"
     "chart . sidebar"
-    "features . .";
+    "features . sidebar";
   }
 }
