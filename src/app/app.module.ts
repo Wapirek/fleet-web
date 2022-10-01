@@ -9,6 +9,7 @@ import { NavbarComponent } from './sites/navbar/navbar.component';
 import { SettingsComponent } from './sites/settings/settings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   bootstrap: [AppComponent]
 })

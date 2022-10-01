@@ -31,9 +31,39 @@ export class DashboardComponent {
         theme: ThemeDict['toll'],
         score: '3788 zł',
         genre: 'positive' as ThemeGenreType,
-        percent: '0%'
+        percent: '1%'
       }
-    }
+    },
+    buttons: [
+      'Nowa transakcja', 'Dodaj cel', 'Transakcje', 'Importuj plik', 'Dodaj dług'
+    ],
+    features: [
+      {
+        category: 'Transakcje',
+        items: [
+          'Nowa transakcja', 'Edycja transakcji', 'Historia transakcji', 'Kategorie transakcji',
+          'Zarządzanie kategoriami', 'Nowa kategoria', 'Ustawienia transakcji', 'Importuj plik'
+        ]
+      },
+      {
+        category: 'Cele',
+        items: [
+          'Nowy cel', 'Edycja celu', 'Archwialne cele', 'Cele długoterminowe'
+        ]
+      },
+      {
+        category: 'Statystyki',
+        items: [
+          'Statystyka miesięczna', 'Statystyka roczna', 'Wskaźnik inflacji'
+        ]
+      },
+      {
+        category: 'Pożyczki',
+        items: [
+          'Nowy dług', 'Lista dłuźników', 'Nowa wpłata'
+        ]
+      }
+    ]
   };
 
 }
