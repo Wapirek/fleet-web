@@ -2,7 +2,8 @@
 
 @mixin templateBg1 {
   background-color: $my-dark-blue;
+  color: $my-white;
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px 15px;
   box-shadow: $box-shadow-1;
 }

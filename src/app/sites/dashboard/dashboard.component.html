@@ -2,7 +2,7 @@
 
   <div class="header">
     <mat-icon>{{skeletonHtml.header.icon}}</mat-icon>
-    {{skeletonHtml.header.title}}
+    <h2>{{skeletonHtml.header.title}}</h2>
   </div>
 
   <section class="widgets">
@@ -30,8 +30,32 @@
 
   </section>
 
-  <section class="main"></section>
+  <section class="shorts">
 
+    <div class="shorts__row">
+      <h2 class="shorts__row__headline">Skróty</h2>
+      <button mat-icon-button><mat-icon>edit</mat-icon></button>
+    </div>
+
+    <div class="shorts__row">
+
+      <button
+        *ngFor="let btn of skeletonHtml.buttons"
+        mat-raised-button
+        class="shorts__row__btn"
+      >
+        {{btn}}
+      </button>
+
+    </div>
+
+
+  </section>
+
+
+  <section class="chart"></section>
+  <section class="features"></section>
   <aside class="right-side"></aside>
+
 
 </div>

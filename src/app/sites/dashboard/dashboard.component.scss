@@ -11,19 +11,20 @@
     grid-template-areas:
       "header"
       "widgets"
-      "main"
+      "shorts"
+      "chart"
+      "functions"
       "sidebar";
 
-    .main, .right-side { @include templateBg1; }
+    .shorts, .chart, .features, .right-side { @include templateBg1; }
 
     .header {
       @include templateBg1;
+      padding: 15px 20px;
       grid-area: header;
       display: flex;
       background: $my-dark-blue-linear;
       align-items: center;
-      padding: 15px 20px;
-      font-size: 1.2rem;
       border-radius: 5px;
       gap: 10px;
     }
@@ -36,9 +37,38 @@
       gap: 20px;
     }
 
-    .main {
-      grid-area: main;
-      height: 300px;
+    .shorts {
+      grid-area: shorts;
+      max-height: 120px;
+
+      &__row {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        &:nth-child(1) {
+          justify-content: space-between;
+          mat-icon { font-size: 1.2rem; }
+        }
+
+        &:nth-child(2) { padding: 10px 0; }
+
+        &__btn {
+          background-color: $my-light-blue;
+          color: $my-navy-blue;
+
+          &:first-child { background-color: $my-white; }
+        }
+      }
+    }
+
+    .chart {
+      grid-area: chart;
+      height: 250px;
+    }
+
+    .features {
+      grid-area: functions;
     }
 
     .right-side {
@@ -54,7 +84,8 @@
     grid-template-areas:
     "header header header"
     "widgets . sidebar"
-    "main . sidebar"
-    "main . sidebar";
+    "shorts . sidebar"
+    "chart . sidebar"
+    "features . .";
   }
 }

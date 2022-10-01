@@ -2,6 +2,7 @@
 @import "src/app/shared/styles/variables";
 
 text, div, p, span, label, input { font: 14px 'Roboto', sans-serif; }
+
 :root {
   font: 14px 'Roboto', sans-serif;
   color: $my-white;
@@ -13,8 +14,15 @@ text, div, p, span, label, input { font: 14px 'Roboto', sans-serif; }
 }
 
 html, body { height: 100%; }
+
 body {
   background-color: $my-navy-blue;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+h2 {
+  color: $my-white;
+  font-size: 1.3rem;
+  font-weight: 400;
 }

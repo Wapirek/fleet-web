@@ -31,9 +31,12 @@ export class DashboardComponent {
         theme: ThemeDict['toll'],
         score: '3788 zł',
         genre: 'positive' as ThemeGenreType,
-        percent: '0%'
+        percent: '1%'
       }
-    }
+    },
+    buttons: [
+      'Nowa transakcja', 'Dodaj cel', 'Transakcje', 'Importuj plik', 'Dodaj dług'
+    ]
   };
 
 }
