@@ -13,7 +13,7 @@
       "widgets"
       "shorts"
       "chart"
-      "functions"
+      "features"
       "sidebar";
 
     .shorts, .chart, .features, .right-side { @include templateBg1; }
@@ -39,10 +39,11 @@
 
     .shorts {
       grid-area: shorts;
-      max-height: 120px;
+      padding: 5px 15px;
 
       &__row {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 15px;
 
@@ -54,21 +55,43 @@
         &:nth-child(2) { padding: 10px 0; }
 
         &__btn {
-          background-color: $my-light-blue;
+          background-color: $my-white;
           color: $my-navy-blue;
 
-          &:first-child { background-color: $my-white; }
+          &:first-child { background-color: $my-cool-blue; }
         }
       }
     }
 
     .chart {
       grid-area: chart;
-      height: 250px;
     }
 
     .features {
-      grid-area: functions;
+      grid-area: features;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      &__category {
+        width: 200px;
+        padding: 10px 20px;
+        background-color: rgba($my-navy-blue, .2);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        &__headline {
+          color: $my-cool-blue;
+          margin-bottom: 5px;
+        }
+
+        &__item {
+          cursor: pointer;
+          &:hover { opacity: .8; }
+        }
+      }
     }
 
     .right-side {

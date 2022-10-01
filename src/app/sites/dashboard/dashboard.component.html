@@ -49,13 +49,24 @@
 
     </div>
 
-
   </section>
 
 
-  <section class="chart"></section>
-  <section class="features"></section>
-  <aside class="right-side"></aside>
+  <section class="chart">
 
+    <div class="chart__row">
+      <h2 class="chart__row__headline">Bilans</h2>
+    </div>
+
+  </section>
+
+  <section class="features">
+    <div class="features__category" *ngFor="let feature of skeletonHtml.features">
+      <h3 class="features__category__headline">{{feature.category}}</h3>
+      <a class="features__category__item" *ngFor="let item of feature.items">{{item}}</a>
+    </div>
+  </section>
+
+  <aside class="right-side"></aside>
 
 </div>
