@@ -63,6 +63,20 @@ export class DashboardComponent {
           'Nowy dług', 'Lista dłuźników', 'Nowa wpłata'
         ]
       }
+    ],
+    goals: [
+      {
+        caption: 'Rower',
+        percent: 68
+      },
+      {
+        caption: 'Playstation 5',
+        percent: 5
+      },
+      {
+        caption: 'Samochód',
+        percent: 88
+      }
     ]
   };
 

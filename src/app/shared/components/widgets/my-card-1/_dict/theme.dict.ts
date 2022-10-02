@@ -7,7 +7,7 @@ export const ThemeDict: { [Key: string]: ThemeModel } = {
     iconStrip: 'attach_money'
   },
   transactions: {
-    description: 'Ilość transakcji',
+    description: 'Liczba transakcji',
     class: 'class-light-blue',
     iconStrip: 'payments'
   },

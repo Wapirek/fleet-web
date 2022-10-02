@@ -1,6 +1,11 @@
 @import "src/app/shared/styles/variables";
 @import "src/app/shared/styles/elements";
 
+@keyframes loading {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
 @media (min-width: 0) {
   .container {
     display: grid;
@@ -16,7 +21,7 @@
       "features"
       "sidebar";
 
-    .shorts, .chart, .features, .right-side { @include templateBg1; }
+    .shorts, .chart, .features { @include templateBg1; }
 
     .header {
       @include templateBg1;
@@ -63,9 +68,7 @@
       }
     }
 
-    .chart {
-      grid-area: chart;
-    }
+    .chart { grid-area: chart; }
 
     .features {
       grid-area: features;
@@ -96,6 +99,50 @@
 
     .right-side {
       grid-area: sidebar;
+
+      .my-goals {
+        @include templateBg1;
+
+        &__list {
+          margin-top: 15px;
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+
+          &__item {
+            display: flex;
+            align-items: center;
+
+            &__percent {
+              width: 30px;
+              padding: 0 8px;
+              text-align: left;
+            }
+
+            &__main {
+              flex: 1;
+              text-align: center;
+              padding: 10px;
+              background-color: $my-navy-blue;
+              border-radius: 5px;
+              position: relative;
+              z-index: 1;
+
+              &__cover {
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: $my-purple;
+                height: 100%;
+                border-radius: 5px;
+                z-index: -1;
+                transform-origin:left center;
+                animation: loading 2s 0s ease-in-out;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -109,6 +156,6 @@
     "widgets . sidebar"
     "shorts . sidebar"
     "chart . sidebar"
-    "features . .";
+    "features . sidebar";
   }
 }
