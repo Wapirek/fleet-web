@@ -110,38 +110,36 @@
           gap: 25px;
 
           &__item {
-            text-align: center;
-            padding: 10px;
-            background-color: $my-navy-blue;
-            border-radius: 5px;
-            position: relative;
-            z-index: 1;
+            display: flex;
+            align-items: center;
 
             &__percent {
-              position: absolute;
-              right: -15px;
-              top: -15px;
-              padding: 8px;
+              width: 30px;
+              padding: 0 8px;
+              text-align: left;
+            }
+
+            &__main {
+              flex: 1;
+              text-align: center;
+              padding: 10px;
               background-color: $my-navy-blue;
               border-radius: 5px;
-              color: $my-white;
-              opacity: 0;
-              transition: opacity .2s ease-in-out;
-            }
+              position: relative;
+              z-index: 1;
 
-            &__cover {
-              position: absolute;
-              left: 0;
-              top: 0;
-              background-color: $my-purple;
-              height: 100%;
-              border-radius: 5px;
-              z-index: -1;
-              transform-origin:left center;
-              animation: loading 2s 0s ease-in-out;
+              &__cover {
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: $my-purple;
+                height: 100%;
+                border-radius: 5px;
+                z-index: -1;
+                transform-origin:left center;
+                animation: loading 2s 0s ease-in-out;
+              }
             }
-
-            &:hover .my-goals__list__item__percent { opacity: 1; }
           }
         }
       }
