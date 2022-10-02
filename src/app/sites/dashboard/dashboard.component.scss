@@ -1,6 +1,11 @@
 @import "src/app/shared/styles/variables";
 @import "src/app/shared/styles/elements";
 
+@keyframes loading {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
 @media (min-width: 0) {
   .container {
     display: grid;
@@ -99,39 +104,44 @@
         @include templateBg1;
 
         &__list {
-          margin-top: 10px;
+          margin-top: 15px;
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
 
           &__item {
-            display: flex;
-            flex-direction: column;
+            text-align: center;
+            padding: 10px;
+            background-color: $my-navy-blue;
+            border-radius: 5px;
+            position: relative;
+            z-index: 1;
 
             &__percent {
-              font-size: 1.1rem;
-              color: $my-white;
-              text-align: right;
-            }
-
-            &__caption {
-              display: flex;
-              justify-content: center;
-              padding: 10px;
+              position: absolute;
+              right: -15px;
+              top: -15px;
+              padding: 8px;
               background-color: $my-navy-blue;
               border-radius: 5px;
-              position: relative;
-              z-index: 1;
-
-              &::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                background-color: $my-purple;
-                height: 100%;
-                width: 68%;
-                border-radius: 5px;
-                z-index: -1;
-              }
+              color: $my-white;
+              opacity: 0;
+              transition: opacity .2s ease-in-out;
             }
+
+            &__cover {
+              position: absolute;
+              left: 0;
+              top: 0;
+              background-color: $my-purple;
+              height: 100%;
+              border-radius: 5px;
+              z-index: -1;
+              transform-origin:left center;
+              animation: loading 2s 0s ease-in-out;
+            }
+
+            &:hover .my-goals__list__item__percent { opacity: 1; }
           }
         }
       }

@@ -73,9 +73,10 @@
 
       <div class="my-goals__list">
 
-        <div class="my-goals__list__item">
-          <span class="my-goals__list__item__percent">65%</span>
-          <div class="my-goals__list__item__caption">Rower</div>
+        <div class="my-goals__list__item" *ngFor="let goal of skeletonHtml.goals">
+          <div class="my-goals__list__item__percent">{{goal.percent + '%'}}</div>
+          <span>{{goal.caption}}</span>
+          <div class="my-goals__list__item__cover" [ngStyle]="{'width': goal.percent + '%'}"></div>
         </div>
 
       </div>
