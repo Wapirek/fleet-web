@@ -16,18 +16,39 @@
 
       .left {
         display: flex;
-        align-items: center;
-        gap: 15px;
+        gap: 20px;
 
-        &__logo {
-          border-radius: 5px;
-          width: 40px;
+        .title {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+
+          &__logo {
+            border-radius: 5px;
+            width: 40px;
+          }
+
+          &__text {
+            font-weight: 400;
+            font-size: 1.7rem;
+            color: $my-cool-blue;
+          }
         }
 
-        &__title {
-          font-weight: 400;
-          font-size: 1.7rem;
-          color: $my-cool-blue;
+        .links {
+          padding-bottom: 6px;
+          display: flex;
+          align-items: flex-end;
+          gap: 8px;
+
+          &__item {
+            color: $my-cool-blue;
+            text-decoration: none;
+
+            &.active { opacity: .5; }
+            &:visited { color: $my-cool-blue; }
+            &:hover:not(.active) { color: $my-dark-blue; }
+          }
         }
       }
 
