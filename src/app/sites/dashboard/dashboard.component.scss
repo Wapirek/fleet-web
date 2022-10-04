@@ -23,16 +23,7 @@
 
     .shorts, .chart, .features { @include templateBg1; }
 
-    .header {
-      @include templateBg1;
-      padding: 15px 20px;
-      grid-area: header;
-      display: flex;
-      background: $my-dark-blue-linear;
-      align-items: center;
-      border-radius: 5px;
-      gap: 10px;
-    }
+    .header { @include skeletonHeader1; }
 
     .widgets {
       grid-area: widgets;

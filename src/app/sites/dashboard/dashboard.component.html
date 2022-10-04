@@ -1,33 +1,17 @@
 <div class="container">
 
   <div class="header">
-    <mat-icon>{{skeletonHtml.header.icon}}</mat-icon>
-    <h2>{{skeletonHtml.header.title}}</h2>
+    <mat-icon>{{skeleton.header.icon}}</mat-icon>
+    <h2>{{skeleton.header.title}}</h2>
   </div>
 
   <section class="widgets">
-
-    <app-my-card-1
-      [theme]="skeletonHtml.cards.profit.theme"
-      [score]="skeletonHtml.cards.profit.score"
-      [genre]="skeletonHtml.cards.profit.genre"
-      [percent]="skeletonHtml.cards.profit.percent"
+    <app-my-card-1 *ngFor="let card of (skeleton.cards | dictArrayCard)"
+      [theme]="card.theme"
+      [score]="card.score"
+      [genre]="card.genre"
+      [percent]="card.percent"
     ></app-my-card-1>
-
-    <app-my-card-1
-      [theme]="skeletonHtml.cards.transactions.theme"
-      [score]="skeletonHtml.cards.transactions.score"
-      [genre]="skeletonHtml.cards.transactions.genre"
-      [percent]="skeletonHtml.cards.transactions.percent"
-    ></app-my-card-1>
-
-    <app-my-card-1
-      [theme]="skeletonHtml.cards.toll.theme"
-      [score]="skeletonHtml.cards.toll.score"
-      [genre]="skeletonHtml.cards.toll.genre"
-      [percent]="skeletonHtml.cards.toll.percent"
-    ></app-my-card-1>
-
   </section>
 
   <section class="shorts">
@@ -40,7 +24,7 @@
     <div class="shorts__row">
 
       <button
-        *ngFor="let btn of skeletonHtml.buttons"
+        *ngFor="let btn of skeleton.buttons"
         mat-raised-button
         class="shorts__row__btn"
       >
@@ -51,7 +35,6 @@
 
   </section>
 
-
   <section class="chart">
     <div class="chart__row">
       <h2 class="chart__row__headline">Bilans</h2>
@@ -59,7 +42,7 @@
   </section>
 
   <section class="features">
-    <div class="features__category" *ngFor="let feature of skeletonHtml.features">
+    <div class="features__category" *ngFor="let feature of skeleton.features">
       <h3 class="features__category__headline">{{feature.category}}</h3>
       <a class="features__category__item" *ngFor="let item of feature.items">{{item}}</a>
     </div>
@@ -73,7 +56,7 @@
 
       <div class="my-goals__list">
 
-        <div class="my-goals__list__item" *ngFor="let goal of skeletonHtml.goals">
+        <div class="my-goals__list__item" *ngFor="let goal of skeleton.goals">
           <div class="my-goals__list__item__main">
             <span>{{goal.caption}}</span>
             <div class="my-goals__list__item__main__cover" [ngStyle]="{'width': goal.percent + '%'}"></div>

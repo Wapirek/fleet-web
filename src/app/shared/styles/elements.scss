@@ -7,3 +7,14 @@
   padding: 15px;
   box-shadow: $box-shadow-1;
 }
+
+@mixin skeletonHeader1 {
+  @include templateBg1;
+  padding: 15px 20px;
+  grid-area: header;
+  display: flex;
+  background: $my-dark-blue-linear;
+  align-items: center;
+  border-radius: 5px;
+  gap: 10px;
+}
