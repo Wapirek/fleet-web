@@ -7,6 +7,7 @@ import { MyCard1Component } from 'src/app/shared/components/widgets/my-card-1/my
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { DictArrayCardPipe } from 'src/app/shared/components/widgets/my-card-1/_pipes/dict-array-card.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DictArrayCardPipe } from 'src/app/shared/components/widgets/my-card-1/_
 
     // angular core
     CommonModule,
+    RouterModule,
 
     // angular material
     MatMenuModule,
@@ -28,6 +30,10 @@ import { DictArrayCardPipe } from 'src/app/shared/components/widgets/my-card-1/_
     FontAwesomeModule
   ],
   exports: [
+
+    // angular core
+    CommonModule,
+    RouterModule,
 
     // created
     MyCard1Component,

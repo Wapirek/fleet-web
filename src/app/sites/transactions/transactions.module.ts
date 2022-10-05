@@ -8,10 +8,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     TransactionsComponent
   ],
   imports: [
-    SharedModule,
-    RouterModule.forChild([
-      { path: '', component: TransactionsComponent }
-    ])
+    RouterModule.forChild([ { path: '', component: TransactionsComponent } ]),
+    SharedModule
   ]
 })
 export class TransactionsModule {}

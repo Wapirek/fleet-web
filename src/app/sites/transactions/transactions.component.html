@@ -5,4 +5,14 @@
     <h2>{{skeleton.header.title}}</h2>
   </div>
 
+  <div class="widgets">
+
+    <button class="widgets__btn" *ngFor="let btn of skeleton.widgets">
+      <mat-icon>{{btn.icon}}</mat-icon>
+      <span>{{btn.name}}</span>
+    </button>
+
+
+  </div>
+
 </div>
