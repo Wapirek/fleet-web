@@ -7,11 +7,10 @@
 
   <div class="widgets">
 
-    <button class="widgets__btn" *ngFor="let btn of skeleton.widgets">
+    <button class="widgets__btn" *ngFor="let btn of skeleton.widgets" (click)="eventWidgetSwitch(btn.codeName)">
       <mat-icon>{{btn.icon}}</mat-icon>
-      <span>{{btn.name}}</span>
+      {{btn.name}}
     </button>
-
 
   </div>
 
