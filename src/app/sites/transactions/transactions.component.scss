@@ -45,4 +45,16 @@
       &:hover::before { opacity: 1; }
     }
   }
+
+  .my-table {
+    margin-top: 20px;
+    display: flex;
+    flex: 1;
+
+    table {
+      width: 100%;
+      background-color: $my-dark-blue;
+      box-shadow: $box-shadow-1;
+    }
+  }
 }
