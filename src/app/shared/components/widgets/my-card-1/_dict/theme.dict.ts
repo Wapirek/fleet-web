@@ -15,5 +15,10 @@ export const ThemeDict: { [Key: string]: ThemeModel } = {
     description: 'Wydatki',
     class: 'class-red',
     iconStrip: 'money_off'
+  },
+  products: {
+    description: 'Liczba produktów',
+    class: 'class-pastel-pink',
+    iconStrip: 'shopping_basket'
   }
 };

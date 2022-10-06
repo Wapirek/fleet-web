@@ -5,25 +5,35 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MyCard1Component } from 'src/app/shared/components/widgets/my-card-1/my-card-1.component';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { DictArrayCardPipe } from 'src/app/shared/components/widgets/my-card-1/_pipes/dict-array-card.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    MyCard1Component
+    MyCard1Component,
+    DictArrayCardPipe
   ],
   imports: [
 
     // angular core
     CommonModule,
+    RouterModule,
 
     // angular material
     MatMenuModule,
     MatSnackBarModule,
     MatIconModule,
+    MatButtonModule,
 
     // icons
     FontAwesomeModule
   ],
   exports: [
+
+    // angular core
+    CommonModule,
+    RouterModule,
 
     // created
     MyCard1Component,
@@ -32,9 +42,13 @@ import { CommonModule } from '@angular/common';
     MatIconModule,
     MatMenuModule,
     MatSnackBarModule,
+    MatButtonModule,
 
     // icons
-    FontAwesomeModule
+    FontAwesomeModule,
+
+    // pipes
+    DictArrayCardPipe
   ]
 })
 export class SharedModule {}

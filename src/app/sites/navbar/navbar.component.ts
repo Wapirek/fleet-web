@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { User } from 'src/app/auth/_models/user.model';
 import { first } from 'rxjs';
+import { StructureBuilderHelper } from 'src/app/sites/navbar/_helpers/structure-builder.helper';
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +19,9 @@ export class NavbarComponent {
 
   // display name in nav
   username = '';
+
+  // skeleton for html
+  skeleton = StructureBuilderHelper;
 
   constructor(
     private authService: AuthService,

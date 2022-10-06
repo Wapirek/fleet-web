@@ -22,6 +22,7 @@
     &--class-green { background-color: $my-green; }
     &--class-light-blue { background-color: $my-light-blue; }
     &--class-red { background-color: $my-red; }
+    &--class-pastel-pink { background-color: $my-pastel-pink; }
   }
 
   &__inner {
@@ -61,6 +62,7 @@
         &--class-green { color: $my-green; }
         &--class-light-blue { color: $my-light-blue; }
         &--class-red { color: $my-red; }
+        &--class-pastel-pink { color: $my-pastel-pink; }
 
         &::before {
           content: '';
@@ -75,6 +77,7 @@
         &--class-green::before { border-bottom: 2px solid $my-green; }
         &--class-light-blue::before { border-bottom: 2px solid $my-light-blue; }
         &--class-red::before { border-bottom: 2px solid $my-red; }
+        &--class-pastel-pink::before { border-bottom: 2px solid $my-pastel-pink; }
       }
 
       &__chart {

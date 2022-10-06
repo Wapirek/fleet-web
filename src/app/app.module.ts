@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SitesComponent } from 'src/app/sites/sites.component';
 import { DashboardComponent } from './sites/dashboard/dashboard.component';
 import { NavbarComponent } from './sites/navbar/navbar.component';
 import { SettingsComponent } from './sites/settings/settings.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatButtonModule } from '@angular/material/button';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,11 +19,10 @@ import { MatButtonModule } from '@angular/material/button';
     SettingsComponent
   ],
   imports: [
-    SharedModule,
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    AppRoutingModule,
+    SharedModule,
   ],
   bootstrap: [AppComponent]
 })
