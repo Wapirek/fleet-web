@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { StructureBuilderHelper } from 'src/app/sites/settings/_helpers/structure-builder.helper';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  skeleton = StructureBuilderHelper;
 }
