@@ -8,10 +8,6 @@ interface StructureBuilderModel {
 export const StructureBuilderHelper: StructureBuilderModel = {
   links: [
     {
-      name: 'Dashboard',
-      url: ''
-    },
-    {
       name: 'Transakcje',
       url: 'transakcje'
     },
