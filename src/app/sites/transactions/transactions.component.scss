@@ -103,5 +103,16 @@
         }
       }
     }
+
+    &__bottom {
+      margin-top: 10px;
+    }
+  }
+}
+
+::ng-deep {
+  mat-paginator.mat-paginator {
+    background: $my-dark-blue;
+    color: $my-cool-blue;
   }
 }
