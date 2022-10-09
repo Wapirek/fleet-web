@@ -1,6 +1,10 @@
 @import "src/app/shared/styles/variables";
 @import "src/app/shared/styles/elements";
 
+::ng-deep td.mat-cell.cdk-cell.cdk-column-expandedDetail.mat-column-expandedDetail {
+  height: 0;
+}
+
 .container {
   margin-top: 20px;
 
@@ -48,13 +52,43 @@
 
   .my-table {
     margin-top: 20px;
-    display: flex;
+    background-color: $my-dark-blue;
+    box-shadow: $box-shadow-1;
+    border-radius: 5px;
+    padding: 10px 0;
     flex: 1;
 
-    table {
-      width: 100%;
-      background-color: $my-dark-blue;
-      box-shadow: $box-shadow-1;
+    &__fix {
+      overflow: auto;
+
+      ::ng-deep table.mat-table {
+        table-layout: fixed;
+        background-color: transparent;
+        width: 100%;
+
+        table, thead, tr, td, th { border: 0; }
+
+        thead tr.mat-header-row.cdk-header-row.ng-star-inserted {
+          font-size: 1rem;
+          height: 40px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          th.mat-header-cell { color: $my-cool-blue; }
+        }
+
+        tbody tr.mat-row.cdk-row.ng-star-inserted {
+          height: 40px;
+
+          td.mat-cell {
+            font-size: .9rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+      }
     }
   }
 }

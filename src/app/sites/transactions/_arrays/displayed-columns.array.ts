@@ -8,8 +8,8 @@ export interface DisplayedColumnsModel {
 export const DisplayedColumnsArray: DisplayedColumnsModel[] = [
   {
     codeName: 'id',
-    name: "Number",
-    width: 110,
+    name: "Numer",
+    width: 60,
     order: 0
   },
   {
@@ -21,13 +21,13 @@ export const DisplayedColumnsArray: DisplayedColumnsModel[] = [
   {
     codeName: 'type',
     name: "Typ transakcji",
-    width: 200,
+    width: 100,
     order: 2
   },
   {
     codeName: 'category',
     name: "Kategoria",
-    width: 220,
+    width: 150,
     order: 3
   },
   {
