@@ -58,6 +58,19 @@
     padding: 10px 0;
     flex: 1;
 
+    &__header {
+      padding: 5px 10px;
+
+      &__searcher {
+        border: 0;
+        border-radius: 5px;
+        background-color: rgba($my-cool-blue, .1);
+        padding: 7px 15px;
+        font-size: .9rem;
+        color: $my-white;
+      }
+    }
+
     &__fix {
       overflow: auto;
 

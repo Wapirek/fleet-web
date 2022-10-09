@@ -16,6 +16,17 @@
 
   <div class="my-table">
 
+    <div class="my-table__header">
+
+      <input
+        class="my-table__header__searcher"
+        type="text"
+        (input)="searcher$.next($any($event.target).value)"
+        placeholder="Wyszukaj"
+      >
+
+    </div>
+
     <div class="my-table__fix">
 
       <table mat-table [dataSource]="dataSource">
