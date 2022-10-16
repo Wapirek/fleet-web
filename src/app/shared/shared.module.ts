@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { DictArrayCardPipe } from 'src/app/shared/components/widgets/my-card-1/_pipes/dict-array-card.pipe';
 import { RouterModule } from '@angular/router';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { PaginatorTranslateService } from 'src/app/shared/components/table-utils/paginator-translate/paginator-translate.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,9 @@ import { RouterModule } from '@angular/router';
 
     // pipes
     DictArrayCardPipe
+  ],
+  providers: [
+    { provide: MatPaginatorIntl, useFactory: () => new PaginatorTranslateService().use() }
   ]
 })
 export class SharedModule {}
