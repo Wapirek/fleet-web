@@ -7,6 +7,9 @@ export interface StructureBuilderModel {
   header: HeaderModel;
   cards: { [Key: string]: CardModel };
   buttons: string[];
+  chart: {
+    id: string;
+  }
   features: {
     category: string;
     items: string[]
@@ -51,6 +54,9 @@ export const StructureBuilderHelper: StructureBuilderModel = {
   buttons: [
     'Nowa transakcja', 'Dodaj cel', 'Transakcje', 'Importuj plik', 'Dodaj dług'
   ],
+  chart: {
+    id: 'dashboard-chart'
+  },
   features: [
     {
       category: 'Transakcje',

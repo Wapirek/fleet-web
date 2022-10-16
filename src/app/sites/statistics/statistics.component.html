@@ -5,8 +5,8 @@
     <h2>{{skeleton.header.title}}</h2>
   </div>
 
-  <div class="center-top"></div>
+  <div class="center-top"><shared-bar-chart [data]="skeleton.charts.bar"></shared-bar-chart></div>
   <div class="center-bottom"></div>
-  <div class="right-side"></div>
+  <div class="right-side"><shared-pie-chart [data]="skeleton.charts.pie"></shared-pie-chart></div>
 
 </div>

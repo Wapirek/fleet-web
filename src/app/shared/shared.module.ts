@@ -10,11 +10,15 @@ import { DictArrayCardPipe } from 'src/app/shared/components/widgets/my-card-1/_
 import { RouterModule } from '@angular/router';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { PaginatorTranslateService } from 'src/app/shared/components/table-utils/paginator-translate/paginator-translate.service';
+import { BarChartComponent } from 'src/app/shared/components/charts/bar-chart/bar-chart.component';
+import { PieChartComponent } from 'src/app/shared/components/charts/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
     MyCard1Component,
-    DictArrayCardPipe
+    DictArrayCardPipe,
+    BarChartComponent,
+    PieChartComponent
   ],
   imports: [
 
@@ -39,6 +43,8 @@ import { PaginatorTranslateService } from 'src/app/shared/components/table-utils
 
     // created
     MyCard1Component,
+    BarChartComponent,
+    PieChartComponent,
 
     // angular material
     MatIconModule,

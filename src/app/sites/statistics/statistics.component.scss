@@ -21,7 +21,6 @@
 
     .center-top {
       grid-area: center-top;
-      height: 200px;
     }
 
     .center-bottom {
@@ -29,9 +28,7 @@
       height: 200px;
     }
 
-    .right-side {
-      grid-area: right-side;
-    }
+    .right-side { grid-area: right-side; }
   }
 }
 
@@ -41,6 +38,6 @@
     grid-template-areas:
     "header header header"
     "center-top center-top right-side"
-    "center-bottom center-bottom right-side";
+    "center-bottom center-bottom .";
   }
 }
