@@ -1,39 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CodeNameWidget, StructureBuilderHelper } from 'src/app/sites/transactions/_helpers/structure-builder.helper';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { DisplayedColumnsArray, DisplayedColumnsModel } from 'src/app/sites/transactions/_arrays/displayed-columns.array';
+import { MatTableDataSource } from '@angular/material/table';
+import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
+import { TransactionsService } from 'src/app/sites/transactions/_services/transactions.service';
+import { debounceTime, distinctUntilChanged, merge, startWith, Subject, Subscription, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })
-export class TransactionsComponent {
+export class TransactionsComponent implements OnInit {
 
+  // szkielet templatu
   skeleton = StructureBuilderHelper;
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  // lista kolumn przypisana do tabeli
+  displayedColumns: DisplayedColumnsModel[] = DisplayedColumnsArray;
 
-  constructor() {}
+  // aktualny stan tabeli
+  dataSource: MatTableDataSource<TransactionModel> = new MatTableDataSource<TransactionModel>();
+
+  // aktywny pole wyszukiwania
+  searcher$ = new Subject<string>();
+
+  constructor(private transactionsService: TransactionsService) {}
+
+  private subscription: Subscription | undefined;
+
+  ngOnInit(): void {
+    this.subscription = merge(
+      this.searcher$.pipe(debounceTime(600), distinctUntilChanged()),
+    ).pipe(
+      startWith({}),
+      switchMap((searchTerm: string | {}) => {
+        return this.transactionsService.getListOfInstance()
+      })
+    ).subscribe(
+      (result: TransactionModel[]) => this.dataSource.data = result
+    )
+  }
 
   addTransaction(): void {}
 
