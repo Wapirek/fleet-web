@@ -1,26 +1,26 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { ColorDictionary } from 'src/app/shared/components/charts/_dict/color.dictionary';
 
 @Component({
   selector: 'shared-bar-chart',
-  template: `
-    <div class="chart-container"><canvas id="MyChart">{{chart}}</canvas></div>
-  `
+  template: `<div class="chart-container" *ngIf="data?.id"><canvas [id]="data?.id">{{chart}}</canvas></div>`
 })
-export class BarChartComponent implements OnInit {
+export class BarChartComponent implements AfterViewInit {
 
-  @Input() data!: {
-    id: string;
-  };
+  @Input() data: { id: string; } | undefined;
 
   chart: any;
 
   colorDictionary = ColorDictionary;
 
-  createChart(){
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
-    this.chart = new Chart("MyChart", {
+  ngAfterViewInit(): void {
+
+    if (!this.data?.id) { return; }
+
+    this.chart = new Chart(this.data?.id, {
       type: 'bar', //this denotes tha type of chart
 
       data: {// values on X-Axis
@@ -44,11 +44,7 @@ export class BarChartComponent implements OnInit {
       options: {
         aspectRatio:2.5
       }
-
     });
-  }
-
-  ngOnInit(): void {
-    this.createChart();
+    this.changeDetectorRef.detectChanges();
   }
 }

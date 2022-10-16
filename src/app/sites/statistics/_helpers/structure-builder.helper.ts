@@ -2,8 +2,13 @@ import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
 
 interface StructureBuilderModel {
   header: HeaderModel;
-  chart: {
-    id: string;
+  charts: {
+    bar: {
+      id: string;
+    };
+    pie: {
+      id: string;
+    }
   }
 }
 
@@ -12,7 +17,12 @@ export const StructureBuilderHelper: StructureBuilderModel = {
     icon: 'pie_chart',
     title: 'Statystyki'
   },
-  chart: {
-    id: 'statistics-chart'
+  charts: {
+    bar: {
+      id: 'statistics-bar-chart'
+    },
+    pie: {
+      id: 'statistics-pie-chart'
+    }
   }
 }
