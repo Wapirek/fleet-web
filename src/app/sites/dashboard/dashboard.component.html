@@ -16,20 +16,12 @@
 
   <section class="shorts">
 
-    <div class="shorts__row">
-      <h2 class="shorts__row__headline">Skróty</h2>
-      <button mat-icon-button><mat-icon>edit</mat-icon></button>
-    </div>
+    <div class="shorts__row"><h2 class="shorts__row__headline">Skróty</h2></div>
 
     <div class="shorts__row">
-
-      <button
-        *ngFor="let btn of skeleton.buttons"
-        class="shorts__row__btn"
-      >
-        {{btn}}
+      <button *ngFor="let btn of skeleton.buttons" class="shorts__row__btn">
+        {{btn.displayName}}
       </button>
-
     </div>
 
   </section>

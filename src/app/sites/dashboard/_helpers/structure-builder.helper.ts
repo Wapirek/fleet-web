@@ -6,7 +6,10 @@ import { CardModel } from 'src/app/shared/components/widgets/my-card-1/_models/c
 export interface StructureBuilderModel {
   header: HeaderModel;
   cards: { [Key: string]: CardModel };
-  buttons: string[];
+  buttons: {
+    displayName: string;
+    codeName: string;
+  }[];
   chart: {
     id: string;
   }
@@ -52,7 +55,11 @@ export const StructureBuilderHelper: StructureBuilderModel = {
     }
   },
   buttons: [
-    'Nowa transakcja', 'Dodaj cel', 'Transakcje', 'Importuj plik', 'Dodaj dług'
+    { displayName: 'Nowa transakcja', codeName: 'transactionAdd' },
+    { displayName: 'Dodaj cel', codeName: 'goalAdd' },
+    { displayName: 'Transakcje', codeName: 'transactions' },
+    { displayName: 'Importuj plik', codeName: 'fileImport' },
+    { displayName: 'Dodaj dług', codeName: 'debtAdd' }
   ],
   chart: {
     id: 'dashboard-chart'
