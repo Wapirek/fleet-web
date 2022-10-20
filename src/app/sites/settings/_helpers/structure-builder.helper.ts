@@ -8,7 +8,10 @@ interface StructureBuilderModel {
       logo: IconDefinition;
       name: string;
     };
-    buttons: string[]
+    buttons: {
+      display: string;
+      codeName: string;
+    }[];
   }
 }
 
@@ -22,6 +25,12 @@ export const StructureBuilderHelper: StructureBuilderModel = {
       logo: faCircleUser,
       name: ''
     },
-    buttons: ['Zmień hasło', 'Zmień nazwę', 'Usuń konto', 'Wyloguj się']
+    buttons: [
+      { display: 'Zmień hasło', codeName: 'changePassword'},
+      { display: 'Zmień nazwę', codeName: 'changeName' },
+      { display: 'Zmień avatar', codeName: 'changeAvatar' },
+      { display: 'Usuń konto', codeName: 'removeAccount' },
+      { display: 'Wyloguj się', codeName: 'logout'}
+    ]
   }
 }

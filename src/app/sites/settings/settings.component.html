@@ -14,11 +14,8 @@
 
     <div class="left-side__btn-list">
 
-      <button
-        *ngFor="let btn of skeleton.leftSide.buttons"
-        class="left-side__btn-list__btn"
-      >
-        {{btn}}
+      <button *ngFor="let btn of skeleton.leftSide.buttons" class="left-side__btn-list__btn">
+        {{btn.display}}
       </button>
 
     </div>

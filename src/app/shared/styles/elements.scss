@@ -46,3 +46,11 @@
 
   &:hover::before { opacity: 1; }
 }
+
+@mixin btnLightTem2 {
+  @include btnGreyTem1;
+  color: $my-navy-blue;
+  background-color: rgba($my-white, .9);
+
+  &::before { background-color: rgba($my-navy-blue, .15); }
+}

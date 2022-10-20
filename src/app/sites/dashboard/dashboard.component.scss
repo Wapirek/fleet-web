@@ -47,9 +47,7 @@
         &:nth-child(2) { padding: 10px 0; }
 
         &__btn {
-          background-color: $my-white;
-          color: $my-navy-blue;
-
+          @include btnLightTem2;
           &:first-child { background-color: $my-cool-blue; }
         }
       }
