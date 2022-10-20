@@ -3,12 +3,14 @@ import { ThemeGenreType } from 'src/app/shared/components/widgets/my-card-1/_mod
 import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
 import { CardModel } from 'src/app/shared/components/widgets/my-card-1/_models/card.model';
 
+export declare type ShortBtnCodeName = 'transactionAdd' | 'goalAdd' | 'transactions' | 'fileImport' | 'debtAdd';
+
 export interface StructureBuilderModel {
   header: HeaderModel;
   cards: { [Key: string]: CardModel };
   buttons: {
     displayName: string;
-    codeName: string;
+    codeName: ShortBtnCodeName;
   }[];
   chart: {
     id: string;
