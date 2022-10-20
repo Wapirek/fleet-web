@@ -1,10 +1,6 @@
 @import "src/app/shared/styles/variables";
 @import "src/app/shared/styles/elements";
-
-@keyframes loading {
-  0% { transform: scaleX(0); }
-  100% { transform: scaleX(1); }
-}
+@import "src/app/shared/styles/animations";
 
 @media (min-width: 0) {
   .container {

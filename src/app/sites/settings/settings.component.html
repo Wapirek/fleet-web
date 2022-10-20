@@ -5,7 +5,26 @@
     <h2>{{skeleton.header.title}}</h2>
   </div>
 
-  <div class="left-side"></div>
+  <div class="left-side">
+
+    <div class="left-side__user">
+      <fa-icon class="left-side__user__icon" [icon]="skeleton.leftSide.user.logo"></fa-icon>
+      <div class="left-side__user__username">{{skeleton.leftSide.user.name}}</div>
+    </div>
+
+    <div class="left-side__btn-list">
+
+      <button
+        *ngFor="let btn of skeleton.leftSide.buttons"
+        class="left-side__btn-list__btn"
+      >
+        {{btn}}
+      </button>
+
+    </div>
+
+  </div>
+
   <div class="center-top"></div>
   <div class="center-bottom"></div>
 

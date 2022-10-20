@@ -1,6 +1,11 @@
 @import "src/app/shared/styles/variables";
 @import "src/app/shared/styles/elements";
 
+@keyframes appear {
+  0% { opacity: 0; }
+  100% { opacity: .2; }
+}
+
 @media (min-width: 0) {
   .container {
     margin-top: 20px;
@@ -17,10 +22,54 @@
 
     .header { @include skeletonHeader1; }
 
-    .left-side, .center-top, .center-bottom { @include templateBg1; }
+    .center-top, .center-bottom { @include templateBg1; }
 
     .left-side {
       grid-area: left-side;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+
+      &__user {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding: 25px;
+
+        &__icon { font-size: 6rem; }
+
+        &__username {
+          font-size: 1.3rem;
+          padding: 0;
+          color: $my-pastel-pink;
+          font-weight: bolder;
+        }
+
+        &::after {
+          content: '';
+          border-radius: 5px;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          opacity: .2;
+          background: $my-pink-purple-linear;
+          z-index: -1;
+          animation: appear 2s 0s ease-in-out;
+        }
+      }
+
+      &__btn-list {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+
+        &__btn { @include btnGreyTem1; }
+      }
     }
 
     .center-top {
