@@ -17,36 +17,11 @@
     gap: 15px;
 
     &__btn {
+      @include btnGreyTem1;
       display: flex;
+      justify-content: center;
       align-items: center;
-      box-shadow: $box-shadow-1;
-      gap: 5px;
-      min-width: 80px;
-      height: 45px;
-      padding: 0 15px;
-      background-color: $my-dark-blue;
-      border: 0;
-      border-radius: 5px;
-      color: $my-white;
-      cursor: pointer;
-      position: relative;
-      z-index: 1;
-
-      &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 100%;
-        background-color: rgba($my-white, .1);
-        border-radius: 5px;
-        opacity: 0;
-        z-index: -1;
-        transition: .15s ease-in opacity;
-      }
-
-      &:hover::before { opacity: 1; }
+      gap: 10px;
     }
   }
 

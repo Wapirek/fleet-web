@@ -1,10 +1,6 @@
 @import "src/app/shared/styles/variables";
 @import "src/app/shared/styles/elements";
-
-@keyframes loading {
-  0% { transform: scaleX(0); }
-  100% { transform: scaleX(1); }
-}
+@import "src/app/shared/styles/animations";
 
 @media (min-width: 0) {
   .container {
@@ -51,9 +47,7 @@
         &:nth-child(2) { padding: 10px 0; }
 
         &__btn {
-          background-color: $my-white;
-          color: $my-navy-blue;
-
+          @include btnLightTem2;
           &:first-child { background-color: $my-cool-blue; }
         }
       }
