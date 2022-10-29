@@ -51,6 +51,8 @@ import { TransactionModalComponent } from 'src/app/shared/components/modals/tran
     MyCard1Component,
     BarChartComponent,
     PieChartComponent,
+
+    // modals
     TransactionModalComponent,
 
     // angular material

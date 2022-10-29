@@ -1,5 +1,35 @@
-.wrapper {
-  background-color: red;
-  width: 500px;
-  height: 500px;
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFF;
+  z-index: 50;
+  opacity: .2;
+}
+
+.transparent-box {
+  position: absolute;
+  margin: 0 2vw;
+  width: 96vw;
+  height: 200px;
+  top: 100px;
+  left: 0;
+  z-index: 100;
+
+  .modal {
+    position: relative;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    max-width: 600px;
+    height: 200px;
+
+    // all elements have color dark
+    color: #000;
+
+    // center .inside
+    display: flex;
+  }
 }
