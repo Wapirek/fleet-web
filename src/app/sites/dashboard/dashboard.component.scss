@@ -17,7 +17,7 @@
       "features"
       "sidebar";
 
-    .shorts, .chart, .features { @include templateBg1; }
+    .chart, .features { @include templateBg1; }
 
     .header { @include skeletonHeader1; }
 
@@ -32,22 +32,25 @@
     .shorts {
       grid-area: shorts;
       padding: 5px 15px;
+      position: relative;
+      z-index: 1;
+
+      &::before {
+        @include bgUnderPseudoClass;
+        background: $my-four-color-linear-1;
+        opacity: .3;
+      }
 
       &__row {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        padding: 10px 0;
         gap: 15px;
-
-        &:nth-child(1) {
-          justify-content: space-between;
-          mat-icon { font-size: 1.2rem; }
-        }
-
-        &:nth-child(2) { padding: 10px 0; }
 
         &__btn {
           @include btnLightTem2;
+
           &:first-child { background-color: $my-cool-blue; }
         }
       }

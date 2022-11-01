@@ -12,13 +12,19 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { PaginatorTranslateService } from 'src/app/shared/components/table-utils/paginator-translate/paginator-translate.service';
 import { BarChartComponent } from 'src/app/shared/components/charts/bar-chart/bar-chart.component';
 import { PieChartComponent } from 'src/app/shared/components/charts/pie-chart/pie-chart.component';
+import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
+import { TransactionModalComponent } from 'src/app/shared/components/modals/transaction-modal/transaction-modal.component';
 
 @NgModule({
   declarations: [
     MyCard1Component,
     DictArrayCardPipe,
     BarChartComponent,
-    PieChartComponent
+    PieChartComponent,
+    TransactionModalComponent,
+
+    // directives
+    PlaceholderDirective
   ],
   imports: [
 
@@ -46,6 +52,9 @@ import { PieChartComponent } from 'src/app/shared/components/charts/pie-chart/pi
     BarChartComponent,
     PieChartComponent,
 
+    // modals
+    TransactionModalComponent,
+
     // angular material
     MatIconModule,
     MatMenuModule,
@@ -56,7 +65,10 @@ import { PieChartComponent } from 'src/app/shared/components/charts/pie-chart/pi
     FontAwesomeModule,
 
     // pipes
-    DictArrayCardPipe
+    DictArrayCardPipe,
+
+    // directives
+    PlaceholderDirective
   ],
   providers: [
     { provide: MatPaginatorIntl, useFactory: () => new PaginatorTranslateService().use() }

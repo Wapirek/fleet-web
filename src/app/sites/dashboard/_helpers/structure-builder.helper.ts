@@ -3,10 +3,15 @@ import { ThemeGenreType } from 'src/app/shared/components/widgets/my-card-1/_mod
 import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
 import { CardModel } from 'src/app/shared/components/widgets/my-card-1/_models/card.model';
 
+export declare type ShortBtnCodeName = 'transactionAdd' | 'goalAdd' | 'transactions' | 'fileImport' | 'debtAdd';
+
 export interface StructureBuilderModel {
   header: HeaderModel;
   cards: { [Key: string]: CardModel };
-  buttons: string[];
+  buttons: {
+    displayName: string;
+    codeName: ShortBtnCodeName;
+  }[];
   chart: {
     id: string;
   }
@@ -52,7 +57,11 @@ export const StructureBuilderHelper: StructureBuilderModel = {
     }
   },
   buttons: [
-    'Nowa transakcja', 'Dodaj cel', 'Transakcje', 'Importuj plik', 'Dodaj dług'
+    { displayName: 'Nowa transakcja', codeName: 'transactionAdd' },
+    { displayName: 'Dodaj cel', codeName: 'goalAdd' },
+    { displayName: 'Transakcje', codeName: 'transactions' },
+    { displayName: 'Importuj plik', codeName: 'fileImport' },
+    { displayName: 'Dodaj dług', codeName: 'debtAdd' }
   ],
   chart: {
     id: 'dashboard-chart'

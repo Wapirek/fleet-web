@@ -31,6 +31,18 @@ $my-dark-blue-linear:
   linear-gradient(90deg, rgba(4, 32, 67, 1) 0%,
     rgba(4,32,67,1) 35%, rgba(5, 10, 48, 1) 100%);
 
-$my-pink-purple-linear:
+$my-four-color-linear-1:
   linear-gradient(60deg, #aa9eff 0%, #9285ff 25%,
    #ff94c1 65%, #be99ff 100%);
+
+$my-four-color-linear-2:
+  linear-gradient(60deg, #9effe1 0%, #abc5ff 25%,
+    #ccedff 65%, #cabdff 100%);
+
+$my-four-color-linear-3:
+  linear-gradient(90deg, #ff8fcd 0%, #c7fcff 25%,
+    #94f3ff 65%, #b8ffbc 100%);
+
+$my-four-color-linear-4:
+  linear-gradient(90deg, #aa9eff 0%, #9285ff 25%,
+    #ff94c1 65%, #ff80cd 100%);
