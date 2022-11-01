@@ -1,12 +1,15 @@
+@import "src/app/shared/styles/variables";
+@import "src/app/shared/styles/elements";
+
 .backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #FFF;
+  background-color: #000;
   z-index: 50;
-  opacity: .2;
+  opacity: .5;
 }
 
 .transparent-box {
@@ -21,15 +24,71 @@
   .modal {
     position: relative;
     margin: 0 auto;
+    padding: 10px 20px;
     border-radius: 5px;
-    background-color: #fff;
-    max-width: 600px;
-    height: 200px;
+    max-width: 550px;
+    z-index: 0;
+    background-color: $my-white;
+
+    &::before {
+      @include bgUnderPseudoClass;
+      background: $my-four-color-linear-4;
+      opacity: .3;
+    }
 
     // all elements have color dark
-    color: #000;
+    color: $my-dark-blue;
 
-    // center .inside
-    display: flex;
+    &__header {
+      font-size: 1.5rem;
+      font-weight: lighter;
+      text-align: center;
+    }
+
+    &__forms {
+      margin: 15px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &__row {
+        display: flex;
+        gap: 15px;
+
+        &__field {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+
+          &__input {
+            padding: 8px;
+            border: 0;
+            border-radius: 5px;
+            color: $my-grey;
+            background-color: $my-white;
+
+            &--btn {
+              background-color: $my-dark-blue;
+              color: $my-white;
+              cursor: pointer;
+
+              &:hover { opacity: .8; }
+            }
+          }
+        }
+      }
+
+      &__submit {
+        margin: 0 auto;
+        border: 0;
+        border-radius: 5px;
+        background-color: $my-cool-blue;
+        cursor: pointer;
+        color: $my-white;
+        padding: 10px 20px;
+
+        &:hover { opacity: .8; }
+      }
+    }
   }
 }
