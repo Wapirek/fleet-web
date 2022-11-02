@@ -1,28 +1,24 @@
-<div class="backdrop"></div>
+<shared-modal-style-1>
 
-<div class="transparent-box">
+  <h4 class="header">Dodawanie transakcji</h4>
 
-  <div class="modal">
+    <form class="forms">
 
-    <h4 class="modal__header">Dodawanie transakcji</h4>
-
-    <form class="modal__forms">
-
-      <div class="modal__forms__row" *ngFor="let row of formStructure">
+      <div class="forms__row" *ngFor="let row of formStructure">
 
         <div
-          class="modal__forms__row__field"
+          class="forms__row__field"
           *ngFor="let field of row"
           [ngStyle]="{ 'width': field.width }"
         >
 
-          <label class="modal__forms__row__field__label" [for]="field.codeName">
+          <label class="forms__row__field__label" [for]="field.codeName">
             {{field.labelName}}
           </label>
 
           <input
-            class="modal__forms__row__field__input"
-            [ngClass]="{ 'modal__forms__row__field__input--btn': field.inputType === 'button' }"
+            class="forms__row__field__input"
+            [ngClass]="{ 'forms__row__field__input--btn': field.inputType === 'button' }"
             [id]="field.codeName"
             [placeholder]="field.displayName"
             [value]="field.defaultValue ?? ''"
@@ -33,10 +29,8 @@
 
       </div>
 
-      <input (click)="closeModal.emit()" class="modal__forms__submit" type="button" value="Zapisz">
+      <input (click)="closeModal.emit()" class="forms__submit" type="button" value="Zapisz">
 
     </form>
 
-  </div>
-
-</div>
+</shared-modal-style-1>

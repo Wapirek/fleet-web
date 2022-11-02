@@ -51,7 +51,10 @@
         &__btn {
           @include btnLightTem2;
 
-          &:first-child { background-color: $my-cool-blue; }
+          &:first-child {
+            color: $my-white;
+            background-color: $my-cool-blue;
+          }
         }
       }
     }

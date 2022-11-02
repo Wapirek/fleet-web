@@ -57,7 +57,7 @@ export const StructureBuilderHelper: StructureBuilderModel = {
     }
   },
   buttons: [
-    { displayName: 'Nowa transakcja', codeName: 'transactionAdd' },
+    { displayName: 'Dodaj transakcje', codeName: 'transactionAdd' },
     { displayName: 'Dodaj cel', codeName: 'goalAdd' },
     { displayName: 'Transakcje', codeName: 'transactions' },
     { displayName: 'Importuj plik', codeName: 'fileImport' },

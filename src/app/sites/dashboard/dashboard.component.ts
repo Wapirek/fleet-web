@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ShortBtnCodeName, StructureBuilderHelper, StructureBuilderModel } from 'src/app/sites/dashboard/_helpers/structure-builder.helper';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { TransactionModalComponent } from 'src/app/shared/components/modals/transaction-modal/transaction-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,12 +17,16 @@ export class DashboardComponent {
 
   skeleton: StructureBuilderModel = StructureBuilderHelper;
 
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
 
   // switch function for button inside shorts template
   shortsSwitch(btn: ShortBtnCodeName): void {
     const response: { [key: string]: any } = {
       'transactionAdd': () => this.transactionAdd(),
+      'goalAdd': () => this.goalAdd(),
+      'transactions': () => this.transactions()
     };
 
     response[btn]();
@@ -31,13 +36,18 @@ export class DashboardComponent {
   private openModal(): void {
 
     if (this.modalHost) {
-
       const componentRef = this.modalHost.viewContainerRef.createComponent(TransactionModalComponent);
       componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
     }
   }
 
+  private goalAdd(): void {}
+
   private transactionAdd(): void {
     this.openModal();
+  }
+
+  private transactions(): void {
+    this.router.navigate(['/transakcje']).then();
   }
 }

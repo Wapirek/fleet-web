@@ -14,6 +14,7 @@ import { BarChartComponent } from 'src/app/shared/components/charts/bar-chart/ba
 import { PieChartComponent } from 'src/app/shared/components/charts/pie-chart/pie-chart.component';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { TransactionModalComponent } from 'src/app/shared/components/modals/transaction-modal/transaction-modal.component';
+import { ModalStyle1Component } from './components/modals/modal-style-1/modal-style-1.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TransactionModalComponent } from 'src/app/shared/components/modals/tran
     BarChartComponent,
     PieChartComponent,
     TransactionModalComponent,
+    ModalStyle1Component,
 
     // directives
     PlaceholderDirective

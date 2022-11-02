@@ -1,94 +1,58 @@
 @import "src/app/shared/styles/variables";
 @import "src/app/shared/styles/elements";
 
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #000;
-  z-index: 50;
-  opacity: .5;
-}
+.wrapper {
 
-.transparent-box {
-  position: absolute;
-  margin: 0 2vw;
-  width: 96vw;
-  height: 200px;
-  top: 100px;
-  left: 0;
-  z-index: 100;
+  .header {
+    font-size: 1.5rem;
+    font-weight: lighter;
+    text-align: center;
+  }
 
-  .modal {
-    position: relative;
-    margin: 0 auto;
-    padding: 10px 20px;
-    border-radius: 5px;
-    max-width: 550px;
-    z-index: 0;
-    background-color: $my-white;
+  .forms {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
-    &::before {
-      @include bgUnderPseudoClass;
-      background: $my-four-color-linear-4;
-      opacity: .3;
-    }
-
-    // all elements have color dark
-    color: $my-dark-blue;
-
-    &__header {
-      font-size: 1.5rem;
-      font-weight: lighter;
-      text-align: center;
-    }
-
-    &__forms {
-      margin: 15px 0;
+    &__row {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      gap: 15px;
 
-      &__row {
+      &__field {
         display: flex;
-        gap: 15px;
+        flex-direction: column;
+        gap: 3px;
 
-        &__field {
-          display: flex;
-          flex-direction: column;
-          gap: 3px;
+        &__input {
+          padding: 8px;
+          border: 0;
+          border-radius: 5px;
+          color: $my-grey;
+          background-color: $my-white;
 
-          &__input {
-            padding: 8px;
-            border: 0;
-            border-radius: 5px;
-            color: $my-grey;
-            background-color: $my-white;
+          &--btn {
+            background-color: $my-dark-blue;
+            color: $my-white;
+            cursor: pointer;
 
-            &--btn {
-              background-color: $my-dark-blue;
-              color: $my-white;
-              cursor: pointer;
-
-              &:hover { opacity: .8; }
-            }
+            &:hover { opacity: .8; }
           }
         }
       }
+    }
 
-      &__submit {
-        margin: 0 auto;
-        border: 0;
-        border-radius: 5px;
-        background-color: $my-cool-blue;
-        cursor: pointer;
-        color: $my-white;
-        padding: 10px 20px;
+    &__submit {
+      margin: 0 auto;
+      border: 0;
+      border-radius: 5px;
+      background-color: $my-cool-blue;
+      cursor: pointer;
+      color: $my-white;
+      padding: 10px 20px;
 
-        &:hover { opacity: .8; }
-      }
+      &:hover { opacity: .8; }
     }
   }
+
 }
