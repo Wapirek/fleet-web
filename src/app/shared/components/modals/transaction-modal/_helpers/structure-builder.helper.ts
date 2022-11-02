@@ -11,6 +11,15 @@ export const StructureBuilderHelper = (): FieldModel[][] => {
         required: true,
         readonly: false,
         inputType: 'text'
+      },
+      {
+        codeName: 'purchaseDate',
+        displayName: 'Data',
+        labelName: 'Data zakupu',
+        width: '120px',
+        required: false,
+        readonly: false,
+        inputType: 'text'
       }
     ],
     [
@@ -40,15 +49,6 @@ export const StructureBuilderHelper = (): FieldModel[][] => {
         required: true,
         readonly: false,
         defaultValue: 1,
-        inputType: 'text'
-      },
-      {
-        codeName: 'purchaseDate',
-        displayName: 'Data',
-        labelName: 'Data zakupu',
-        width: '120px',
-        required: false,
-        readonly: false,
         inputType: 'text'
       }
     ],
