@@ -3,13 +3,21 @@ import { StructureBuilderHelper } from 'src/app/shared/components/modals/transac
 
 @Component({
   selector: 'shared-transaction-modal',
-  templateUrl: './transaction-modal.component.html',
-  styleUrls: ['./transaction-modal.component.scss']
+  template: `
+    <shared-modal-base-1
+      [formInitArray]="formStructure"
+      [title]="title"
+      (closeModal)="closeModal.emit()"
+    ></shared-modal-base-1>`
 })
 export class TransactionModalComponent {
 
+  // Inicjalna lista pól do formularza
+  formStructure = StructureBuilderHelper();
+
+  // tytuł komponentu
+  title = 'Nowa transakcja';
+
   // active when user click on cross
   @Output() closeModal = new EventEmitter<void>();
-
-  formStructure = StructureBuilderHelper();
 }

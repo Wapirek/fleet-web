@@ -14,7 +14,9 @@ import { BarChartComponent } from 'src/app/shared/components/charts/bar-chart/ba
 import { PieChartComponent } from 'src/app/shared/components/charts/pie-chart/pie-chart.component';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { TransactionModalComponent } from 'src/app/shared/components/modals/transaction-modal/transaction-modal.component';
-import { ModalStyle1Component } from './components/modals/modal-style-1/modal-style-1.component';
+import { ModalStyle1Component } from './components/modals/modal-type-1/modal-style-1/modal-style-1.component';
+import { ModalBase1Component } from 'src/app/shared/components/modals/modal-type-1/modal-base-1/modal-base-1.component';
+import { GoalModalComponent } from 'src/app/shared/components/modals/goal-modal/goal-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,14 @@ import { ModalStyle1Component } from './components/modals/modal-style-1/modal-st
     DictArrayCardPipe,
     BarChartComponent,
     PieChartComponent,
-    TransactionModalComponent,
+
+    // modal base
     ModalStyle1Component,
+    ModalBase1Component,
+
+    // modals
+    TransactionModalComponent,
+    GoalModalComponent,
 
     // directives
     PlaceholderDirective
@@ -56,6 +64,7 @@ import { ModalStyle1Component } from './components/modals/modal-style-1/modal-st
 
     // modals
     TransactionModalComponent,
+    GoalModalComponent,
 
     // angular material
     MatIconModule,
