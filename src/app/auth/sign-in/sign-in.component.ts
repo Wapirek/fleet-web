@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/_services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in',
@@ -49,9 +50,9 @@ export class SignInComponent implements OnInit {
       this.mainForm.get('username')?.value,
       this.mainForm.get('password')?.value,
     ).subscribe(
-      (msg: { msg: string; }) => this.router.navigate([''])
-        .then(() => this.snackBar.open(msg.msg)),
-      () => this.snackBar.open('Error')
+      (msg: string) => this.router.navigate([''])
+        .then(() => this.snackBar.open(msg)),
+      (err: HttpErrorResponse) => this.snackBar.open(err.error.message)
     )
   }
 }
