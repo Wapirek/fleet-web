@@ -13,7 +13,7 @@ import { PaginatorTranslateService } from 'src/app/shared/components/table-utils
 import { BarChartComponent } from 'src/app/shared/components/charts/bar-chart/bar-chart.component';
 import { PieChartComponent } from 'src/app/shared/components/charts/pie-chart/pie-chart.component';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
-import { TransactionModalComponent } from 'src/app/shared/components/modals/transaction-modal/transaction-modal.component';
+import { ModalStyle1Component } from './components/modals/modal-style-1/modal-style-1.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,9 @@ import { TransactionModalComponent } from 'src/app/shared/components/modals/tran
     DictArrayCardPipe,
     BarChartComponent,
     PieChartComponent,
-    TransactionModalComponent,
+
+    // modal base
+    ModalStyle1Component,
 
     // directives
     PlaceholderDirective
@@ -53,7 +55,7 @@ import { TransactionModalComponent } from 'src/app/shared/components/modals/tran
     PieChartComponent,
 
     // modals
-    TransactionModalComponent,
+    ModalStyle1Component,
 
     // angular material
     MatIconModule,
