@@ -5,6 +5,7 @@ import { TransactionModalComponent } from 'src/app/shared-standalone/modals/tran
 import { Router } from '@angular/router';
 import { GoalModalComponent } from 'src/app/shared-standalone/modals/goal-modal/goal-modal.component';
 import { ImportFileModalComponent } from 'src/app/shared-standalone/modals/import-file-modal/import-file-modal.component';
+import { DebtModalComponent } from 'src/app/shared-standalone/modals/debt-modal./debt-modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,31 +28,35 @@ export class DashboardComponent {
       'transactionAdd': () => this.transactionAdd(),
       'goalAdd': () => this.goalAdd(),
       'transactions': () => this.transactions(),
-      'fileImport': () => this.fileImport()
+      'fileImport': () => this.fileImport(),
+      'debtAdd': () => this.debtAdd()
     };
 
     response[btn]();
   }
 
+  private debtAdd(): void {
+    if (!this.modalHost) { return; }
+    const componentRef = this.modalHost.viewContainerRef.createComponent(DebtModalComponent);
+    componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
+  }
+
   private fileImport(): void {
-    if (this.modalHost) {
-      const componentRef = this.modalHost.viewContainerRef.createComponent(ImportFileModalComponent);
-      componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
-    }
+    if (!this.modalHost) { return; }
+    const componentRef = this.modalHost.viewContainerRef.createComponent(ImportFileModalComponent);
+    componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
   }
 
   private goalAdd(): void {
-    if (this.modalHost) {
-      const componentRef = this.modalHost.viewContainerRef.createComponent(GoalModalComponent);
-      componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
-    }
+    if (!this.modalHost) { return; }
+    const componentRef = this.modalHost.viewContainerRef.createComponent(GoalModalComponent);
+    componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
   }
 
   private transactionAdd(): void {
-    if (this.modalHost) {
-      const componentRef = this.modalHost.viewContainerRef.createComponent(TransactionModalComponent);
-      componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
-    }
+    if (!this.modalHost) { return; }
+    const componentRef = this.modalHost.viewContainerRef.createComponent(TransactionModalComponent);
+    componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
   }
 
   private transactions(): void {

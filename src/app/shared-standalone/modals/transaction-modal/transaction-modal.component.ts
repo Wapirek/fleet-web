@@ -4,7 +4,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   standalone: true,
-  selector: 'shared-transaction-modal',
+  selector: 'transaction-modal',
   template: `
     <shared-modal-style-1
       [formInitArray]="formStructure"

@@ -1,10 +1,10 @@
 import { Component, EventEmitter } from '@angular/core';
-import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/goal-modal/_helpers/structure-builder.helper';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/debt-modal./_helpers/structure-builder.helper';
 
 @Component({
   standalone: true,
-  selector: 'goal-modal',
+  selector: 'debt-modal',
   template: `
     <shared-modal-style-1
       [formInitArray]="structureBuilder"
@@ -13,10 +13,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ></shared-modal-style-1>`,
   imports: [SharedModule]
 })
-export class GoalModalComponent {
+export class DebtModalComponent {
 
   // tutuł komponentu
-  title = 'Dodajesz nowy cel';
+  title = 'Nowy dług';
 
   // niezbedna lista do zbudowania formularza
   structureBuilder = StructureBuilderHelper();
