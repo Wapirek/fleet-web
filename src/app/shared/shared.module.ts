@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MyCard1Component } from 'src/app/shared/components/widgets/my-card-1/my-card-1.component';
 import { CommonModule } from '@angular/common';
@@ -73,6 +73,13 @@ import { ModalStyle1Component } from './components/modals/modal-style-1/modal-st
     PlaceholderDirective
   ],
   providers: [
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {
+        duration: 2500,
+        horizontalPosition: 'left',
+        verticalPosition: 'bottom',
+      }
+    },
     { provide: MatPaginatorIntl, useFactory: () => new PaginatorTranslateService().use() }
   ]
 })
