@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { ShortBtnCodeName, StructureBuilderHelper, StructureBuilderModel } from 'src/app/sites/dashboard/_helpers/structure-builder.helper';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
-import { TransactionModalComponent } from 'src/app/shared/components/modals/transaction-modal/transaction-modal.component';
+import { TransactionModalComponent } from 'src/app/shared-standalone/modals/transaction-modal/transaction-modal.component';
 import { Router } from '@angular/router';
-import { GoalModalComponent } from 'src/app/shared/components/modals/goal-modal/goal-modal.component';
+import { GoalModalComponent } from 'src/app/shared-standalone/modals/goal-modal/goal-modal.component';
+import { ImportFileModalComponent } from 'src/app/shared-standalone/modals/import-file-modal/import-file-modal.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,10 +26,18 @@ export class DashboardComponent {
     const response: { [key: string]: any } = {
       'transactionAdd': () => this.transactionAdd(),
       'goalAdd': () => this.goalAdd(),
-      'transactions': () => this.transactions()
+      'transactions': () => this.transactions(),
+      'fileImport': () => this.fileImport()
     };
 
     response[btn]();
+  }
+
+  private fileImport(): void {
+    if (this.modalHost) {
+      const componentRef = this.modalHost.viewContainerRef.createComponent(ImportFileModalComponent);
+      componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
+    }
   }
 
   private goalAdd(): void {

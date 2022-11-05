@@ -1,14 +1,17 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { StructureBuilderHelper } from 'src/app/shared/components/modals/transaction-modal/_helpers/structure-builder.helper';
+import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/transaction-modal/_helpers/structure-builder.helper';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
+  standalone: true,
   selector: 'shared-transaction-modal',
   template: `
-    <shared-modal-base-1
+    <shared-modal-style-1
       [formInitArray]="formStructure"
       [title]="title"
       (closeModal)="closeModal.emit()"
-    ></shared-modal-base-1>`
+    ></shared-modal-style-1>`,
+  imports: [SharedModule]
 })
 export class TransactionModalComponent {
 

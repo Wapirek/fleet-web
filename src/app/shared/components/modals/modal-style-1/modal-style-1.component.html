@@ -1,0 +1,50 @@
+<div class="backdrop"></div>
+
+<div class="transparent-box">
+
+  <div class="modal">
+
+    <h4 class="header">{{title}}</h4>
+
+    <form class="forms" *ngIf="formInitArray">
+
+      <div class="forms__row" *ngFor="let row of formInitArray">
+
+        <div
+          class="forms__row__field"
+          *ngFor="let field of row"
+          [ngStyle]="{ 'width': field.width }"
+        >
+
+          <label class="forms__row__field__label" [for]="field.codeName">
+            {{field.labelName}}
+          </label>
+
+          <input
+            class="forms__row__field__input"
+            [ngClass]="{ 'forms__row__field__input--btn': field.inputType === 'button' }"
+            [id]="field.codeName"
+            [placeholder]="field.displayName"
+            [value]="field.defaultValue ?? ''"
+            [type]="field.inputType"
+          >
+
+        </div>
+
+      </div>
+
+    </form>
+
+    <ng-content></ng-content>
+
+    <div class="bottom">
+
+      <input (click)="closeModal.emit()" class="bottom__save" type="button" value="Zapisz">
+
+      <input (click)="closeModal.emit()" class="bottom__cancel" type="button" value="Anuluj">
+
+    </div>
+
+  </div>
+
+</div>

@@ -13,10 +13,7 @@ import { PaginatorTranslateService } from 'src/app/shared/components/table-utils
 import { BarChartComponent } from 'src/app/shared/components/charts/bar-chart/bar-chart.component';
 import { PieChartComponent } from 'src/app/shared/components/charts/pie-chart/pie-chart.component';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
-import { TransactionModalComponent } from 'src/app/shared/components/modals/transaction-modal/transaction-modal.component';
-import { ModalStyle1Component } from './components/modals/modal-type-1/modal-style-1/modal-style-1.component';
-import { ModalBase1Component } from 'src/app/shared/components/modals/modal-type-1/modal-base-1/modal-base-1.component';
-import { GoalModalComponent } from 'src/app/shared/components/modals/goal-modal/goal-modal.component';
+import { ModalStyle1Component } from './components/modals/modal-style-1/modal-style-1.component';
 
 @NgModule({
   declarations: [
@@ -27,11 +24,6 @@ import { GoalModalComponent } from 'src/app/shared/components/modals/goal-modal/
 
     // modal base
     ModalStyle1Component,
-    ModalBase1Component,
-
-    // modals
-    TransactionModalComponent,
-    GoalModalComponent,
 
     // directives
     PlaceholderDirective
@@ -63,8 +55,7 @@ import { GoalModalComponent } from 'src/app/shared/components/modals/goal-modal/
     PieChartComponent,
 
     // modals
-    TransactionModalComponent,
-    GoalModalComponent,
+    ModalStyle1Component,
 
     // angular material
     MatIconModule,
