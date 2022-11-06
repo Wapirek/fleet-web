@@ -67,6 +67,20 @@
 
     </div>
 
+    <div class="debts">
+
+      <h2 class="debts__headline">Lista dłużników</h2>
+
+      <div class="debts__list">
+
+        <div class="debts__list__item" *ngFor="let debt of skeleton.debts">
+          {{debt.title}}
+        </div>
+
+      </div>
+
+    </div>
+
   </aside>
 
 </div>

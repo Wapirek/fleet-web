@@ -23,6 +23,11 @@ export interface StructureBuilderModel {
     caption: string;
     percent: number;
   }[];
+  debts: {
+    title: string;
+    cost: number;
+    repayment: number;
+  }[];
 }
 
 export const StructureBuilderHelper: StructureBuilderModel = {
@@ -105,6 +110,18 @@ export const StructureBuilderHelper: StructureBuilderModel = {
     {
       caption: 'Samochód',
       percent: 88
+    }
+  ],
+  debts: [
+    {
+      title: 'Marek Mostowiak',
+      cost: 300,
+      repayment: 20
+    },
+    {
+      title: 'Edward Nożycoręki',
+      cost: 100,
+      repayment: 0
     }
   ]
 }

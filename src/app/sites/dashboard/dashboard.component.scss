@@ -90,6 +90,9 @@
 
     .right-side {
       grid-area: sidebar;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
 
       .my-goals {
         @include templateBg1;
@@ -133,6 +136,10 @@
             }
           }
         }
+      }
+
+      .debts {
+        @include templateBg1;
       }
     }
   }
