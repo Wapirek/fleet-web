@@ -90,6 +90,9 @@
 
     .right-side {
       grid-area: sidebar;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
 
       .my-goals {
         @include templateBg1;
@@ -123,13 +126,44 @@
                 position: absolute;
                 left: 0;
                 top: 0;
-                background-color: $my-purple;
+                background-color: $my-cool-blue;
                 height: 100%;
                 border-radius: 5px;
                 z-index: -1;
                 transform-origin:left center;
                 animation: loading 2s 0s ease-in-out;
               }
+            }
+          }
+        }
+      }
+
+      .debts {
+        @include templateBg1;
+
+        &__list {
+          margin-top: 10px;
+          max-height: 150px;
+          overflow: auto;
+
+          &__item {
+            margin: 5px 0;
+            padding: 0 3px;
+            display: grid;
+            column-gap: 3px;
+            color: $my-green;
+            grid-template-columns:
+            minmax(20px, 1.5fr)
+            minmax(20px, .5fr)
+            minmax(20px, 1fr);
+
+            &--negative { color: $my-red; }
+
+            span {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              font-size: .9rem;
             }
           }
         }

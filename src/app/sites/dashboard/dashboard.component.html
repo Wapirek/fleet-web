@@ -67,6 +67,34 @@
 
     </div>
 
+    <div class="debts">
+
+      <h2 class="debts__headline">Lista długów</h2>
+
+      <div class="debts__list">
+
+        <div
+          class="debts__list__item"
+          [ngClass]="{ 'debts__list__item--negative': debt.isMyDebt }"
+          *ngFor="let debt of skeleton.debts"
+        >
+
+          <span title="Tytuł">{{debt.title}}</span>
+
+          <mat-icon
+            [title]="debt.isMyDebt ? 'Twój dług' : 'Twój dłużnik'"
+            inline
+          >{{debt.isMyDebt ? 'account_balance' : 'payments'}}</mat-icon>
+
+          <span
+            [title]="'Suma wpłat wynosi: ' + debt.repayment + ' zł'"
+          >{{debt.repayment + '/' + debt.cost}} zł</span>
+        </div>
+
+      </div>
+
+    </div>
+
   </aside>
 
 </div>
