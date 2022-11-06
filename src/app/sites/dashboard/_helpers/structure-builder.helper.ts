@@ -26,6 +26,7 @@ export interface StructureBuilderModel {
   debts: {
     title: string;
     cost: number;
+    isMyDebt: boolean;
     repayment: number;
   }[];
 }
@@ -116,12 +117,20 @@ export const StructureBuilderHelper: StructureBuilderModel = {
     {
       title: 'Marek Mostowiak',
       cost: 300,
+      isMyDebt: false,
       repayment: 20
     },
     {
       title: 'Edward Nożycoręki',
       cost: 100,
+      isMyDebt: false,
       repayment: 0
+    },
+    {
+      title: 'Kredyt za telefon',
+      cost: 2400,
+      isMyDebt: true,
+      repayment: 800
     }
   ]
 }
