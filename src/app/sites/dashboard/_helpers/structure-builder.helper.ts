@@ -3,7 +3,23 @@ import { ThemeGenreType } from 'src/app/shared/components/widgets/my-card-1/_mod
 import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
 import { CardModel } from 'src/app/shared/components/widgets/my-card-1/_models/card.model';
 
-export declare type ShortBtnCodeName = 'transactionAdd' | 'goalAdd' | 'transactions' | 'fileImport' | 'debtAdd';
+export declare type ShortBtnCodeName = 'transactionAdd'
+  | 'fileImport'
+  | 'debtAdd'
+  | 'transactions'
+  | 'categoryAdd'
+  | 'categories'
+  | 'transactionImport'
+  | 'goalAdd'
+  | 'goals'
+  | 'goalArchives'
+  | 'statisticsWeek'
+  | 'statisticsMonth'
+  | 'statisticsYear'
+  | 'debtorAdd'
+  | 'debtSelfAdd'
+  | 'debts';
+
 
 export interface StructureBuilderModel {
   header: HeaderModel;
@@ -17,7 +33,10 @@ export interface StructureBuilderModel {
   }
   features: {
     category: string;
-    items: string[]
+    items: {
+      displayName: string;
+      codeName: ShortBtnCodeName;
+    }[];
   }[];
   goals: {
     caption: string;
@@ -76,26 +95,35 @@ export const StructureBuilderHelper: StructureBuilderModel = {
     {
       category: 'Transakcje',
       items: [
-        'Nowa transakcja', 'Edycja transakcji', 'Historia transakcji', 'Kategorie transakcji',
-        'Zarządzanie kategoriami', 'Nowa kategoria', 'Ustawienia transakcji', 'Importuj plik'
+        { displayName: 'Dodaj transakcje', codeName: 'transactionAdd' },
+        { displayName: 'Lista transakcji', codeName: 'transactions' },
+        { displayName: 'Importuj transakcję', codeName: 'transactionImport' },
+        { displayName: 'Lista kategorii', codeName: 'categories' },
+        { displayName: 'Dodaj kategorie', codeName: 'categoryAdd' }
       ]
     },
     {
       category: 'Cele',
       items: [
-        'Nowy cel', 'Edycja celu', 'Archwialne cele', 'Cele długoterminowe'
+        { displayName: 'Dodaj cel', codeName: 'goalAdd' },
+        { displayName: 'Wszystkie cele', codeName: 'goals' },
+        { displayName: 'Archiwalne cele', codeName: 'goalArchives' }
       ]
     },
     {
       category: 'Statystyki',
       items: [
-        'Statystyka miesięczna', 'Statystyka roczna', 'Wskaźnik inflacji'
+        { displayName: 'Zestawienie tygodniowe', codeName: 'statisticsWeek' },
+        { displayName: 'Zestawienie miesięczne', codeName: 'statisticsWeek' },
+        { displayName: 'Zestawienie roczne', codeName: 'statisticsYear' }
       ]
     },
     {
       category: 'Pożyczki',
       items: [
-        'Nowy dług', 'Lista dłuźników', 'Nowa wpłata'
+        { displayName: 'Dodaj dłużnika', codeName: 'debtorAdd' },
+        { displayName: 'Dodaj Twój dług', codeName: 'debtSelfAdd' },
+        { displayName: 'Wszystkie długi', codeName: 'debts' },
       ]
     }
   ],
