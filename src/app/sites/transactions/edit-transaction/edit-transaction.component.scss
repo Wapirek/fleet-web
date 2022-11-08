@@ -1,0 +1,19 @@
+@import "src/app/shared/styles/elements";
+@import "src/app/shared/styles/variables";
+
+
+.container {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+
+  .header { @include skeletonHeader1; }
+
+  .template {
+    @include templateBg1;
+    min-height: 150px;
+
+
+  }
+}
