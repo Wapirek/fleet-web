@@ -1,7 +1,7 @@
 
 <ng-template appPlaceholder></ng-template>
 
-<div class="container">
+<div class="container" #start>
 
   <div class="header">
     <mat-icon>{{skeleton.header.icon}}</mat-icon>
@@ -23,7 +23,11 @@
 
     <div class="shorts__row">
 
-      <button *ngFor="let btn of skeleton.buttons" class="shorts__row__btn" (click)="shortsSwitch(btn.codeName)">
+      <button
+        *ngFor="let btn of skeleton.buttons"
+        class="shorts__row__btn"
+        (click)="shortsSwitch(btn.codeName)"
+      >
         {{btn.displayName}}
       </button>
 
@@ -40,10 +44,19 @@
   </section>
 
   <section class="features">
+
     <div class="features__category" *ngFor="let feature of skeleton.features">
+
       <h3 class="features__category__headline">{{feature.category}}</h3>
-      <a class="features__category__item" *ngFor="let item of feature.items">{{item}}</a>
+
+      <a
+        *ngFor="let item of feature.items"
+        class="features__category__item"
+        (click)="shortsSwitch(item.codeName, start)"
+      >{{item.displayName}}</a>
+
     </div>
+
   </section>
 
   <aside class="right-side">

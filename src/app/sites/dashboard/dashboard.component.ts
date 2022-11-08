@@ -23,7 +23,7 @@ export class DashboardComponent {
   constructor(private router: Router) {}
 
   // switch function for button inside shorts template
-  shortsSwitch(btn: ShortBtnCodeName): void {
+  shortsSwitch(btn: ShortBtnCodeName, scrollTarget: HTMLElement | null = null): void {
     const response: { [key: string]: any } = {
       'transactionAdd': () => this.transactionAdd(),
       'goalAdd': () => this.goalAdd(),
@@ -32,6 +32,7 @@ export class DashboardComponent {
       'debtAdd': () => this.debtAdd()
     };
 
+    if (scrollTarget) { scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     response[btn]();
   }
 
@@ -49,6 +50,9 @@ export class DashboardComponent {
 
   private goalAdd(): void {
     if (!this.modalHost) { return; }
+
+
+
     const componentRef = this.modalHost.viewContainerRef.createComponent(GoalModalComponent);
     componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
   }
