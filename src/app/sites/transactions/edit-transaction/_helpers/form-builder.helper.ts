@@ -1,9 +1,17 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
 
-export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel): FormGroup => fb.group({
-  title: [
-    item.name ?? '',
+export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel | null): FormGroup => fb.group({
+  name: [
+    item?.name ?? '',
+    Validators.compose([
+      Validators.required,
+      Validators.minLength(1),
+      Validators.maxLength(255)
+    ])
+  ],
+  cost: [
+    item?.cost ?? '',
     Validators.compose([
       Validators.required,
       Validators.minLength(1),
@@ -11,7 +19,7 @@ export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel): Form
     ])
   ],
   type: [
-    item.type ?? 'single',
+    item?.type ?? 'single',
     Validators.compose([
       Validators.required,
       Validators.minLength(1),
@@ -19,7 +27,7 @@ export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel): Form
     ])
   ],
   category: [
-    item.category ?? '',
+    item?.category ?? '',
     Validators.compose([
       Validators.required,
       Validators.minLength(1),
@@ -27,7 +35,7 @@ export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel): Form
     ])
   ],
   place: [
-    item.place ?? '',
+    item?.place ?? '',
     Validators.compose([
       Validators.required,
       Validators.minLength(1),
@@ -35,7 +43,7 @@ export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel): Form
     ])
   ],
   date: [
-    item.date ?? '',
+    item?.date ?? '',
     Validators.compose([
       Validators.required,
       Validators.minLength(1),

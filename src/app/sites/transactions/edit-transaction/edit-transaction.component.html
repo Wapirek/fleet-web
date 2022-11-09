@@ -7,11 +7,22 @@
 
   <div class="template">
 
-    <form class="form">
+    <form
+      class="form"
+      [formGroup]="cmpForm"
+    >
 
-      <div class="form__row">
+      <div class="form__row" *ngFor="let row of skeleton.forms">
 
-        <div class="form__row__item">
+        <div class="form__row__item" *ngFor="let item of row">
+
+          <label class="form__row__item__label">{{item.displayName}}</label>
+
+          <input
+            class="form__row__item__input"
+            [type]="item.inputType"
+          >
+
 
         </div>
 
