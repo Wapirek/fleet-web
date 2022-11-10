@@ -3,7 +3,7 @@ import { FieldModel } from 'src/app/shared/models/models/field.model';
 
 interface StructureBuilderModel {
   header: HeaderModel;
-  forms: FieldModel[][];
+  transactionHeader: FieldModel[];
 }
 
 export const StructureBuilderHelper: StructureBuilderModel = {
@@ -11,55 +11,34 @@ export const StructureBuilderHelper: StructureBuilderModel = {
     icon: 'payments',
     title: 'Edytuj transakcje {title}'
   },
-  forms: [
-    [
-      {
-        codeName: 'name',
-        displayName: 'Nazwa transakcji',
-        labelName: 'Podaj nazwe transakcji',
-        width: '250px',
-        required:  true,
-        defaultValue: '',
-        inputType: 'text'
-      },
-      {
-        codeName: 'cost',
-        displayName: 'Koszt',
-        labelName: 'Podaj koszt',
-        width: '100px',
-        required:  true,
-        defaultValue: '',
-        inputType: 'text'
-      },
-      {
-        codeName: 'purchaseDate',
-        displayName: 'Data',
-        labelName: 'Data zakupu',
-        width: '120px',
-        required: false,
-        readonly: false,
-        inputType: 'text'
-      }
-    ],
-    [
-      {
-        codeName: 'category',
-        displayName: 'Kategoria',
-        labelName: 'Wybierze kategorie',
-        width: '250px',
-        required: true,
-        readonly: false,
-        inputType: 'text'
-      },
-      {
-        codeName: 'shopName',
-        displayName: 'Miejsce zakupu',
-        labelName: 'Miejsce zakupu',
-        width: '250px',
-        required: false,
-        readonly: false,
-        inputType: 'text'
-      }
-    ]
+  transactionHeader: [
+    {
+      codeName: 'shopName',
+      displayName: 'Miejsce zakupu',
+      labelName: 'Miejsce zakupu',
+      width: '350px',
+      required: false,
+      readonly: false,
+      inputType: 'text'
+    },
+    {
+      codeName: 'purchaseDate',
+      displayName: 'Data',
+      labelName: 'Data zakupu',
+      width: '120px',
+      required: false,
+      readonly: false,
+      inputType: 'date'
+    },
+    {
+      codeName: 'recipePhoto',
+      displayName: 'Załącz',
+      labelName: 'Dodaj paragon',
+      width: '120px',
+      defaultValue: 'Załącz',
+      required: false,
+      readonly: false,
+      inputType: 'button'
+    }
   ]
 }

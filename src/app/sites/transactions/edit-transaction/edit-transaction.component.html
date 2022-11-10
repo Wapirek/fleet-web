@@ -7,23 +7,20 @@
 
   <div class="template">
 
-    <form
-      class="form"
-      [formGroup]="cmpForm"
-    >
+    <form class="form" [formGroup]="cmpForm">
 
-      <div class="form__row" *ngFor="let row of skeleton.forms">
+      <div class="form__header">
 
         <div
-          class="form__row__item"
-          *ngFor="let item of row"
+          class="form__header__item"
+          *ngFor="let item of skeleton.transactionHeader"
           [ngStyle]="{ 'width': item.width }"
         >
 
-          <label class="form__row__item__label">{{item.labelName}}</label>
+          <label class="form__header__item__label">{{item.labelName}}</label>
 
           <input
-            class="form__row__item__input"
+            class="form__header__item__input"
             [type]="item.inputType"
             [placeholder]="item.displayName"
           >
@@ -31,6 +28,34 @@
         </div>
 
       </div>
+
+      <div class="form__list">
+
+        <div class="form__list__header">
+
+          <div class="form__list__header__item">Edytuj / Usuń</div>
+          <div class="form__list__header__item">Ilość</div>
+          <div class="form__list__header__item">Nazwa</div>
+          <div class="form__list__header__item">Koszt</div>
+
+
+        </div>
+
+        <div class="form__list__row">
+
+          <div class="form__list__row__item">
+            <button><mat-icon>edit</mat-icon></button>
+            <button><mat-icon>remove</mat-icon></button>
+          </div>
+
+          <input class="form__list__row__item__input">
+          <input class="form__list__row__item__input" placeholder="nazwa">
+          <input class="form__list__row__item__input" placeholder="koszt">
+
+        </div>
+
+      </div>
+
 
       <div class="form__bottom">
 
