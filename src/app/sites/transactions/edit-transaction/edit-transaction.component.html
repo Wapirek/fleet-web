@@ -14,17 +14,33 @@
 
       <div class="form__row" *ngFor="let row of skeleton.forms">
 
-        <div class="form__row__item" *ngFor="let item of row">
+        <div
+          class="form__row__item"
+          *ngFor="let item of row"
+          [ngStyle]="{ 'width': item.width }"
+        >
 
-          <label class="form__row__item__label">{{item.displayName}}</label>
+          <label class="form__row__item__label">{{item.labelName}}</label>
 
           <input
             class="form__row__item__input"
             [type]="item.inputType"
+            [placeholder]="item.displayName"
           >
 
-
         </div>
+
+      </div>
+
+      <div class="form__bottom">
+
+        <button
+          class="form__bottom__btn form__bottom__btn--submit"
+        >Zapisz</button>
+
+        <button
+          class="form__bottom__btn form__bottom__btn--remove"
+        >Usuń</button>
 
       </div>
 

@@ -30,6 +30,35 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         required:  true,
         defaultValue: '',
         inputType: 'text'
+      },
+      {
+        codeName: 'purchaseDate',
+        displayName: 'Data',
+        labelName: 'Data zakupu',
+        width: '120px',
+        required: false,
+        readonly: false,
+        inputType: 'text'
+      }
+    ],
+    [
+      {
+        codeName: 'category',
+        displayName: 'Kategoria',
+        labelName: 'Wybierze kategorie',
+        width: '250px',
+        required: true,
+        readonly: false,
+        inputType: 'text'
+      },
+      {
+        codeName: 'shopName',
+        displayName: 'Miejsce zakupu',
+        labelName: 'Miejsce zakupu',
+        width: '250px',
+        required: false,
+        readonly: false,
+        inputType: 'text'
       }
     ]
   ]
