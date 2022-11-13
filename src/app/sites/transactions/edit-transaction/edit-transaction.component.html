@@ -11,19 +11,23 @@
 
       <div class="form__header">
 
-        <div
-          class="form__header__item"
-          *ngFor="let item of skeleton.transactionHeader"
-          [ngStyle]="{ 'width': item.width }"
-        >
+        <div class="form__header__row"  *ngFor="let row of skeleton.transactionHeader">
 
-          <label class="form__header__item__label">{{item.labelName}}</label>
-
-          <input
-            class="form__header__item__input"
-            [type]="item.inputType"
-            [placeholder]="item.displayName"
+          <div
+            class="form__header__row__item"
+            *ngFor="let item of row"
+            [ngStyle]="{ 'width': item.width }"
           >
+
+            <label class="form__header__row__item__label">{{item.labelName}}</label>
+
+            <input
+              class="form__header__row__item__input"
+              [type]="item.inputType"
+              [placeholder]="item.displayName"
+            >
+
+          </div>
 
         </div>
 
@@ -37,7 +41,6 @@
           <div class="form__list__header__item">Ilość</div>
           <div class="form__list__header__item">Nazwa</div>
           <div class="form__list__header__item">Koszt</div>
-
 
         </div>
 

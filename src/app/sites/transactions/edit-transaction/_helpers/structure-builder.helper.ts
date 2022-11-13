@@ -3,7 +3,7 @@ import { FieldModel } from 'src/app/shared/models/models/field.model';
 
 interface StructureBuilderModel {
   header: HeaderModel;
-  transactionHeader: FieldModel[];
+  transactionHeader: FieldModel[][];
 }
 
 export const StructureBuilderHelper: StructureBuilderModel = {
@@ -12,33 +12,46 @@ export const StructureBuilderHelper: StructureBuilderModel = {
     title: 'Edytuj transakcje {title}'
   },
   transactionHeader: [
-    {
-      codeName: 'shopName',
-      displayName: 'Miejsce zakupu',
-      labelName: 'Miejsce zakupu',
-      width: '350px',
-      required: false,
-      readonly: false,
-      inputType: 'text'
-    },
-    {
-      codeName: 'purchaseDate',
-      displayName: 'Data',
-      labelName: 'Data zakupu',
-      width: '120px',
-      required: false,
-      readonly: false,
-      inputType: 'date'
-    },
-    {
-      codeName: 'recipePhoto',
-      displayName: 'Załącz',
-      labelName: 'Dodaj paragon',
-      width: '120px',
-      defaultValue: 'Załącz',
-      required: false,
-      readonly: false,
-      inputType: 'button'
-    }
+    [
+      {
+        codeName: 'category',
+        displayName: 'Kategoria',
+        labelName: 'Podaj kategorie',
+        width: '350px',
+        required: false,
+        readonly: false,
+        inputType: 'text'
+      },
+    ],
+    [
+      {
+        codeName: 'shopName',
+        displayName: 'Miejsce zakupu',
+        labelName: 'Miejsce zakupu',
+        width: '350px',
+        required: false,
+        readonly: false,
+        inputType: 'text'
+      },
+      {
+        codeName: 'purchaseDate',
+        displayName: 'Data',
+        labelName: 'Data zakupu',
+        width: '130px',
+        required: false,
+        readonly: false,
+        inputType: 'date'
+      },
+      {
+        codeName: 'recipePhoto',
+        displayName: 'Załącz',
+        labelName: 'Dodaj paragon',
+        width: '120px',
+        defaultValue: 'Załącz',
+        required: false,
+        readonly: false,
+        inputType: 'button'
+      }
+    ]
   ]
 }

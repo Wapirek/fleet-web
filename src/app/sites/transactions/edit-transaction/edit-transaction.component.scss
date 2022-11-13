@@ -29,16 +29,22 @@ input:focus { outline: none; }
 
       &__header {
         display: flex;
-        align-items: center;
-        gap: 10px;
+        flex-direction: column;
+        gap: 15px;
 
-        &__item {
+        &__row {
           display: flex;
-          flex-direction: column;
-          gap: 5px;
-          width: 100%;
+          align-items: center;
+          gap: 10px;
 
-          &__input { @include formInput; }
+          &__item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 100%;
+
+            &__input { @include formInput; }
+          }
         }
       }
 
