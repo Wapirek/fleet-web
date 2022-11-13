@@ -4,6 +4,15 @@ import { FieldModel } from 'src/app/shared/models/models/field.model';
 interface StructureBuilderModel {
   header: HeaderModel;
   transactionHeader: FieldModel[][];
+  list: {
+    colSize: string;
+    header: string[];
+    row: FieldModel[];
+  };
+  bottom: {
+    codeName: string;
+    displayName: string;
+  }[];
 }
 
 export const StructureBuilderHelper: StructureBuilderModel = {
@@ -22,17 +31,6 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         readonly: false,
         inputType: 'text'
       },
-    ],
-    [
-      {
-        codeName: 'shopName',
-        displayName: 'Miejsce zakupu',
-        labelName: 'Miejsce zakupu',
-        width: '350px',
-        required: false,
-        readonly: false,
-        inputType: 'text'
-      },
       {
         codeName: 'purchaseDate',
         displayName: 'Data',
@@ -41,6 +39,15 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         required: false,
         readonly: false,
         inputType: 'date'
+      },
+      {
+        codeName: 'shopName',
+        displayName: 'Miejsce zakupu',
+        labelName: 'Miejsce zakupu',
+        width: '350px',
+        required: false,
+        readonly: false,
+        inputType: 'text'
       },
       {
         codeName: 'recipePhoto',
@@ -53,5 +60,44 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         inputType: 'button'
       }
     ]
+  ],
+  list: {
+    colSize: '100px 250px 80px 120px',
+    header: [
+      'Edytuj / Usuń', 'Nazwa', 'Ilość', 'Koszt'
+    ],
+    row: [
+      {
+        codeName: 'productName',
+        displayName: 'Nazwa',
+        required: true,
+        readonly: false,
+        inputType: 'text'
+      },
+      {
+        codeName: 'amount',
+        displayName: 'Ilość',
+        required: true,
+        readonly: false,
+        inputType: 'text'
+      },
+      {
+        codeName: 'cost',
+        displayName: 'Koszt',
+        required: true,
+        readonly: false,
+        inputType: 'text'
+      }
+    ]
+  },
+  bottom: [
+    {
+      codeName: 'submit',
+      displayName: 'Zapisz'
+    },
+    {
+      codeName: 'remove',
+      displayName: 'Anuluj'
+    }
   ]
 }

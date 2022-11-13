@@ -24,18 +24,17 @@ input:focus { outline: none; }
 
     .form {
       display: flex;
-      gap: 20px;
+      gap: 30px;
       flex-direction: column;
 
       &__header {
         display: flex;
         flex-direction: column;
-        gap: 15px;
 
         &__row {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 20px;
 
           &__item {
             display: flex;
@@ -55,8 +54,8 @@ input:focus { outline: none; }
 
         &__header, &__row {
           display: grid;
-          grid-template-columns: 100px 80px 250px 120px;
-          grid-column-gap: 10px;
+          grid-template-columns: 100px 250px 80px 120px;
+          grid-column-gap: 20px;
         }
 
         &__header__item:first-child { text-align: center; }

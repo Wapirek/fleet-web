@@ -35,40 +35,45 @@
 
       <div class="form__list">
 
-        <div class="form__list__header">
-
-          <div class="form__list__header__item">Edytuj / Usuń</div>
-          <div class="form__list__header__item">Ilość</div>
-          <div class="form__list__header__item">Nazwa</div>
-          <div class="form__list__header__item">Koszt</div>
-
+        <div
+          class="form__list__header"
+          [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }"
+        >
+          <div
+            class="form__list__header__item"
+            *ngFor="let item of skeleton.list.header"
+          >{{item}}</div>
         </div>
 
-        <div class="form__list__row">
+        <div
+          class="form__list__row"
+          [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }"
+        >
 
           <div class="form__list__row__item">
-            <button><mat-icon>edit</mat-icon></button>
-            <button><mat-icon>remove</mat-icon></button>
+            <button mat-icon-button><mat-icon inline>edit</mat-icon></button>
+            <button mat-icon-button><mat-icon inline>remove</mat-icon></button>
           </div>
 
-          <input class="form__list__row__item__input">
-          <input class="form__list__row__item__input" placeholder="nazwa">
-          <input class="form__list__row__item__input" placeholder="koszt">
+          <input
+            class="form__list__row__item__input"
+            *ngFor="let field of skeleton.list.row"
+            [placeholder]="field.displayName"
+            [type]="field.inputType"
+            [required]="field.required"
+          >
 
         </div>
 
       </div>
 
-
       <div class="form__bottom">
 
         <button
-          class="form__bottom__btn form__bottom__btn--submit"
-        >Zapisz</button>
-
-        <button
-          class="form__bottom__btn form__bottom__btn--remove"
-        >Usuń</button>
+          class="form__bottom__btn"
+          *ngFor="let btn of skeleton.bottom"
+          [ngClass]="'form__bottom__btn--' + btn.codeName"
+        >{{btn.displayName}}</button>
 
       </div>
 
