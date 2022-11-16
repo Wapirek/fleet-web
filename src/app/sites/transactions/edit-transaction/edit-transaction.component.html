@@ -7,7 +7,7 @@
 
   <div class="template">
 
-    <form class="form" [formGroup]="cmpForm">
+    <form class="form" [formGroup]="cmpForm" (ngSubmit)="save()">
 
       <div class="form__header">
 
@@ -25,6 +25,7 @@
               class="form__header__row__item__input"
               [type]="item.inputType"
               [placeholder]="item.displayName"
+              [formControlName]="item.codeName"
             >
 
           </div>
@@ -33,7 +34,7 @@
 
       </div>
 
-      <div class="form__list">
+      <div class="form__list" formArrayName="products">
 
         <div
           class="form__list__header"
@@ -47,20 +48,45 @@
 
         <div
           class="form__list__row"
+          *ngFor="let product of example.products; index as i"
           [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }"
+          [formGroupName]="i"
         >
 
           <div class="form__list__row__item">
-            <button mat-icon-button><mat-icon inline>edit</mat-icon></button>
-            <button mat-icon-button><mat-icon inline>remove</mat-icon></button>
+
+            <ng-container *ngIf="!product.isEdited else back">
+
+              <button
+                mat-icon-button
+                (click)="product.isEdited = !product.isEdited"
+              ><mat-icon inline>edit</mat-icon></button>
+
+              <button mat-icon-button><mat-icon inline>remove</mat-icon></button>
+
+            </ng-container>
+
+            <ng-template #back>
+
+              <button
+                mat-icon-button
+                (click)="product.isEdited = !product.isEdited"
+              ><mat-icon inline>undo</mat-icon></button>
+
+            </ng-template>
+
           </div>
 
           <input
             class="form__list__row__item__input"
+            [ngClass]="{ 'form__list__row__item__input--suspend': !product.isEdited }"
             *ngFor="let field of skeleton.list.row"
             [placeholder]="field.displayName"
             [type]="field.inputType"
-            [required]="field.required"
+            [required]="field.required ?? false"
+            [readonly]="!product.isEdited"
+            [value]="product | readObjectAsIndex: field.codeName"
+            [formControlName]="field.codeName"
           >
 
         </div>
@@ -73,6 +99,7 @@
           class="form__bottom__btn"
           *ngFor="let btn of skeleton.bottom"
           [ngClass]="'form__bottom__btn--' + btn.codeName"
+          [type]="btn.btnType"
         >{{btn.displayName}}</button>
 
       </div>

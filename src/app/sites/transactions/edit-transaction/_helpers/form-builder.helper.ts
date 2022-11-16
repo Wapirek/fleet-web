@@ -1,41 +1,9 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
+import { ProductModel, Transaction2Model } from 'src/app/shared/models/models/transaction-2.model';
 
-export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel | null): FormGroup => fb.group({
-  name: [
-    item?.name ?? '',
-    Validators.compose([
-      Validators.required,
-      Validators.minLength(1),
-      Validators.maxLength(255)
-    ])
-  ],
-  cost: [
-    item?.cost ?? '',
-    Validators.compose([
-      Validators.required,
-      Validators.minLength(1),
-      Validators.maxLength(255)
-    ])
-  ],
-  type: [
-    item?.type ?? 'single',
-    Validators.compose([
-      Validators.required,
-      Validators.minLength(1),
-      Validators.maxLength(255)
-    ])
-  ],
+export const FormBuilderHelper = (fb: FormBuilder, item: Transaction2Model | null): FormGroup => fb.group({
   category: [
     item?.category ?? '',
-    Validators.compose([
-      Validators.required,
-      Validators.minLength(1),
-      Validators.maxLength(255)
-    ])
-  ],
-  place: [
-    item?.place ?? '',
     Validators.compose([
       Validators.required,
       Validators.minLength(1),
@@ -49,5 +17,45 @@ export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel | null
       Validators.minLength(1),
       Validators.maxLength(255)
     ])
-  ]
+  ],
+  shop: [
+    item?.shop,
+    Validators.compose([
+      Validators.required,
+      Validators.minLength(1),
+      Validators.maxLength(255)
+    ])
+  ],
+  recipePhoto: [
+    item?.recipe ?? '',
+    Validators.compose([
+      Validators.required
+    ])
+  ],
+  products: fb.array(item?.products.map((arrItem: ProductModel) => fb.group({
+    productName: [
+      arrItem.productName,
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(255)
+      ])
+    ],
+    amount: [
+      arrItem.amount,
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(255)
+      ])
+    ],
+    cost: [
+      arrItem.cost,
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(255)
+      ])
+    ],
+  })) ?? [])
 });

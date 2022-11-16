@@ -1,6 +1,8 @@
 import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
 import { FieldModel } from 'src/app/shared/models/models/field.model';
 
+declare type StructureBuilderBottomBtn = 'submit' | 'button';
+
 interface StructureBuilderModel {
   header: HeaderModel;
   transactionHeader: FieldModel[][];
@@ -12,6 +14,7 @@ interface StructureBuilderModel {
   bottom: {
     codeName: string;
     displayName: string;
+    btnType: StructureBuilderBottomBtn
   }[];
 }
 
@@ -32,7 +35,7 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         inputType: 'text'
       },
       {
-        codeName: 'purchaseDate',
+        codeName: 'date',
         displayName: 'Data',
         labelName: 'Data zakupu',
         width: '130px',
@@ -41,7 +44,7 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         inputType: 'date'
       },
       {
-        codeName: 'shopName',
+        codeName: 'shop',
         displayName: 'Miejsce zakupu',
         labelName: 'Miejsce zakupu',
         width: '350px',
@@ -64,7 +67,7 @@ export const StructureBuilderHelper: StructureBuilderModel = {
   list: {
     colSize: '100px 250px 80px 120px',
     header: [
-      'Edytuj / Usuń', 'Nazwa', 'Ilość', 'Koszt'
+      'Zarządzaj', 'Nazwa', 'Ilość', 'Koszt'
     ],
     row: [
       {
@@ -79,7 +82,7 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         displayName: 'Ilość',
         required: true,
         readonly: false,
-        inputType: 'text'
+        inputType: 'number'
       },
       {
         codeName: 'cost',
@@ -93,11 +96,13 @@ export const StructureBuilderHelper: StructureBuilderModel = {
   bottom: [
     {
       codeName: 'submit',
-      displayName: 'Zapisz'
+      displayName: 'Zapisz',
+      btnType: 'submit'
     },
     {
       codeName: 'remove',
-      displayName: 'Anuluj'
+      displayName: 'Anuluj',
+      btnType: 'button'
     }
   ]
 }

@@ -64,11 +64,14 @@ input:focus { outline: none; }
 
           &:first-child {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             gap: 8px;
           }
 
-          &__input { @include formInput; }
+          &__input {
+            @include formInput;
+            &--suspend { background-color: transparent; }
+          }
         }
       }
 
