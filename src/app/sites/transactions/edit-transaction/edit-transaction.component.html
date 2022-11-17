@@ -53,7 +53,7 @@
           [formGroupName]="i"
         >
 
-          <div class="form__list__row__item">
+          <div class="form__list__row__options">
 
             <ng-container *ngIf="!product.isEdited else back">
 
@@ -78,8 +78,8 @@
           </div>
 
           <input
-            class="form__list__row__item__input"
-            [ngClass]="{ 'form__list__row__item__input--suspend': !product.isEdited }"
+            class="form__list__row__input"
+            [ngClass]="{ 'form__list__row__input--suspend': !product.isEdited }"
             *ngFor="let field of skeleton.list.row"
             [placeholder]="field.displayName"
             [type]="field.inputType"

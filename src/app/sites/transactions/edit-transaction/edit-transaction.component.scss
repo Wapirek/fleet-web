@@ -30,6 +30,7 @@ input:focus { outline: none; }
       &__header {
         display: flex;
         flex-direction: column;
+        padding: 10px 0;
 
         &__row {
           display: flex;
@@ -58,13 +59,19 @@ input:focus { outline: none; }
           grid-column-gap: 20px;
         }
 
-        &__header__item:first-child { text-align: center; }
+        &__header__item {
+          font-size: 1.1rem;
+          color: $my-cool-blue;
 
-        &__row__item {
+          &:first-child { text-align: center; }
+        }
 
-          &:first-child {
+        &__row {
+          margin: 10px 0;
+
+          &__options {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             gap: 8px;
           }
 
