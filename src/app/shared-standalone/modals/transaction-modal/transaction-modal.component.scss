@@ -1,0 +1,24 @@
+@import "src/app/shared/styles/variables";
+
+@media (min-width: 0) {
+  .choice {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 35px auto;
+
+    &__btn {
+      border: 0;
+      border-radius: 5px;
+      background-color: $my-cool-blue;
+      padding: 8px 20px;
+      color: $my-dark-blue;
+      transition: opacity .2s ease-in-out;
+      cursor: pointer;
+
+      &--full-btn { background-color: $my-pastel-pink; }
+
+      &:hover { opacity: .8; }
+    }
+  }
+}

@@ -14,6 +14,9 @@ export class ModalStyle1Component {
   // tytul komponentu wyswietlajacy sie na samej gorze
   @Input() title = '';
 
+  // flaga określająca ukrycie przycisków
+  @Input() hiddenBottom: boolean | undefined;
+
   // przycisk zamykajacy komponent
   @Output() closeModal = new EventEmitter<void>();
 

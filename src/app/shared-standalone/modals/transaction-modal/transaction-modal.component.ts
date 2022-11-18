@@ -1,19 +1,18 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/transaction-modal/_helpers/structure-builder.helper';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TransactionTemplateType } from 'src/app/shared-standalone/modals/transaction-modal/types/transaction-template.type';
 
 @Component({
   standalone: true,
   selector: 'transaction-modal',
-  template: `
-    <shared-modal-style-1
-      [formInitArray]="formStructure"
-      [title]="title"
-      (closeModal)="closeModal.emit()"
-    ></shared-modal-style-1>`,
+  templateUrl: './transaction-modal.component.html',
+  styleUrls: ['./transaction-modal.component.scss'],
   imports: [SharedModule]
 })
 export class TransactionModalComponent {
+
+  @Input() isSimpleTransaction: boolean | undefined;
 
   // Inicjalna lista pól do formularza
   formStructure = StructureBuilderHelper();
@@ -23,4 +22,6 @@ export class TransactionModalComponent {
 
   // active when user click on cross
   @Output() closeModal = new EventEmitter<void>();
+
+  transactionTemplate: TransactionTemplateType = 'choice';
 }

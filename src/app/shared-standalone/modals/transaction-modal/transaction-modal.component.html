@@ -1,0 +1,12 @@
+<shared-modal-style-1 [title]="title" [hiddenBottom]="true">
+
+  <ng-container [ngSwitch]="transactionTemplate">
+
+    <div class="choice" *ngSwitchCase="'choice'">
+      <button class="choice__btn">Szybka transakcja</button>
+      <button class="choice__btn choice__btn--full-btn">Pełna transakcja</button>
+    </div>
+
+  </ng-container>
+
+</shared-modal-style-1>
