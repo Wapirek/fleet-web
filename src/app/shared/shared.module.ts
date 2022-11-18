@@ -14,6 +14,8 @@ import { BarChartComponent } from 'src/app/shared/components/charts/bar-chart/ba
 import { PieChartComponent } from 'src/app/shared/components/charts/pie-chart/pie-chart.component';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { ModalStyle1Component } from './components/modals/modal-style-1/modal-style-1.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ReadObjectAsIndexPipe } from './pipes/read-object-as-index/read-object-as-index.pipe';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { ModalStyle1Component } from './components/modals/modal-style-1/modal-st
     ModalStyle1Component,
 
     // directives
-    PlaceholderDirective
+    PlaceholderDirective,
+    ReadObjectAsIndexPipe
   ],
   imports: [
 
     // angular core
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
 
     // angular material
     MatMenuModule,
@@ -48,11 +52,15 @@ import { ModalStyle1Component } from './components/modals/modal-style-1/modal-st
     // angular core
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
 
     // created
     MyCard1Component,
     BarChartComponent,
     PieChartComponent,
+
+    // pipes
+    ReadObjectAsIndexPipe,
 
     // modals
     ModalStyle1Component,
@@ -66,7 +74,7 @@ import { ModalStyle1Component } from './components/modals/modal-style-1/modal-st
     // icons
     FontAwesomeModule,
 
-    // pipes
+    // read-object-as-index
     DictArrayCardPipe,
 
     // directives
