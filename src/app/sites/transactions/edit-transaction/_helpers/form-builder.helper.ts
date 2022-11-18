@@ -32,30 +32,32 @@ export const FormBuilderHelper = (fb: FormBuilder, item: Transaction2Model | nul
       Validators.required
     ])
   ],
-  products: fb.array(item?.products.map((arrItem: ProductModel) => fb.group({
-    productName: [
-      arrItem.productName,
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(255)
-      ])
-    ],
-    amount: [
-      arrItem.amount,
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(255)
-      ])
-    ],
-    cost: [
-      arrItem.cost,
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(255)
-      ])
-    ],
-  })) ?? [])
+  products: fb.array(item?.products.map((arrItem: ProductModel) => CreateFormGroupProduct(fb, arrItem)) ?? [])
+});
+
+export const CreateFormGroupProduct = (fb: FormBuilder, arrItem: ProductModel) => fb.group({
+  productName: [
+    arrItem.productName,
+    Validators.compose([
+      Validators.required,
+      Validators.minLength(1),
+      Validators.maxLength(255)
+    ])
+  ],
+  amount: [
+    arrItem.amount,
+    Validators.compose([
+      Validators.required,
+      Validators.minLength(1),
+      Validators.maxLength(255)
+    ])
+  ],
+  cost: [
+    arrItem.cost,
+    Validators.compose([
+      Validators.required,
+      Validators.minLength(1),
+      Validators.maxLength(255)
+    ])
+  ],
 });

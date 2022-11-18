@@ -67,7 +67,7 @@ export const StructureBuilderHelper: StructureBuilderModel = {
   list: {
     colSize: '100px 250px 80px 120px',
     header: [
-      'Zarządzaj', 'Nazwa', 'Ilość', 'Koszt'
+      'Usuń', 'Nazwa', 'Ilość', 'Koszt'
     ],
     row: [
       {

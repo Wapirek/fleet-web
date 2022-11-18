@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { StructureBuilderHelper } from 'src/app/sites/transactions/edit-transaction/_helpers/structure-builder.helper';
-import { FormBuilderHelper } from 'src/app/sites/transactions/edit-transaction/_helpers/form-builder.helper';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Transaction2Model } from 'src/app/shared/models/models/transaction-2.model';
+import { CreateFormGroupProduct, FormBuilderHelper } from 'src/app/sites/transactions/edit-transaction/_helpers/form-builder.helper';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { ProductModel, Transaction2Model } from 'src/app/shared/models/models/transaction-2.model';
 
 @Component({
   selector: 'app-edit-transaction',
@@ -13,7 +13,7 @@ export class EditTransactionComponent {
 
   skeleton = StructureBuilderHelper;
 
-  readonly example: Transaction2Model = {
+  example: Transaction2Model = {
     category: 'zakupy',
     date: '22.01.2022',
     shop: 'Biedronka',
@@ -27,9 +27,20 @@ export class EditTransactionComponent {
 
   cmpForm: FormGroup = FormBuilderHelper(this.formBuilder, this.example);
 
+  private get productsArray() { return this.cmpForm.get('products') as FormArray; }
+
   constructor(private formBuilder: FormBuilder) {}
 
-  save(): void {
-    console.log(this.cmpForm.value);
+  save(): void { console.log(this.cmpForm.value); }
+
+  addProduct(): void {
+    const emptyProduct = { productName: '', amount: 1, cost: '0' } as ProductModel;
+    this.example.products.push(emptyProduct);
+    this.productsArray.push(CreateFormGroupProduct(this.formBuilder, emptyProduct));
+  }
+
+  removeProduct(rowIndex: number): void {
+    this.example.products.splice(rowIndex, 1);
+    this.productsArray.removeAt(rowIndex);
   }
 }

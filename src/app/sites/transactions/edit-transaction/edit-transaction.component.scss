@@ -1,6 +1,19 @@
 @import "src/app/shared/styles/elements";
 @import "src/app/shared/styles/variables";
 
+/* hide arrows
+ Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield !important;
+}
+
 @mixin formInput {
   border: 0;
   background-color: rgba($my-white, .1);
@@ -69,10 +82,26 @@ input:focus { outline: none; }
         &__row {
           margin: 10px 0;
 
-          &__options {
-            display: flex;
-            justify-content: space-around;
-            gap: 8px;
+          &__btn {
+            justify-self: center;
+            border-radius: 5px;
+            border: 0;
+            padding: 0 8px;
+            background-color: rgba($my-white, .1);
+            color: $my-green;
+            cursor: pointer;
+            transition: opacity .2s ease-in-out;
+            height: 33px;
+
+            mat-icon {
+              width: 20px;
+              height: 20px;
+              size: 20px;
+              font-size: 20px;
+            }
+
+            &--del-product { color: $my-red; }
+            &:hover { opacity: .8; }
           }
 
           &__input {
@@ -90,10 +119,11 @@ input:focus { outline: none; }
         &__btn {
           border: 0;
           border-radius: 5px;
-          padding: 5px 10px;
+          padding: 8px 20px;
           cursor: pointer;
-          background-color: $my-green;
-          color: $my-dark-blue;
+          background-color: $my-cool-blue;
+          color: $my-white;
+          font-size: 1rem;
 
           &--remove {
             background-color: transparent;

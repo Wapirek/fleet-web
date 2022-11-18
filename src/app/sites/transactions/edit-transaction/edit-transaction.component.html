@@ -53,41 +53,30 @@
           [formGroupName]="i"
         >
 
-          <div class="form__list__row__options">
-
-            <ng-container *ngIf="!product.isEdited else back">
-
-              <button
-                mat-icon-button
-                (click)="product.isEdited = !product.isEdited"
-              ><mat-icon inline>edit</mat-icon></button>
-
-              <button mat-icon-button><mat-icon inline>remove</mat-icon></button>
-
-            </ng-container>
-
-            <ng-template #back>
-
-              <button
-                mat-icon-button
-                (click)="product.isEdited = !product.isEdited"
-              ><mat-icon inline>undo</mat-icon></button>
-
-            </ng-template>
-
-          </div>
+          <button
+            class="form__list__row__btn form__list__row__btn--del-product"
+            (click)="removeProduct(i)"
+          ><mat-icon>delete_forever</mat-icon></button>
 
           <input
             class="form__list__row__input"
-            [ngClass]="{ 'form__list__row__input--suspend': !product.isEdited }"
             *ngFor="let field of skeleton.list.row"
             [placeholder]="field.displayName"
             [type]="field.inputType"
             [required]="field.required ?? false"
-            [readonly]="!product.isEdited"
             [value]="product | readObjectAsIndex: field.codeName"
             [formControlName]="field.codeName"
           >
+
+        </div>
+
+        <div class="form__list__row">
+
+          <button
+            class="form__list__row__btn"
+            type="button"
+            (click)="addProduct()"
+          ><mat-icon>add</mat-icon></button>
 
         </div>
 
