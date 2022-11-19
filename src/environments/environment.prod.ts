@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://10.10.0.2/api/'
+
+  // @ts-ignore
+  apiUrl: window.env.apiUrl || 'http://localhost:3000/',
 };
