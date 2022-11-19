@@ -1,6 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/debt-modal./_helpers/structure-builder.helper';
+import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/debt-modal/_helpers/structure-builder.helper';
 
 @Component({
   standalone: true,
