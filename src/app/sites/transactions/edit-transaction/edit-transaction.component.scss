@@ -42,12 +42,14 @@ input:focus { outline: none; }
 
       &__header {
         display: flex;
+        gap: 20px;
         flex-direction: column;
         padding: 10px 0;
 
         &__row {
           display: flex;
           align-items: center;
+          flex-wrap: wrap;
           gap: 20px;
 
           &__item {

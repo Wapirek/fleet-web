@@ -62,6 +62,26 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         readonly: false,
         inputType: 'button'
       }
+    ],
+    [
+      {
+        codeName: 'category',
+        displayName: 'Zdefiniowana nazwa transakcji',
+        labelName: 'Zdefiniowana nazwa transakcji',
+        width: '350px',
+        required: false,
+        readonly: false,
+        inputType: 'text'
+      },
+      {
+        codeName: '',
+        displayName: 'Zdefiniuj',
+        labelName: 'Zdefiniuj',
+        width: '40px',
+        required: false,
+        readonly: false,
+        inputType: 'text'
+      },
     ]
   ],
   list: {

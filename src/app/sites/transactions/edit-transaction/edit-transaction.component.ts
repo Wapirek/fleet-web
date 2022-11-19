@@ -34,7 +34,7 @@ export class EditTransactionComponent {
   save(): void { console.log(this.cmpForm.value); }
 
   addProduct(): void {
-    const emptyProduct = { productName: '', amount: 1, cost: '0' } as ProductModel;
+    const emptyProduct = { id: -1, productName: '', amount: 1, cost: '0' } as ProductModel;
     this.example.products.push(emptyProduct);
     this.productsArray.push(CreateFormGroupProduct(this.formBuilder, emptyProduct));
   }

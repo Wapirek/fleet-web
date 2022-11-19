@@ -2,8 +2,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductModel, Transaction2Model } from 'src/app/shared/models/models/transaction-2.model';
 
 export const FormBuilderHelper = (fb: FormBuilder, item: Transaction2Model | null): FormGroup => fb.group({
-  category: [
-    item?.category ?? '',
+  transactionName: [
+    item?.transactionName ?? '',
     Validators.compose([
       Validators.required,
       Validators.minLength(1),
@@ -27,6 +27,12 @@ export const FormBuilderHelper = (fb: FormBuilder, item: Transaction2Model | nul
     ])
   ],
   recipePhoto: [
+    item?.recipe ?? '',
+    Validators.compose([
+      Validators.required
+    ])
+  ],
+  define: [
     item?.recipe ?? '',
     Validators.compose([
       Validators.required

@@ -1,14 +1,18 @@
 export interface ProductModel {
+  id: number;
   productName: string;
-  amount: number;
-  cost: string;
+  quantity: number;
+  paid: string;
+  currency: string;
   isEdited?: boolean;
 }
 
 export interface Transaction2Model {
-  category: string;
+  id: number;
+  transactionName: string;
   date: string;
   shop: string;
   recipe: string;
+  isDefine: boolean;
   products: ProductModel[];
 }
