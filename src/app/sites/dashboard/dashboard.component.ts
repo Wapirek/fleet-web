@@ -5,7 +5,7 @@ import { TransactionModalComponent } from 'src/app/shared-standalone/modals/tran
 import { Router } from '@angular/router';
 import { GoalModalComponent } from 'src/app/shared-standalone/modals/goal-modal/goal-modal.component';
 import { ImportFileModalComponent } from 'src/app/shared-standalone/modals/import-file-modal/import-file-modal.component';
-import { DebtModalComponent } from 'src/app/shared-standalone/modals/debt-modal./debt-modal.component';
+import { DebtModalComponent } from 'src/app/shared-standalone/modals/debt-modal/debt-modal.component';
 
 @Component({
   selector: 'app-dashboard',
