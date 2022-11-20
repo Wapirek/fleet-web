@@ -3,9 +3,24 @@
   <ng-container [ngSwitch]="transactionTemplate">
 
     <div class="choice" *ngSwitchCase="'choice'">
-      <button class="choice__btn">Szybka transakcja</button>
-      <button class="choice__btn choice__btn--full-btn">Pełna transakcja</button>
+
+      <button class="choice__btn" (click)="choiceTemplate('simple')">
+        Szybka transakcja
+      </button>
+
+      <button class="choice__btn choice__btn--full-btn" (click)="choiceTemplate('massive')">
+        Pełna transakcja
+      </button>
+
     </div>
+
+    <simple-transaction-modal
+      *ngSwitchCase="'simple'"
+    ></simple-transaction-modal>
+
+    <massive-transaction-modal
+      *ngSwitchCase="'massive'"
+    ></massive-transaction-modal>
 
   </ng-container>
 

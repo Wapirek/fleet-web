@@ -1,7 +1,6 @@
 import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
 import { FieldModel } from 'src/app/shared/models/models/field.model';
-
-declare type StructureBuilderBottomBtn = 'submit' | 'button';
+import { ButtonModel } from 'src/app/shared/models/structure-html/button.model';
 
 interface StructureBuilderModel {
   header: HeaderModel;
@@ -11,11 +10,7 @@ interface StructureBuilderModel {
     header: string[];
     row: FieldModel[];
   };
-  bottom: {
-    codeName: string;
-    displayName: string;
-    btnType: StructureBuilderBottomBtn
-  }[];
+  bottom: ButtonModel[];
 }
 
 export const StructureBuilderHelper: StructureBuilderModel = {

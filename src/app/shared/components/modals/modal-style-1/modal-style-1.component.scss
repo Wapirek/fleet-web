@@ -47,71 +47,71 @@
       font-weight: lighter;
       text-align: center;
     }
+  }
+}
 
-    .forms {
-      margin: 15px 0;
+.forms {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__row {
+    display: flex;
+    gap: 15px;
+
+    &__field {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 3px;
 
-      &__row {
-        display: flex;
-        gap: 15px;
+      &__input {
+        padding: 8px;
+        border: 0;
+        border-radius: 5px;
+        color: $my-grey;
+        background-color: $my-white;
 
-        &__field {
-          display: flex;
-          flex-direction: column;
-          gap: 3px;
+        &--btn {
+          background-color: $my-dark-blue;
+          color: $my-white;
+          cursor: pointer;
 
-          &__input {
-            padding: 8px;
-            border: 0;
-            border-radius: 5px;
-            color: $my-grey;
-            background-color: $my-white;
-
-            &--btn {
-              background-color: $my-dark-blue;
-              color: $my-white;
-              cursor: pointer;
-
-              &:hover {
-                opacity: .8;
-              }
-            }
+          &:hover {
+            opacity: .8;
           }
         }
       }
     }
+  }
+}
 
-    .bottom {
-      padding: 5px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+.bottom {
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-      &__save {
-        margin: 0 auto;
-        border: 0;
-        border-radius: 5px;
-        background-color: $my-cool-blue;
-        cursor: pointer;
-        color: $my-white;
-        padding: 10px 20px;
+  &__save {
+    margin: 0 auto;
+    border: 0;
+    border-radius: 5px;
+    background-color: $my-cool-blue;
+    cursor: pointer;
+    color: $my-white;
+    padding: 10px 20px;
 
-        &:hover { opacity: .8; }
-      }
+    &:hover { opacity: .8; }
+  }
 
-      &__cancel {
-        font-size: .9rem;
-        background-color: transparent;
-        margin: 0 auto;
-        border: 0;
-        color: $my-red;
-        cursor: pointer;
+  &__cancel {
+    font-size: .9rem;
+    background-color: transparent;
+    margin: 0 auto;
+    border: 0;
+    color: $my-red;
+    cursor: pointer;
 
-        &:hover { text-decoration: underline; }
-      }
-    }
+    &:hover { text-decoration: underline; }
   }
 }
