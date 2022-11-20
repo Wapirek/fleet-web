@@ -1,4 +1,4 @@
-declare type FieldInputType = 'text' | 'number' | 'date' | 'button';
+declare type FieldInputType = 'text' | 'number' | 'date' | 'button' | 'checkbox';
 
 export interface FieldModel {
   codeName: string;
@@ -9,4 +9,5 @@ export interface FieldModel {
   readonly?: boolean;
   defaultValue?: string | number;
   inputType: FieldInputType;
+  checked?: boolean;
 }

@@ -26,23 +26,25 @@ export const StructureBuilderHelper: StructureBuilderModel = {
   transactionHeader: [
     [
       {
-        codeName: 'category',
-        displayName: 'Kategoria',
-        labelName: 'Podaj kategorie',
+        codeName: 'transactionName',
+        displayName: 'Nazwa transakcji',
+        labelName: 'Podaj nazwe transakcji',
         width: '350px',
         required: false,
         readonly: false,
         inputType: 'text'
       },
       {
-        codeName: 'date',
-        displayName: 'Data',
-        labelName: 'Data zakupu',
-        width: '130px',
+        codeName: 'isDefine',
+        displayName: 'Zdefiniuj',
+        labelName: 'Zdefiniuj',
+        width: '40px',
         required: false,
         readonly: false,
-        inputType: 'date'
-      },
+        inputType: 'checkbox'
+      }
+    ],
+    [
       {
         codeName: 'shop',
         displayName: 'Miejsce zakupu',
@@ -53,7 +55,16 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         inputType: 'text'
       },
       {
-        codeName: 'recipePhoto',
+        codeName: 'transactionDate',
+        displayName: 'Data transakcji',
+        labelName: 'Podaj date zakupu',
+        width: '130px',
+        required: false,
+        readonly: false,
+        inputType: 'date'
+      },
+      {
+        codeName: 'recipe',
         displayName: 'Załącz',
         labelName: 'Dodaj paragon',
         width: '120px',
@@ -62,26 +73,6 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         readonly: false,
         inputType: 'button'
       }
-    ],
-    [
-      {
-        codeName: 'category',
-        displayName: 'Zdefiniowana nazwa transakcji',
-        labelName: 'Zdefiniowana nazwa transakcji',
-        width: '350px',
-        required: false,
-        readonly: false,
-        inputType: 'text'
-      },
-      {
-        codeName: '',
-        displayName: 'Zdefiniuj',
-        labelName: 'Zdefiniuj',
-        width: '40px',
-        required: false,
-        readonly: false,
-        inputType: 'text'
-      },
     ]
   ],
   list: {
@@ -98,14 +89,14 @@ export const StructureBuilderHelper: StructureBuilderModel = {
         inputType: 'text'
       },
       {
-        codeName: 'amount',
+        codeName: 'quantity',
         displayName: 'Ilość',
         required: true,
         readonly: false,
         inputType: 'number'
       },
       {
-        codeName: 'cost',
+        codeName: 'paid',
         displayName: 'Koszt',
         required: true,
         readonly: false,

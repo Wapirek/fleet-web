@@ -20,6 +20,8 @@ input[type=number] {
   padding: 8px;
   color: $my-white;
   border-radius: 5px;
+
+  &::placeholder { opacity: .2; }
 }
 
 input:focus { outline: none; }
@@ -59,6 +61,21 @@ input:focus { outline: none; }
             width: 100%;
 
             &__input { @include formInput; }
+
+            input[type=checkbox] {
+              cursor: pointer;
+              appearance: none;
+              width: 33px;
+              height: 33px;
+              border-radius: 5px;
+              box-sizing: border-box;
+              border: 3px groove rgba($my-white, .1);
+
+              &:checked {
+                border: 3px groove rgba($my-white, .1);
+                background-color: rgba($my-cool-blue, .5);
+              }
+            }
           }
         }
       }

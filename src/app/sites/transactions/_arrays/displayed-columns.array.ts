@@ -13,16 +13,10 @@ export const DisplayedColumnsArray: DisplayedColumnsModel[] = [
     order: 0
   },
   {
-    codeName: 'name',
+    codeName: 'transactionName',
     name: "Nazwa",
     width: 200,
     order: 1
-  },
-  {
-    codeName: 'type',
-    name: "Typ transakcji",
-    width: 100,
-    order: 2
   },
   {
     codeName: 'category',
@@ -31,19 +25,19 @@ export const DisplayedColumnsArray: DisplayedColumnsModel[] = [
     order: 3
   },
   {
-    codeName: 'place',
-    name: "Miejsce transakcji",
+    codeName: 'shop',
+    name: "Sklep",
     width: 250,
     order: 4
   },
   {
-    codeName: 'cost',
+    codeName: 'paid',
     name: "Kwota",
     width: 110,
     order: 5
   },
   {
-    codeName: 'date',
+    codeName: 'transactionDate',
     name: "Data",
     width: 150,
     order: 6
