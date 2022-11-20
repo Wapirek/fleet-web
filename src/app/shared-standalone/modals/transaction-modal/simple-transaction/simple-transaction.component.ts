@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {
   StructureBuilderHelper
@@ -15,6 +15,8 @@ import { FormBuilder } from '@angular/forms';
 })
 export class SimpleTransactionComponent {
 
+  @Output() closeModal = new EventEmitter<void>();
+
   // szkielet html
   skeleton = StructureBuilderHelper();
 
@@ -23,7 +25,18 @@ export class SimpleTransactionComponent {
 
   constructor(private formBuilder: FormBuilder) {}
 
+  // jedna funkcja do ktorej przychodza eventy z przyciskow
   operation(codeName: string): void {
-    
+    switch (codeName) {
+      case 'cancel':
+        this.closeModal.emit();
+        break;
+    }
+  }
+
+  // zapisz formularz, natepnie podaj dane do komponentu rodzica
+  saveFunc(): void {
+    console.log(this.cmpForm.value);
   }
 }
+

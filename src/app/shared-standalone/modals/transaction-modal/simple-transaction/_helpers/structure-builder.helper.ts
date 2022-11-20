@@ -34,7 +34,7 @@ export const StructureBuilderHelper = (): StructureBuilderModel => {
       {
         codeName: 'save',
         displayName: 'Zapisz',
-        btnType: 'button'
+        btnType: 'submit'
       },
       {
         codeName: 'cancel',

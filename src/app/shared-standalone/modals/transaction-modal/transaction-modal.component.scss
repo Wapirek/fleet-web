@@ -12,11 +12,11 @@
       border-radius: 5px;
       background-color: $my-cool-blue;
       padding: 8px 20px;
-      color: $my-dark-blue;
+      color: $my-white;
       transition: opacity .2s ease-in-out;
       cursor: pointer;
 
-      &--full-btn { background-color: $my-pastel-pink; }
+      &--full-btn { background-color: rgba($my-dark-blue, .5); }
 
       &:hover { opacity: .8; }
     }

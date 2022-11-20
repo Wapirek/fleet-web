@@ -1,4 +1,4 @@
-<form class="forms" [formGroup]="cmpForm">
+<form class="forms" [formGroup]="cmpForm" (ngSubmit)="saveFunc()">
 
   <div class="forms__row" *ngFor="let row of skeleton.fields">
 
@@ -26,13 +26,15 @@
 
   </div>
 
-</form>
+  <div class="bottom">
+    <input
+      *ngFor="let btn of skeleton.bottom"
+      [class]="'bottom__' + btn.codeName"
+      [type]="btn.btnType"
+      [value]="btn.displayName"
+      (click)="operation(btn.codeName)"
+      [disabled]="cmpForm.invalid && btn.codeName === 'save'"
+    >
+  </div>
 
-<div class="bottom">
-  <input
-    *ngFor="let btn of skeleton.bottom"
-    [class]="'bottom__' + btn.codeName"
-    [type]="btn.btnType"
-    [value]="btn.displayName"
-  >
-</div>
+</form>

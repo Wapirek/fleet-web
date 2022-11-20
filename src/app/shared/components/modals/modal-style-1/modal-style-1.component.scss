@@ -69,8 +69,10 @@
         padding: 8px;
         border: 0;
         border-radius: 5px;
-        color: $my-grey;
+        color: $my-grey-2;
         background-color: $my-white;
+
+        &::placeholder { color: $my-grey; }
 
         &--btn {
           background-color: $my-dark-blue;
@@ -102,6 +104,11 @@
     padding: 10px 20px;
 
     &:hover { opacity: .8; }
+
+    &:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
   }
 
   &__cancel {

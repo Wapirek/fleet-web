@@ -16,6 +16,7 @@
 
     <simple-transaction-modal
       *ngSwitchCase="'simple'"
+      (closeModal)="closeModal.emit()"
     ></simple-transaction-modal>
 
     <massive-transaction-modal
