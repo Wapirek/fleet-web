@@ -1,91 +1,114 @@
-import { StructureBuilderModel } from 'src/app/shared-standalone/modals/transaction-modal/_models/structure-builder.model';
+import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
+import { FieldModel } from 'src/app/shared/models/models/field.model';
+import { ButtonModel } from 'src/app/shared/models/structure-html/button.model';
 
-export const StructureBuilderHelper = (): StructureBuilderModel => {
-  return {
-    fields: [
-      [
-        {
-          codeName: 'transactionName',
-          displayName: 'Nazwa transakcji',
-          labelName: 'Podaj nazwę transakcji',
-          width: '100%',
-          required: true,
-          readonly: false,
-          inputType: 'text'
-        },
-        {
-          codeName: 'purchaseDate',
-          displayName: 'Data',
-          labelName: 'Data zakupu',
-          width: '120px',
-          required: false,
-          readonly: false,
-          inputType: 'text'
-        }
-      ],
-      [
-        {
-          codeName: 'category',
-          displayName: 'Kategoria',
-          labelName: 'Wybierze kategorie',
-          width: '100%',
-          required: true,
-          readonly: false,
-          inputType: 'text'
-        },
-        {
-          codeName: 'cost',
-          displayName: 'Kwota',
-          labelName: 'Kwota',
-          width: '120px',
-          required: true,
-          readonly: false,
-          inputType: 'number'
-        },
-        {
-          codeName: 'amount',
-          displayName: 'Ilość',
-          labelName: 'Ilość',
-          width: '80px',
-          required: true,
-          readonly: false,
-          defaultValue: 1,
-          inputType: 'text'
-        }
-      ],
-      [
-        {
-          codeName: 'recipePhoto',
-          displayName: 'Załącz',
-          labelName: 'Dodaj paragon',
-          width: '120px',
-          defaultValue: 'Załącz',
-          required: false,
-          readonly: false,
-          inputType: 'button'
-        },
-        {
-          codeName: 'shopName',
-          displayName: 'Miejsce zakupu',
-          labelName: 'Miejsce zakupu',
-          width: '100%',
-          required: false,
-          readonly: false,
-          inputType: 'text'
-        }
-      ]
-    ],
-    bottom: [
+interface StructureBuilderModel {
+  header: HeaderModel;
+  transactionHeader: FieldModel[][];
+  list: {
+    colSize: string;
+    header: string[];
+    row: FieldModel[];
+  };
+  bottom: ButtonModel[];
+}
+
+export const StructureBuilderHelper: StructureBuilderModel = {
+  header: {
+    icon: 'payments',
+    title: 'Edytuj transakcje {title}'
+  },
+  transactionHeader: [
+    [
       {
-        codeName: 'save',
-        displayName: 'Zapisz',
-        btnType: 'submit'
+        codeName: 'transactionName',
+        displayName: 'Nazwa transakcji',
+        labelName: 'Podaj nazwe transakcji',
+        width: '350px',
+        required: false,
+        readonly: false,
+        inputType: 'text'
       },
       {
-        codeName: 'cancel',
-        displayName: 'Anuluj',
-        btnType: 'button'
+        codeName: 'isDefine',
+        displayName: 'Zdefiniuj',
+        labelName: 'Zdefiniuj',
+        width: '40px',
+        required: false,
+        readonly: false,
+        inputType: 'checkbox'
+      }
+    ],
+    [
+      {
+        codeName: 'shop',
+        displayName: 'Miejsce zakupu',
+        labelName: 'Miejsce zakupu',
+        width: '350px',
+        required: false,
+        readonly: false,
+        inputType: 'text'
+      },
+      {
+        codeName: 'transactionDate',
+        displayName: 'Data transakcji',
+        labelName: 'Podaj date zakupu',
+        width: '130px',
+        required: false,
+        readonly: false,
+        inputType: 'date'
+      },
+      {
+        codeName: 'recipe',
+        displayName: 'Załącz',
+        labelName: 'Dodaj paragon',
+        width: '120px',
+        defaultValue: 'Załącz',
+        required: false,
+        readonly: false,
+        inputType: 'button'
       }
     ]
-  }
+  ],
+  list: {
+    colSize: '100px 250px 80px 120px',
+    header: [
+      'Usuń', 'Nazwa', 'Ilość', 'Koszt'
+    ],
+    row: [
+      {
+        codeName: 'productName',
+        displayName: 'Nazwa',
+        required: true,
+        readonly: false,
+        inputType: 'text'
+      },
+      {
+        codeName: 'quantity',
+        displayName: 'Ilość',
+        required: true,
+        readonly: false,
+        inputType: 'number'
+      },
+      {
+        codeName: 'paid',
+        displayName: 'Koszt',
+        required: true,
+        readonly: false,
+        inputType: 'text'
+      }
+    ]
+  },
+  bottom: [
+    {
+      codeName: 'submit',
+      displayName: 'Zapisz',
+      btnType: 'submit'
+    },
+    {
+      codeName: 'remove',
+      displayName: 'Anuluj',
+      btnType: 'button'
+    }
+  ]
 }

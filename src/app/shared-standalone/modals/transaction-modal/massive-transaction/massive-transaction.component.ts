@@ -2,8 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {
   StructureBuilderHelper
-} from 'src/app/shared-standalone/modals/transaction-modal/simple-transaction/_helpers/structure-builder.helper';
-import { FormBuilderHelper } from 'src/app/shared-standalone/modals/transaction-modal/simple-transaction/_helpers/form-builder.helper';
+} from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/structure-builder.helper';
+import { FormBuilderHelper } from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/form-builder.helper';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -18,13 +18,12 @@ export class MassiveTransactionComponent {
   @Output() closeModal = new EventEmitter<void>();
 
   // szkielet html
-  skeleton = StructureBuilderHelper();
+  skeleton = StructureBuilderHelper;
 
   // formularz dla komponentu
-  cmpForm = FormBuilderHelper(this.formBuilder);
+  cmpForm = FormBuilderHelper(this.formBuilder, null);
 
   constructor(private formBuilder: FormBuilder) {}
-
 
   // jedna funkcja do ktorej przychodza eventy z przyciskow
   operation(codeName: string): void {

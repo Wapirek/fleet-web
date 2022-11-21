@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
-import { StructureBuilderHelper } from 'src/app/sites/transactions/edit-transaction/_helpers/structure-builder.helper';
-import { CreateFormGroupProduct, FormBuilderHelper } from 'src/app/sites/transactions/edit-transaction/_helpers/form-builder.helper';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
 import { ProductModel } from 'src/app/shared/models/models/product.model';
+import {
+  StructureBuilderHelper
+} from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/structure-builder.helper';
+import {
+  CreateFormGroupProduct,
+  FormBuilderHelper
+} from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/form-builder.helper';
 
 @Component({
   selector: 'app-edit-transaction',
