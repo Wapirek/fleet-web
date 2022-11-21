@@ -17,6 +17,7 @@
     <simple-transaction-modal
       *ngSwitchCase="'simple'"
       (closeModal)="closeModal.emit()"
+      (createTransaction)="createTransaction($event)"
     ></simple-transaction-modal>
 
     <massive-transaction-modal

@@ -15,7 +15,11 @@
       <input
         class="forms__row__field__input"
         [formControlName]="field.codeName"
-        [ngClass]="{ 'forms__row__field__input--btn': field.inputType === 'button' }"
+        [ngClass]="{
+          'forms__row__field__input--invalid': cmpForm.get(field.codeName)?.dirty
+            && cmpForm.get(field.codeName)?.invalid,
+          'forms__row__field__input--btn': field.inputType === 'button'
+        }"
         [id]="field.codeName"
         [placeholder]="field.displayName"
         [value]="field.defaultValue ?? ''"

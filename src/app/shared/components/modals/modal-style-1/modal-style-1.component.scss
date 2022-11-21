@@ -67,21 +67,25 @@
 
       &__input {
         padding: 8px;
-        border: 0;
         border-radius: 5px;
         color: $my-grey-2;
         background-color: $my-white;
+        box-sizing: border-box;
+        border: 1px groove $my-white;
 
         &::placeholder { color: $my-grey; }
+
+        &--invalid {
+          border: 1px groove $my-red;
+          color: $my-red;
+        }
 
         &--btn {
           background-color: $my-dark-blue;
           color: $my-white;
           cursor: pointer;
 
-          &:hover {
-            opacity: .8;
-          }
+          &:hover { opacity: .8; }
         }
       }
     }

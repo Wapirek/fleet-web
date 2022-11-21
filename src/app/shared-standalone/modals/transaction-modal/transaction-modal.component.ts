@@ -8,6 +8,9 @@ import {
 import {
   MassiveTransactionComponent
 } from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/massive-transaction.component';
+import {
+  SimpleTransactionModel
+} from 'src/app/shared-standalone/modals/transaction-modal/simple-transaction/_models/simple-transaction.model';
 
 @Component({
   standalone: true,
@@ -37,5 +40,9 @@ export class TransactionModalComponent {
 
   choiceTemplate(transactionType: TransactionTemplateType): void {
     this.transactionTemplate = transactionType;
+  }
+
+  createTransaction(res: SimpleTransactionModel): void {
+    console.log(res);
   }
 }
