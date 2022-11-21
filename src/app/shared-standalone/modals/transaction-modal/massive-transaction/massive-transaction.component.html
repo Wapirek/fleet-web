@@ -1,1 +1,40 @@
-massive
+<form class="forms" [formGroup]="cmpForm" (ngSubmit)="saveFunc()">
+
+  <div class="forms__row" *ngFor="let row of skeleton.fields">
+
+    <div
+      class="forms__row__field"
+      *ngFor="let field of row"
+      [ngStyle]="{ 'width': field.width }"
+    >
+
+      <label class="forms__row__field__label" [for]="field.codeName">
+        {{field.labelName}}
+      </label>
+
+      <input
+        class="forms__row__field__input"
+        [formControlName]="field.codeName"
+        [ngClass]="{ 'forms__row__field__input--btn': field.inputType === 'button' }"
+        [id]="field.codeName"
+        [placeholder]="field.displayName"
+        [value]="field.defaultValue ?? ''"
+        [type]="field.inputType"
+      >
+
+    </div>
+
+  </div>
+
+  <div class="bottom">
+    <input
+      *ngFor="let btn of skeleton.bottom"
+      [class]="'bottom__' + btn.codeName"
+      [type]="btn.btnType"
+      [value]="btn.displayName"
+      (click)="operation(btn.codeName)"
+      [disabled]="cmpForm.invalid && btn.codeName === 'save'"
+    >
+  </div>
+
+</form>

@@ -21,6 +21,7 @@
 
     <massive-transaction-modal
       *ngSwitchCase="'massive'"
+      (closeModal)="closeModal.emit()"
     ></massive-transaction-modal>
 
   </ng-container>

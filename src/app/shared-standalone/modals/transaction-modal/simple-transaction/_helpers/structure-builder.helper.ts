@@ -1,10 +1,4 @@
-import { FieldModel } from 'src/app/shared/models/models/field.model';
-import { ButtonModel } from 'src/app/shared/models/structure-html/button.model';
-
-interface StructureBuilderModel {
-  fields: FieldModel[][];
-  bottom: ButtonModel[];
-}
+import { StructureBuilderModel } from 'src/app/shared-standalone/modals/transaction-modal/_models/structure-builder.model';
 
 export const StructureBuilderHelper = (): StructureBuilderModel => {
   return {
