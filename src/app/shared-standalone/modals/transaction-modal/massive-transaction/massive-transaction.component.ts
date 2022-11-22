@@ -10,7 +10,7 @@ import { FormBuilder } from '@angular/forms';
   standalone: true,
   selector: 'massive-transaction-modal',
   templateUrl: './massive-transaction.component.html',
-  styleUrls: ['./massive-transaction.component.scss'],
+  styleUrls: ['../../../../shared/components/modals/modal-style-1/modal-style-1.component.scss'],
   imports: [SharedModule]
 })
 export class MassiveTransactionComponent {

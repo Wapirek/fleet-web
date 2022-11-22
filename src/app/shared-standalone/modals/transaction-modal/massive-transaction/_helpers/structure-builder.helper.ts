@@ -101,12 +101,12 @@ export const StructureBuilderHelper: StructureBuilderModel = {
   },
   bottom: [
     {
-      codeName: 'submit',
+      codeName: 'save',
       displayName: 'Zapisz',
       btnType: 'submit'
     },
     {
-      codeName: 'remove',
+      codeName: 'cancel',
       displayName: 'Anuluj',
       btnType: 'button'
     }
