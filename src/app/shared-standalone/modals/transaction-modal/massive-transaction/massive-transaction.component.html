@@ -26,6 +26,48 @@
 
   </div>
 
+  <div class="form__list" formArrayName="products">
+
+    <div
+      class="form__list__header"
+      [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }"
+    >
+
+      <ng-container>
+        <div
+          class="form__list__header__item"
+          *ngFor="let item of skeleton.list.header"
+        >{{item}}</div>
+      </ng-container>
+
+    </div>
+
+    <div
+      class="form__list__row"
+      *ngFor="let product of example.products; index as i"
+      [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }"
+      [formGroupName]="i"
+    >
+
+      <button
+        class="form__list__row__btn form__list__row__btn--del-product"
+        (click)="removeProduct(i)"
+      ><mat-icon>delete_forever</mat-icon></button>
+
+      <input
+        class="form__list__row__input"
+        *ngFor="let field of skeleton.list.row"
+        [placeholder]="field.displayName"
+        [type]="field.inputType"
+        [required]="field.required ?? false"
+        [value]="product | readObjectAsIndex: field.codeName"
+        [formControlName]="field.codeName"
+      >
+
+    </div>
+
+  </div>
+
   <div class="bottom">
     <input
       *ngFor="let btn of skeleton.bottom"

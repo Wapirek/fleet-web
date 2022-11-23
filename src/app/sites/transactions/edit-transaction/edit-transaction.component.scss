@@ -1,16 +1,6 @@
 @import "src/app/shared/styles/elements";
 @import "src/app/shared/styles/variables";
 
-@mixin formInput {
-  border: 0;
-  background-color: rgba($my-white, .1);
-  padding: 8px;
-  color: $my-white;
-  border-radius: 5px;
-
-  &::placeholder { opacity: .2; }
-}
-
 .container {
   margin-top: 20px;
   display: flex;
@@ -22,7 +12,7 @@
   .template {
     @include templateBg1;
 
-    .form {
+    .forms {
       display: flex;
       gap: 30px;
       flex-direction: column;
