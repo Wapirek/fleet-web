@@ -6,6 +6,9 @@ import { MatTableModule } from '@angular/material/table';
 import { DisplayColsNamePipe } from 'src/app/sites/transactions/_pipes/display-cols-name/display-cols-name.pipe';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditTransactionComponent } from './edit-transaction/edit-transaction.component';
+import {
+  MassiveTransactionComponent
+} from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/massive-transaction.component';
 
 const routes: Routes = [
   { path: '', component: TransactionsComponent },
@@ -22,7 +25,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MassiveTransactionComponent
   ]
 })
 export class TransactionsModule {}

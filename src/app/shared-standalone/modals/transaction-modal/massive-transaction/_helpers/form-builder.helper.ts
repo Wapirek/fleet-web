@@ -1,17 +1,18 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductModel, Transaction2Model } from 'src/app/shared/models/models/transaction-2.model';
+import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
+import { ProductModel } from 'src/app/shared/models/models/product.model';
 
-export const FormBuilderHelper = (fb: FormBuilder, item: Transaction2Model | null): FormGroup => fb.group({
-  category: [
-    item?.category ?? '',
+export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel | null): FormGroup => fb.group({
+  transactionName: [
+    item?.transactionName ?? '',
     Validators.compose([
       Validators.required,
       Validators.minLength(1),
       Validators.maxLength(255)
     ])
   ],
-  date: [
-    item?.date ?? '',
+  transactionDate: [
+    item?.transactionDate ?? '',
     Validators.compose([
       Validators.required,
       Validators.minLength(1),
@@ -26,11 +27,14 @@ export const FormBuilderHelper = (fb: FormBuilder, item: Transaction2Model | nul
       Validators.maxLength(255)
     ])
   ],
-  recipePhoto: [
-    item?.recipe ?? '',
+  recipe: [
+    item?.recipe ?? 'Załącz',
     Validators.compose([
       Validators.required
     ])
+  ],
+  isDefine: [
+    item?.isDefine ?? false,
   ],
   products: fb.array(item?.products.map((arrItem: ProductModel) => CreateFormGroupProduct(fb, arrItem)) ?? [])
 });
@@ -44,16 +48,16 @@ export const CreateFormGroupProduct = (fb: FormBuilder, arrItem: ProductModel) =
       Validators.maxLength(255)
     ])
   ],
-  amount: [
-    arrItem.amount,
+  quantity: [
+    arrItem.quantity,
     Validators.compose([
       Validators.required,
       Validators.minLength(1),
       Validators.maxLength(255)
     ])
   ],
-  cost: [
-    arrItem.cost,
+  paid: [
+    arrItem.paid,
     Validators.compose([
       Validators.required,
       Validators.minLength(1),

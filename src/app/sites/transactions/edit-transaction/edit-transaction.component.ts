@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { StructureBuilderHelper } from 'src/app/sites/transactions/edit-transaction/_helpers/structure-builder.helper';
-import { CreateFormGroupProduct, FormBuilderHelper } from 'src/app/sites/transactions/edit-transaction/_helpers/form-builder.helper';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { ProductModel, Transaction2Model } from 'src/app/shared/models/models/transaction-2.model';
+import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
+import {
+  StructureBuilderHelper
+} from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/structure-builder.helper';
 
 @Component({
   selector: 'app-edit-transaction',
@@ -11,36 +11,28 @@ import { ProductModel, Transaction2Model } from 'src/app/shared/models/models/tr
 })
 export class EditTransactionComponent {
 
-  skeleton = StructureBuilderHelper;
+  skeleton = StructureBuilderHelper();
 
-  example: Transaction2Model = {
-    category: 'zakupy',
-    date: '22.01.2022',
-    shop: 'Biedronka',
-    recipe: '',
-    products: [
-      { productName: 'Pasta do zebów', cost: '9 zł', amount: 1, isEdited: false },
-      { productName: 'Jajka', cost: '10 zł', amount: 1, isEdited: false },
-      { productName: 'Jabłka', cost: '8 zł', amount: 2, isEdited: false }
-    ]
-  }
+  example: TransactionModel = {
+    id: 1,
+    transactionName: '',
+    transactionDate: '',
+    shop: '',
+    recipe: 'Załącz',
+    currency: 'PLN',
+    isDefine: false,
+    products: []
+  };
 
-  cmpForm: FormGroup = FormBuilderHelper(this.formBuilder, this.example);
+  constructor() {
 
-  private get productsArray() { return this.cmpForm.get('products') as FormArray; }
+    // list
+    this.skeleton.list.colSize = '100px 250px 80px 120px';
+    this.skeleton.list.addBtn.justifyContent = 'flex-start';
+    this.skeleton.list.addBtn.marginLeft = '32px';
 
-  constructor(private formBuilder: FormBuilder) {}
-
-  save(): void { console.log(this.cmpForm.value); }
-
-  addProduct(): void {
-    const emptyProduct = { productName: '', amount: 1, cost: '0' } as ProductModel;
-    this.example.products.push(emptyProduct);
-    this.productsArray.push(CreateFormGroupProduct(this.formBuilder, emptyProduct));
-  }
-
-  removeProduct(rowIndex: number): void {
-    this.example.products.splice(rowIndex, 1);
-    this.productsArray.removeAt(rowIndex);
+    // bottom
+    this.skeleton.bottom.flexDirection = 'row';
+    this.skeleton.bottom.justifyContent = 'flex-start';
   }
 }

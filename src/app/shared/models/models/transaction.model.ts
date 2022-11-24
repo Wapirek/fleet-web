@@ -1,11 +1,12 @@
-export declare type TransactionTypeModel = 'single' | 'list';
+import { ProductModel } from 'src/app/shared/models/models/product.model';
 
 export interface TransactionModel {
   id: number;
-  name: string;
-  type: TransactionTypeModel;
-  category: string;
-  place: string;
-  cost: number;
-  date: string;
+  transactionName: string;
+  transactionDate: Date | string;
+  shop: string;
+  recipe?: string;
+  isDefine: boolean;
+  currency: string;
+  products: ProductModel[];
 }

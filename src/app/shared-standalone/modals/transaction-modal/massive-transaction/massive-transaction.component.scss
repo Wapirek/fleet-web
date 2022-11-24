@@ -1,0 +1,89 @@
+@import "src/app/shared/components/modals/modal-style-1/modal-style-1.component";
+
+@mixin massiveTransactionBtn {
+  justify-self: center;
+  border-radius: 5px;
+  border: 0;
+  padding: 0 8px;
+  background-color: rgba($my-white, .2);
+  color: $my-grey-2;
+  cursor: pointer;
+  transition: opacity .2s ease-in-out;
+  height: 33px;
+
+  mat-icon {
+    width: 20px;
+    height: 20px;
+    size: 20px;
+    font-size: 20px;
+  }
+
+  &:hover { opacity: .8; }
+}
+
+.forms {
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &__header, &__items__row {
+      display: grid;
+      grid-column-gap: 10px;
+    }
+
+    &__header__item {
+      font-size: 1.1rem;
+      color: $my-cool-blue;
+
+      &:first-child { text-align: center; }
+    }
+
+    &__items {
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 190px;
+      overflow: auto;
+
+      &__row {
+
+        &__input {
+          @include formInput;
+          background-color: $my-white;
+          color: $my-grey-2;
+        }
+
+        &__btn {
+          @include massiveTransactionBtn;
+
+          &--del-product{ color: $my-red; }
+        }
+      }
+    }
+
+    &__add-row {
+      display: flex;
+      justify-content: center;
+
+      &__btn { @include massiveTransactionBtn; }
+    }
+  }
+}
+
+input[type=checkbox] {
+  cursor: pointer;
+  appearance: none;
+  width: 33px;
+  height: 33px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 3px groove rgba($my-white, .1);
+
+  &:checked {
+    border: 3px groove rgba($my-white, .1);
+    background-color: rgba($my-cool-blue, .5);
+  }
+}

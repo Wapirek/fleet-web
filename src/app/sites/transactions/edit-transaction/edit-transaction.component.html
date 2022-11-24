@@ -7,93 +7,10 @@
 
   <div class="template">
 
-    <form class="form" [formGroup]="cmpForm" (ngSubmit)="save()">
-
-      <div class="form__header">
-
-        <div class="form__header__row"  *ngFor="let row of skeleton.transactionHeader">
-
-          <div
-            class="form__header__row__item"
-            *ngFor="let item of row"
-            [ngStyle]="{ 'width': item.width }"
-          >
-
-            <label class="form__header__row__item__label">{{item.labelName}}</label>
-
-            <input
-              class="form__header__row__item__input"
-              [type]="item.inputType"
-              [placeholder]="item.displayName"
-              [formControlName]="item.codeName"
-            >
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="form__list" formArrayName="products">
-
-        <div
-          class="form__list__header"
-          [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }"
-        >
-          <div
-            class="form__list__header__item"
-            *ngFor="let item of skeleton.list.header"
-          >{{item}}</div>
-        </div>
-
-        <div
-          class="form__list__row"
-          *ngFor="let product of example.products; index as i"
-          [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }"
-          [formGroupName]="i"
-        >
-
-          <button
-            class="form__list__row__btn form__list__row__btn--del-product"
-            (click)="removeProduct(i)"
-          ><mat-icon>delete_forever</mat-icon></button>
-
-          <input
-            class="form__list__row__input"
-            *ngFor="let field of skeleton.list.row"
-            [placeholder]="field.displayName"
-            [type]="field.inputType"
-            [required]="field.required ?? false"
-            [value]="product | readObjectAsIndex: field.codeName"
-            [formControlName]="field.codeName"
-          >
-
-        </div>
-
-        <div class="form__list__row">
-
-          <button
-            class="form__list__row__btn"
-            type="button"
-            (click)="addProduct()"
-          ><mat-icon>add</mat-icon></button>
-
-        </div>
-
-      </div>
-
-      <div class="form__bottom">
-
-        <button
-          class="form__bottom__btn"
-          *ngFor="let btn of skeleton.bottom"
-          [ngClass]="'form__bottom__btn--' + btn.codeName"
-          [type]="btn.btnType"
-        >{{btn.displayName}}</button>
-
-      </div>
-
-    </form>
+    <massive-transaction-modal
+      [transactionWorking]="example"
+      [skeleton]="skeleton"
+    ></massive-transaction-modal>
 
   </div>
 

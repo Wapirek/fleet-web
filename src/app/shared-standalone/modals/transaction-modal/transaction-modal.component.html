@@ -1,0 +1,30 @@
+<shared-modal-style-1 [title]="title" [hiddenBottom]="true">
+
+  <ng-container [ngSwitch]="transactionTemplate">
+
+    <div class="choice" *ngSwitchCase="'choice'">
+
+      <button class="choice__btn" (click)="choiceTemplate('simple')">
+        Szybka transakcja
+      </button>
+
+      <button class="choice__btn choice__btn--full-btn" (click)="choiceTemplate('massive')">
+        Pełna transakcja
+      </button>
+
+    </div>
+
+    <simple-transaction-modal
+      *ngSwitchCase="'simple'"
+      (closeModal)="closeModal.emit()"
+      (createTransaction)="createTransaction($event)"
+    ></simple-transaction-modal>
+
+    <massive-transaction-modal
+      *ngSwitchCase="'massive'"
+      (closeModal)="closeModal.emit()"
+    ></massive-transaction-modal>
+
+  </ng-container>
+
+</shared-modal-style-1>
