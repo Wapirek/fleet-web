@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
-import { ProductModel } from 'src/app/shared/models/models/product.model';
 import {
   StructureBuilderHelper
 } from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/structure-builder.helper';
-import {
-  CreateFormGroupProduct,
-  FormBuilderHelper
-} from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/form-builder.helper';
 
 @Component({
   selector: 'app-edit-transaction',
@@ -17,49 +11,28 @@ import {
 })
 export class EditTransactionComponent {
 
-  skeleton = StructureBuilderHelper;
+  skeleton = StructureBuilderHelper();
 
   example: TransactionModel = {
     id: 1,
     transactionName: '',
-    transactionDate: '22.01.2022',
-    shop: 'Biedronka',
-    recipe: '',
+    transactionDate: '',
+    shop: '',
+    recipe: 'Załącz',
     currency: 'PLN',
     isDefine: false,
-    products: [
-      {
-        id: 1,
-        productName: 'Pasta do zebów',
-        paid: '9 zł',
-        quantity: 1
-      }
-    ]
+    products: []
   };
 
-  cmpForm: FormGroup = FormBuilderHelper(this.formBuilder, this.example);
+  constructor() {
 
-  private get productsArray() { return this.cmpForm.get('products') as FormArray; }
+    // list
+    this.skeleton.list.colSize = '100px 250px 80px 120px';
+    this.skeleton.list.addBtn.justifyContent = 'flex-start';
+    this.skeleton.list.addBtn.marginLeft = '32px';
 
-  constructor(private formBuilder: FormBuilder) {}
-
-  save(): void { console.log(this.cmpForm.value); }
-
-  addProduct(): void {
-
-    const emptyProduct = {
-      id: -1,
-      productName: '',
-      quantity: 1,
-      paid: '0'
-    } as ProductModel;
-
-    this.example.products.push(emptyProduct);
-    this.productsArray.push(CreateFormGroupProduct(this.formBuilder, emptyProduct));
-  }
-
-  removeProduct(rowIndex: number): void {
-    this.example.products.splice(rowIndex, 1);
-    this.productsArray.removeAt(rowIndex);
+    // bottom
+    this.skeleton.bottom.flexDirection = 'row';
+    this.skeleton.bottom.justifyContent = 'flex-start';
   }
 }

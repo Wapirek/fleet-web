@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import {
   StructureBuilderHelper
@@ -7,9 +7,11 @@ import {
   CreateFormGroupProduct,
   FormBuilderHelper
 } from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/form-builder.helper';
-import { FormArray, FormBuilder } from '@angular/forms';
-import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ProductModel } from 'src/app/shared/models/models/product.model';
+import {
+  InitTransactionHelper
+} from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/init-transaction.helper';
 
 @Component({
   standalone: true,
@@ -18,39 +20,30 @@ import { ProductModel } from 'src/app/shared/models/models/product.model';
   styleUrls: ['./massive-transaction.component.scss'],
   imports: [SharedModule]
 })
-export class MassiveTransactionComponent {
+export class MassiveTransactionComponent implements OnInit {
+
+  // szkielet html
+  @Input() skeleton = StructureBuilderHelper();
+
+  // obiekt na ktorym bedzie pracowac komponent
+  @Input() transactionWorking = InitTransactionHelper;
 
   // zamkniecie modalu
   @Output() closeModal = new EventEmitter<void>();
 
-  // szkielet html
-  skeleton = StructureBuilderHelper;
 
-  example: TransactionModel = {
-    id: 1,
-    transactionName: '',
-    transactionDate: '22.01.2022',
-    shop: 'Biedronka',
-    recipe: '',
-    currency: 'PLN',
-    isDefine: false,
-    products: [
-      {
-        id: 1,
-        productName: 'Pasta do zebów',
-        paid: '9 zł',
-        quantity: 1
-      }
-    ]
-  };
 
   // formularz dla komponentu
-  cmpForm = FormBuilderHelper(this.formBuilder, this.example);
+  cmpForm!: FormGroup;
 
-
-  private get productsArray() { return this.cmpForm.get('products') as FormArray; }
+  private get productsArray() { return this.cmpForm?.get('products') as FormArray; }
 
   constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+
+    this.cmpForm = FormBuilderHelper(this.formBuilder, this.transactionWorking);
+  }
 
   addProduct(): void {
 
@@ -61,12 +54,12 @@ export class MassiveTransactionComponent {
       paid: '0'
     } as ProductModel;
 
-    this.example.products.push(emptyProduct);
+    this.transactionWorking.products.push(emptyProduct);
     this.productsArray.push(CreateFormGroupProduct(this.formBuilder, emptyProduct));
   }
 
   removeProduct(rowIndex: number): void {
-    this.example.products.splice(rowIndex, 1);
+    this.transactionWorking.products.splice(rowIndex, 1);
     this.productsArray.removeAt(rowIndex);
   }
 

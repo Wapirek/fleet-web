@@ -78,9 +78,10 @@
         }
 
         &--btn {
-          background-color: $my-dark-blue;
+          background-color: $my-cool-blue;
           color: $my-white;
           cursor: pointer;
+          border: 0;
 
           &:hover { opacity: .8; }
         }
@@ -93,10 +94,10 @@
   padding: 5px 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 20px;
+  align-items: center;
 
   &__save {
-    margin: 0 auto;
     border: 0;
     border-radius: 5px;
     background-color: $my-cool-blue;
@@ -115,7 +116,6 @@
   &__cancel {
     font-size: .9rem;
     background-color: transparent;
-    margin: 0 auto;
     border: 0;
     color: $my-red;
     cursor: pointer;

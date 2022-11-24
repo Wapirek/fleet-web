@@ -2,81 +2,117 @@
 
   <div class="forms__row" *ngFor="let row of skeleton.transactionHeader">
 
-    <div
-      class="forms__row__field"
-      *ngFor="let field of row"
-      [ngStyle]="{ 'width': field.width }"
-    >
+    <div class="forms__row__field" *ngFor="let field of row" [ngStyle]="{ 'width': field.width }">
 
       <label class="forms__row__field__label" [for]="field.codeName">
         {{field.labelName}}
       </label>
 
-      <input
-        class="forms__row__field__input"
-        [formControlName]="field.codeName"
-        [ngClass]="{ 'forms__row__field__input--btn': field.inputType === 'button' }"
-        [id]="field.codeName"
-        [placeholder]="field.displayName"
-        [value]="field.defaultValue ?? ''"
-        [type]="field.inputType"
-      >
+      <ng-container [ngSwitch]="field.codeName">
+
+        <input
+          *ngSwitchCase="'isDefine'"
+          class="forms__row__field__input"
+          [formControlName]="field.codeName"
+          [id]="field.codeName"
+          [type]="field.inputType"
+          [checked]="cmpForm.get('isDefine')?.value"
+        >
+
+        <input
+          *ngSwitchDefault
+          class="forms__row__field__input"
+          [formControlName]="field.codeName"
+          [ngClass]="{ 'forms__row__field__input--btn': field.inputType === 'button' }"
+          [id]="field.codeName"
+          [placeholder]="field.displayName"
+          [type]="field.inputType"
+        >
+
+      </ng-container>
+
 
     </div>
 
   </div>
 
-  <div class="form__list" formArrayName="products">
+  <div
+    class="forms__list"
+    formArrayName="products"
+    [ngStyle]="{'min-height': transactionWorking.products.length ? '275px' : '' }"
+  >
 
-    <div
-      class="form__list__header"
-      [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }"
-    >
+    <div class="forms__list__header" [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }">
 
-      <ng-container>
-        <div
-          class="form__list__header__item"
-          *ngFor="let item of skeleton.list.header"
-        >{{item}}</div>
+      <ng-container *ngIf="transactionWorking.products.length">
+        <div class="forms__list__header__item" *ngFor="let item of skeleton.list.header">{{item}}</div>
       </ng-container>
 
     </div>
 
+    <div class="forms__list__items">
+
+      <div
+        class="forms__list__items__row"
+        *ngFor="let product of transactionWorking.products; index as i"
+        [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }"
+        [formGroupName]="i"
+      >
+
+        <button
+          class="forms__list__items__row__btn forms__list__items__row__btn--del-product"
+          (click)="removeProduct(i)"
+        ><mat-icon>delete_forever</mat-icon></button>
+
+        <input
+          class="forms__list__items__row__input"
+          *ngFor="let field of skeleton.list.row"
+          [placeholder]="field.displayName"
+          [type]="field.inputType"
+          [required]="field.required ?? false"
+          [value]="product | readObjectAsIndex: field.codeName"
+          [formControlName]="field.codeName"
+        >
+
+      </div>
+
+    </div>
+
     <div
-      class="form__list__row"
-      *ngFor="let product of example.products; index as i"
-      [ngStyle]="{ 'grid-template-columns': skeleton.list.colSize }"
-      [formGroupName]="i"
+      class="forms__list__add-row"
+      [ngStyle]="{
+        'justify-content': skeleton.list.addBtn.justifyContent,
+        'margin-left': skeleton.list.addBtn.marginLeft
+      }"
     >
 
       <button
-        class="form__list__row__btn form__list__row__btn--del-product"
-        (click)="removeProduct(i)"
-      ><mat-icon>delete_forever</mat-icon></button>
-
-      <input
-        class="form__list__row__input"
-        *ngFor="let field of skeleton.list.row"
-        [placeholder]="field.displayName"
-        [type]="field.inputType"
-        [required]="field.required ?? false"
-        [value]="product | readObjectAsIndex: field.codeName"
-        [formControlName]="field.codeName"
-      >
+        class="forms__list__add-row__btn"
+        type="button"
+        (click)="addProduct()"
+      ><mat-icon>add</mat-icon></button>
 
     </div>
 
   </div>
 
-  <div class="bottom">
+  <div
+    class="bottom"
+    [ngStyle]="{
+      'flex-direction': skeleton.bottom.flexDirection,
+      'justify-content': skeleton.bottom.justifyContent
+    }"
+  >
+
     <input
-      *ngFor="let btn of skeleton.bottom"
+      *ngFor="let btn of skeleton.bottom.list"
       [class]="'bottom__' + btn.codeName"
       [type]="btn.btnType"
       [value]="btn.displayName"
       (click)="operation(btn.codeName)"
       [disabled]="cmpForm.invalid && btn.codeName === 'save'"
     >
+
   </div>
 
 </form>

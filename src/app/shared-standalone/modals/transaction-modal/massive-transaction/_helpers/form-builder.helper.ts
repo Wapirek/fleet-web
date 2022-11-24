@@ -28,16 +28,13 @@ export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel | null
     ])
   ],
   recipe: [
-    item?.recipe ?? '',
+    item?.recipe ?? 'Załącz',
     Validators.compose([
       Validators.required
     ])
   ],
   isDefine: [
-    item?.isDefine ?? '',
-    Validators.compose([
-      Validators.required
-    ])
+    item?.isDefine ?? false,
   ],
   products: fb.array(item?.products.map((arrItem: ProductModel) => CreateFormGroupProduct(fb, arrItem)) ?? [])
 });

@@ -1,53 +1,74 @@
 @import "src/app/shared/components/modals/modal-style-1/modal-style-1.component";
 
-.form__list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+@mixin massiveTransactionBtn {
+  justify-self: center;
+  border-radius: 5px;
+  border: 0;
+  padding: 0 8px;
+  background-color: rgba($my-white, .2);
+  color: $my-grey-2;
+  cursor: pointer;
+  transition: opacity .2s ease-in-out;
+  height: 33px;
 
-  &__header, &__row {
-    display: grid;
-    grid-template-columns: .3fr 1fr .5fr .5fr;
-    grid-column-gap: 10px;
+  mat-icon {
+    width: 20px;
+    height: 20px;
+    size: 20px;
+    font-size: 20px;
   }
 
-  &__header__item {
-    font-size: 1.1rem;
-    color: $my-cool-blue;
+  &:hover { opacity: .8; }
+}
 
-    &:first-child { text-align: center; }
-  }
+.forms {
 
-  &__row {
-    margin: 10px 0;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 
-    &__btn {
-      justify-self: center;
-      border-radius: 5px;
-      border: 0;
-      padding: 0 8px;
-      background-color: rgba($my-white, .1);
-      color: $my-green;
-      cursor: pointer;
-      transition: opacity .2s ease-in-out;
-      height: 33px;
-
-      mat-icon {
-        width: 20px;
-        height: 20px;
-        size: 20px;
-        font-size: 20px;
-      }
-
-      &--del-product { color: $my-red; }
-      &:hover { opacity: .8; }
+    &__header, &__items__row {
+      display: grid;
+      grid-column-gap: 10px;
     }
 
-    &__input {
-      @include formInput;
-      background-color: rgba($my-white, .5);
-      color: $my-dark-blue;
-      &--suspend { background-color: transparent; }
+    &__header__item {
+      font-size: 1.1rem;
+      color: $my-cool-blue;
+
+      &:first-child { text-align: center; }
+    }
+
+    &__items {
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 190px;
+      overflow: auto;
+
+      &__row {
+
+        &__input {
+          @include formInput;
+          background-color: $my-white;
+          color: $my-grey-2;
+        }
+
+        &__btn {
+          @include massiveTransactionBtn;
+
+          &--del-product{ color: $my-red; }
+        }
+      }
+    }
+
+    &__add-row {
+      display: flex;
+      justify-content: center;
+
+      &__btn { @include massiveTransactionBtn; }
     }
   }
 }
