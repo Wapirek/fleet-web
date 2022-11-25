@@ -50,9 +50,6 @@ export class DashboardComponent {
 
   private goalAdd(): void {
     if (!this.modalHost) { return; }
-
-
-
     const componentRef = this.modalHost.viewContainerRef.createComponent(GoalModalComponent);
     componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
   }

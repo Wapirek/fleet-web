@@ -1,3 +1,5 @@
+<ng-template appPlaceholder></ng-template>
+
 <div class="container">
 
   <div class="header">
@@ -22,7 +24,27 @@
 
   </div>
 
-  <div class="center-top"></div>
+  <div class="center-top">
+
+    <div
+      *ngFor="let card of skeleton.rightTopSide"
+      class="card"
+      [ngClass]="'card--' + card.codeName"
+    >
+
+      <div class="card__title">{{card.title}}</div>
+
+      <div
+        class="card__center"
+        (click)="operation(card.codeName)"
+      ><mat-icon>{{card.iconName}}</mat-icon></div>
+
+      <div class="card__description">{{card.description}}</div>
+
+    </div>
+
+  </div>
+
   <div class="center-bottom"></div>
 
 </div>
