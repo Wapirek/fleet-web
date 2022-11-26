@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/auth/_services/auth.service';
 import { first } from 'rxjs';
 import { User } from 'src/app/auth/_models/user.model';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
-import { DebtModalComponent } from 'src/app/shared-standalone/modals/debt-modal/debt-modal.component';
+import { ProfitModalComponent } from 'src/app/shared-standalone/modals/profit-modal/profit-modal.component';
 
 @Component({
   selector: 'app-settings',
@@ -38,7 +38,7 @@ export class SettingsComponent {
 
   private manageProfit(): void {
     if (!this.modalHost) { return; }
-    const componentRef = this.modalHost.viewContainerRef.createComponent(DebtModalComponent);
+    const componentRef = this.modalHost.viewContainerRef.createComponent(ProfitModalComponent);
     componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
   }
 }
