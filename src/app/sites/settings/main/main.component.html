@@ -1,0 +1,43 @@
+<ng-template appPlaceholder></ng-template>
+
+<div class="container">
+
+  <div class="left-side">
+
+    <div class="left-side__user">
+      <fa-icon class="left-side__user__icon" [icon]="skeleton.leftSide.user.logo"></fa-icon>
+      <div class="left-side__user__username">{{skeleton.leftSide.user.name}}</div>
+    </div>
+
+    <div class="left-side__btn-list">
+
+      <button *ngFor="let btn of skeleton.leftSide.buttons" class="left-side__btn-list__btn">
+        {{btn.display}}
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="center-top">
+
+    <div
+      *ngFor="let card of skeleton.rightTopSide"
+      class="card"
+      [ngClass]="'card--' + card.codeName"
+    >
+
+      <div class="card__title">{{card.title}}</div>
+
+      <div
+        class="card__center"
+        (click)="operation(card.codeName)"
+      ><mat-icon>{{card.iconName}}</mat-icon></div>
+
+      <div class="card__description">{{card.description}}</div>
+
+    </div>
+
+  </div>
+
+</div>

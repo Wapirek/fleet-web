@@ -1,21 +1,19 @@
 import { Component } from '@angular/core';
-import { StructureBuilderHelper } from 'src/app/sites/settings/_helpers/structure-builder.helper';
-import { AuthService } from 'src/app/auth/_services/auth.service';
-import { first } from 'rxjs';
-import { User } from 'src/app/auth/_models/user.model';
+import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
 
 @Component({
   selector: 'app-settings',
-  templateUrl: './settings.component.html',
+  template: `
+    <div class="container">
+      <div class="header">
+        <mat-icon>{{header.icon}}</mat-icon>
+        <h2>{{header.title}}</h2>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  `,
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent {
-
-  skeleton = StructureBuilderHelper;
-
-  constructor(private authService: AuthService) {
-    this.authService.user
-      .pipe(first())
-      .subscribe((user: User | null) => this.skeleton.leftSide.user.name = user?.name ?? '');
-  }
+  header: HeaderModel = { icon: 'tune', title: 'Ustawienia' };
 }
