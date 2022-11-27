@@ -15,7 +15,7 @@
           *ngFor="let link of skeleton.links"
           [routerLink]="link.url"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLinkActiveOptions]="{ exact: false }"
         >{{link.name}}</a>
       </div>
 

@@ -7,15 +7,13 @@ import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/profit-
   selector: 'profit-modal',
   template: `
     <shared-modal-style-1
-      [formInitArray]="structureBuilder"
-      [title]="title"
+      [formInitArray]="skeleton.fields"
+      [title]="skeleton.title"
       (closeModal)="closeModal.emit()"
     >
-      <button
-        class="goto-list-btn"
-      >
-        <mat-icon inline="false">open_in_new</mat-icon>
-        <span>Przejdź do listy przychodów</span>
+      <button class="goto-list-btn" (click)="goTo.emit()">
+        <mat-icon inline="false">{{skeleton.goToBtn.icon}}</mat-icon>
+        <span>{{skeleton.goToBtn.nameBtn}}</span>
       </button>
     </shared-modal-style-1>`,
   styleUrls: ['./profit-modal.component.scss'],
@@ -23,11 +21,12 @@ import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/profit-
 })
 export class ProfitModalComponent {
 
-  // tytuł komponentu
-  title = 'Zarządzaj przychodem';
-
   // struktura html
-  structureBuilder = StructureBuilderHelper();
+  skeleton = StructureBuilderHelper();
+
+  // zlapanie eventu z dodatkowego przycisku,
+  // dotyczacego przejesciu do innego komponnetu
+  @Output() goTo = new EventEmitter<void>();
 
   // zamkniecie modalu
   @Output() closeModal = new EventEmitter<void>();

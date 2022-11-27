@@ -29,8 +29,7 @@
     @include bgUnderPseudoClass;
     background: $my-white;
     opacity: 0;
-    transform-origin:left center;
-    animation: loading 2s ease-in-out;
+    transition: opacity .4s ease-in-out;
   }
 
   &:hover::before { opacity: .4; }

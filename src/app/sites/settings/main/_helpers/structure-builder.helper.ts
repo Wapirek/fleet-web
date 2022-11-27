@@ -2,7 +2,6 @@ import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
 import { faCircleUser, IconDefinition } from '@fortawesome/free-regular-svg-icons';
 
 interface StructureBuilderModel {
-  header: HeaderModel;
   leftSide: {
     user: {
       logo: IconDefinition;
@@ -22,10 +21,6 @@ interface StructureBuilderModel {
 }
 
 export const StructureBuilderHelper: StructureBuilderModel = {
-  header: {
-    icon: 'tune',
-    title: 'Ustawienia'
-  },
   leftSide: {
     user: {
       logo: faCircleUser,

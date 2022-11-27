@@ -1,44 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
-import { StructureBuilderHelper } from 'src/app/sites/settings/_helpers/structure-builder.helper';
-import { AuthService } from 'src/app/auth/_services/auth.service';
-import { first } from 'rxjs';
-import { User } from 'src/app/auth/_models/user.model';
-import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
-import { ProfitModalComponent } from 'src/app/shared-standalone/modals/profit-modal/profit-modal.component';
+import { Component } from '@angular/core';
+import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
 
 @Component({
   selector: 'app-settings',
-  templateUrl: './settings.component.html',
+  template: `
+    <div class="container">
+      <div class="header">
+        <mat-icon>{{header.icon}}</mat-icon>
+        <h2>{{header.title}}</h2>
+      </div>
+      <router-outlet></router-outlet>
+      <div class="footer"></div>
+    </div>
+  `,
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent {
-
-  // catch event when user click in import file
-  @ViewChild(PlaceholderDirective, { static: true })
-  modalHost!: PlaceholderDirective;
-
-  skeleton = StructureBuilderHelper;
-
-  constructor(private authService: AuthService) {
-    this.authService.user
-      .pipe(first())
-      .subscribe((user: User | null) => this.skeleton.leftSide.user.name = user?.name ?? '');
-  }
-
-  // jedna funkcja do ktorej przychodza eventy z przyciskow
-  operation(codeName: string): void {
-    switch (codeName) {
-      case 'profit':
-        this.manageProfit();
-        break;
-      case 'deleteAccount':
-        break;
-    }
-  }
-
-  private manageProfit(): void {
-    if (!this.modalHost) { return; }
-    const componentRef = this.modalHost.viewContainerRef.createComponent(ProfitModalComponent);
-    componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
-  }
+  header: HeaderModel = { icon: 'tune', title: 'Ustawienia' };
 }
