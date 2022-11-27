@@ -10,7 +10,6 @@ import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
         <h2>{{header.title}}</h2>
       </div>
       <router-outlet></router-outlet>
-      <div class="footer"></div>
     </div>
   `,
   styleUrls: ['./settings.component.scss']
