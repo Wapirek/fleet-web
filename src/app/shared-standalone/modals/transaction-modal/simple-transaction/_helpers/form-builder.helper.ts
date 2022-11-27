@@ -1,7 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-// wzór pozwalający na uzupełnienie przez uzytkownika kwoty bedacej po przecinku
-const numRegex = /^-?\d*[.,]?\d{0,2}$/;
+import { PricePatternHelper } from 'src/app/shared/helpers/price-pattern.helper';
 
 export const FormBuilderHelper = (fb: FormBuilder): FormGroup => fb.group({
   transactionName: [
@@ -18,7 +16,7 @@ export const FormBuilderHelper = (fb: FormBuilder): FormGroup => fb.group({
       Validators.compose([
         Validators.required,
         Validators.min(0),
-        Validators.pattern(numRegex),
+        Validators.pattern(PricePatternHelper),
         Validators.max(9999999999999)
       ])
     ])

@@ -6,7 +6,7 @@ interface StructureBuilderModel {
   goToBtn: {
     icon: string;
     nameBtn: string;
-  }
+  };
 }
 
 export const StructureBuilderHelper = (): StructureBuilderModel => {
@@ -16,7 +16,7 @@ export const StructureBuilderHelper = (): StructureBuilderModel => {
       [
         {
           codeName: 'source',
-          displayName: 'Miejsce zarobku',
+          displayName: 'np. Praca',
           labelName: 'Podaj miejsce zarobku',
           width: '100%',
           required: true,

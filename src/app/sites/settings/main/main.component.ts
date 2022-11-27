@@ -60,5 +60,7 @@ export class MainComponent {
         relativeTo: this.activatedRoute
       }).then()
     });
+
+    componentRef.instance.save.subscribe((evt: any) => console.log(evt));
   }
 }
