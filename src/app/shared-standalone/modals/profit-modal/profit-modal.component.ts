@@ -10,7 +10,15 @@ import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/profit-
       [formInitArray]="structureBuilder"
       [title]="title"
       (closeModal)="closeModal.emit()"
-    ></shared-modal-style-1>`,
+    >
+      <button
+        class="goto-list-btn"
+      >
+        <mat-icon inline="false">open_in_new</mat-icon>
+        <span>Przejdź do listy przychodów</span>
+      </button>
+    </shared-modal-style-1>`,
+  styleUrls: ['./profit-modal.component.scss'],
   imports: [SharedModule]
 })
 export class ProfitModalComponent {
