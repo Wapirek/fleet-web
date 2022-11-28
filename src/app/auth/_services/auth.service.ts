@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthResponseModel } from 'src/app/auth/_services/_models/auth-response.model';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -15,6 +16,9 @@ export class AuthService {
   // adres http do api - nalezy pamietac ze jest zakonczony /
   private apiUrl = environment.apiUrl;
 
+  // service do dekodowania jwt tokenu
+  private jwtHelper = new JwtHelperService();
+
   constructor(private http: HttpClient) {}
 
   // automatyczne logowanie po uruchomieniu aplikacji
@@ -23,6 +27,7 @@ export class AuthService {
     // pobieranie danych z localstorage
     const userData: {
       username: string;
+      id: number;
       token: string;
       tokenExpiration: number;
     } = JSON.parse(localStorage.getItem('userData') || '{}');
@@ -30,8 +35,18 @@ export class AuthService {
     // jesli nie wystepuja dane nalezy przerwac
     if (!userData || !userData.tokenExpiration) { return; }
 
+    // dekoduj token
+    const decodedToken = this.jwtHelper.decodeToken(userData.token);
+
     // jesli istnieja to zostana przypisane do obiektu
-    const user = new User(userData.username, userData.token, userData.tokenExpiration);
+    const user = new User(
+      userData.username,
+      decodedToken.nameid,
+      userData.token,
+      userData.tokenExpiration
+    );
+
+    // pass to object
     this.user.next(user);
   }
 
@@ -56,8 +71,11 @@ export class AuthService {
 
   private handleAuthentication(email: string, token: string): void {
 
+    // dekoduj token
+    const decodedToken = this.jwtHelper.decodeToken(token);
+
     // zaladuj dane do glownego obiektu
-    const userData = new User(email, token, 99999999);
+    const userData = new User(email, decodedToken.nameid, token, 99999999);
     this.user.next(userData);
 
     // zapisz dane w localstorage
