@@ -1,7 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SettingsService } from 'src/app/sites/settings/_service/settings.service';
 
 @Component({
-  template: ''
+  templateUrl: './profits.component.html',
+  styleUrls: ['./profits.component.scss']
 })
-export class ProfitsComponent {}
+export class ProfitsComponent implements OnInit {
 
+  constructor(private settingsService: SettingsService) {}
+
+  ngOnInit(): void {
+    this.settingsService.getCashFlowList().subscribe(
+      r => console.log(r)
+    )
+  }
+}

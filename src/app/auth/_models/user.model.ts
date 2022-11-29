@@ -11,10 +11,6 @@ export class User {
   get id(): number { return this.accountId; }
 
   get tokenFunc(): string | null {
-    if (!this.tokenExpiration || new Date() > new Date(this.tokenExpiration)) {
-      return null;
-    }
-
     return this.token;
   }
 }
