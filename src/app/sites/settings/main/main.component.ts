@@ -32,7 +32,7 @@ export class MainComponent {
       const user = response as User | null;
 
       if (user) {
-        this.skeleton.leftSide.user.name = response?.name ?? ''
+        this.skeleton.leftSide.user.name = response?.name ?? '';
       }
     });
   }

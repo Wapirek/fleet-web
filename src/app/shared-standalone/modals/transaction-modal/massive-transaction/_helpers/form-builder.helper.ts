@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
-import { ProductModel } from 'src/app/shared/models/models/product.model';
+import { TransactionModel } from 'src/app/shared/models/models/transaction/transaction.model';
+import { ProductModel } from 'src/app/shared/models/models/transaction/product.model';
 
 export const FormBuilderHelper = (fb: FormBuilder, item: TransactionModel | null): FormGroup => fb.group({
   transactionName: [

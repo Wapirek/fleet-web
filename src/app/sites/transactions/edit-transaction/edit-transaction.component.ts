@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
+import { TransactionModel } from 'src/app/shared/models/models/transaction/transaction.model';
 import {
   StructureBuilderHelper
 } from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/structure-builder.helper';

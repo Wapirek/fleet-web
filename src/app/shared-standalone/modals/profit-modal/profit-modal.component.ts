@@ -3,7 +3,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/profit-modal/_helpers/structure-builder.helper';
 import { FormBuilderHelper } from 'src/app/shared-standalone/modals/profit-modal/_helpers/form-builder.helper';
 import { FormBuilder } from '@angular/forms';
-import { ProfitModel } from 'src/app/shared-standalone/modals/profit-modal/_models/profit.model';
+import { ProfitModel } from 'src/app/shared/models/models/settings/profit.model';
 
 @Component({
   standalone: true,

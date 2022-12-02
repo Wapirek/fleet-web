@@ -1,4 +1,4 @@
-import { DisplayColsNamePipe } from 'src/app/sites/transactions/_pipes/display-cols-name/display-cols-name.pipe';
+import { DisplayColsNamePipe } from 'src/app/shared/pipes/display-cols-name/display-cols-name.pipe';
 
 describe('DisplayColsNamePipe', () => {
   it('create an instance', () => {

@@ -1,4 +1,4 @@
-import { ProductModel } from 'src/app/shared/models/models/product.model';
+import { ProductModel } from 'src/app/shared/models/models/transaction/product.model';
 
 export interface TransactionModel {
   id: number;

@@ -16,6 +16,7 @@ import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.dire
 import { ModalStyle1Component } from './components/modals/modal-style-1/modal-style-1.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReadObjectAsIndexPipe } from './pipes/read-object-as-index/read-object-as-index.pipe';
+import { DisplayColsNamePipe } from 'src/app/shared/pipes/display-cols-name/display-cols-name.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,10 @@ import { ReadObjectAsIndexPipe } from './pipes/read-object-as-index/read-object-
 
     // directives
     PlaceholderDirective,
-    ReadObjectAsIndexPipe
+
+    // pipes
+    ReadObjectAsIndexPipe,
+    DisplayColsNamePipe
   ],
   imports: [
 
@@ -61,6 +65,7 @@ import { ReadObjectAsIndexPipe } from './pipes/read-object-as-index/read-object-
 
     // pipes
     ReadObjectAsIndexPipe,
+    DisplayColsNamePipe,
 
     // modals
     ModalStyle1Component,
