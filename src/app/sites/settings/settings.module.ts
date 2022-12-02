@@ -5,6 +5,7 @@ import { ProfitsComponent } from 'src/app/sites/settings/profits/profits.compone
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MainComponent } from 'src/app/sites/settings/main/main.component';
 import { MainResolver } from 'src/app/sites/settings/main/_main-resolver/main.resolver';
+import { MatTableModule } from '@angular/material/table';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    MatTableModule
   ]
 })
 export class SettingsModule {}
