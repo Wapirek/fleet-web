@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CodeNameWidget, StructureBuilderHelper } from 'src/app/sites/transactions/_helpers/structure-builder.helper';
 import { DisplayedColumnsArray, DisplayedColumnsModel } from 'src/app/sites/transactions/_arrays/displayed-columns.array';
 import { MatTableDataSource } from '@angular/material/table';
-import { TransactionModel } from 'src/app/shared/models/models/transaction.model';
+import { TransactionModel } from 'src/app/shared/models/models/transaction/transaction.model';
 import { TransactionsService } from 'src/app/sites/transactions/_services/transactions.service';
 import { debounceTime, distinctUntilChanged, merge, startWith, Subject, Subscription, switchMap } from 'rxjs';
 

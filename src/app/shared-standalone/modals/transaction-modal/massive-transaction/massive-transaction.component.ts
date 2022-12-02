@@ -8,7 +8,7 @@ import {
   FormBuilderHelper
 } from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/form-builder.helper';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { ProductModel } from 'src/app/shared/models/models/product.model';
+import { ProductModel } from 'src/app/shared/models/models/transaction/product.model';
 import {
   InitTransactionHelper
 } from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/_helpers/init-transaction.helper';
