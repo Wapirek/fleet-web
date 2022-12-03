@@ -1,4 +1,4 @@
-import { HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { exhaustMap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/_services/auth.service';
@@ -17,13 +17,11 @@ export class AuthInterceptorService implements HttpInterceptor {
         exhaustMap(
           (user: User | null) => {
             if (user) {
-              const headers = new HttpHeaders()
-                .set('Authorization', `Bearer ${user.tokenFunc}`)
-                .set('accountId', user.id.toString())
-
-              req = req.clone({ headers: headers });
+              console.log('asds');
+              req = req.clone({ setHeaders: {
+                  Authorization: `Bearer ${user.tokenFunc}` }
+              });
             }
-
             return next.handle(req);
           }
         )
