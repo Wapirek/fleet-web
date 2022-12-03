@@ -1,26 +1,23 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Subject } from 'rxjs';
 import { DisplayedColumnsModel } from 'src/app/sites/transactions/_arrays/displayed-columns.array';
-import { TransactionModel } from 'src/app/shared/models/models/transaction/transaction.model';
 
 @Component({
   standalone: true,
+  selector: 'shared-standalone-table-1',
   templateUrl: './table-1.component.html',
   styleUrls: ['./table-1.component.scss'],
-  imports: [
-    SharedModule, MatTableModule
-  ]
+  imports: [SharedModule, MatTableModule]
 })
-export class Table1Component {
+export class Table1Component<T> {
 
   // lista kolumn przypisana do tabeli
   @Input() displayedColumns: DisplayedColumnsModel[] = [];
 
   // aktualny stan tabeli
-  @Input() dataSource: MatTableDataSource<TransactionModel> | undefined;
+  @Input() dataSource!: MatTableDataSource<T>;
 
-  // aktywny pole wyszukiwania
-  searcher$ = new Subject<string>();
+  // pole wyszukiwania
+  @Output() searcher = new EventEmitter<string>();
 }

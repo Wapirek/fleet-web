@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://fleet-api.norka.dev/api/'
+  apiUrl: 'http://10.10.0.2/api/'
 };
 
 /*

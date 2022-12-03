@@ -5,7 +5,7 @@
     <input
       class="header__searcher"
       type="text"
-      (input)="searcher$.next($any($event.target).value)"
+      (input)="searcher.emit($any($event.target).value)"
       placeholder="Wyszukaj"
     >
 
