@@ -2,8 +2,10 @@ import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DisplayedColumnsModel } from 'src/app/sites/transactions/_arrays/displayed-columns.array';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
+import { debounceTime, distinctUntilChanged, merge, Subject } from 'rxjs';
+import { StateTableModel } from 'src/app/shared/models/models/state-table.model';
 
 @Component({
   standalone: true,
@@ -19,6 +21,14 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 })
 export class Table1Component<T> implements AfterViewInit {
 
+  // przypisanie do zmiennych sortowania z html
+  @ViewChild(MatSort) sort!: MatSort;
+
+  // przypisanie do zmiennych pagniacji z html
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  @Input() count = 0;
+
   // lista kolumn przypisana do tabeli
   @Input() displayedColumns: DisplayedColumnsModel[] = [];
 
@@ -26,20 +36,37 @@ export class Table1Component<T> implements AfterViewInit {
   @Input() dataSource!: MatTableDataSource<T>;
 
   // pole wyszukiwania
-  @Output() searcher = new EventEmitter<string>();
+  searcher$ = new Subject<string>();
 
-  // przypisanie do zmiennych sortowania z html
-  @ViewChild(MatSort) sort!: MatSort;
-
-  // przypisanie do zmiennych pagniacji z html
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  // binder laczacy state rodzica z stanem tabeli
+  @Input() state!: StateTableModel;
+  @Output() stateChange = new EventEmitter<StateTableModel>();
 
   ngAfterViewInit(): void {
 
-    // dodanie do zrodla danych elemntu sortowania z html
-    this.dataSource.sort = this.sort;
+    merge(
+      this.paginator?.page,
+      this.sort?.sortChange,
+      this.searcher$.pipe(debounceTime(600), distinctUntilChanged())
+    ).pipe(
+    ).subscribe((term: string | Sort | PageEvent | {}) => {
 
-    // dodanie do zrodla danych elemntu paginacji z html
-    this.dataSource.paginator = this.paginator;
+      // zareaguj na dzialanie gdy uzytkownik wpisze tekst
+      if (typeof term === 'string') {
+        this.state.searchTxt = term;
+
+        // zareaguj kiedy uzytkownik sortuje tabele
+      } else if ((term as Sort).active) {
+
+        // zareaguj kiedy uztykownik zmieni strone
+      } else if (term as PageEvent) {
+        this.state.pageIndex = (term as PageEvent).pageIndex;
+        this.state.pageSize = (term as PageEvent).pageSize;
+      }
+
+
+      // odeslij gotowy stan tabeli
+      this.stateChange.emit(this.state);
+    })
   }
 }
