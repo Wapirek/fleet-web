@@ -13,15 +13,17 @@
 
   <div class="table-fix">
 
-    <table mat-table [dataSource]="dataSource">
+    <table
+      mat-table
+      matSort
+      [dataSource]="dataSource"
+    >
 
-      <ng-container
-        *ngFor="let col of displayedColumns"
-        [matColumnDef]="col.codeName"
-      >
+      <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col.codeName">
 
         <th
           mat-header-cell
+          mat-sort-header
           *matHeaderCellDef
           [width]="col.width"
         >{{col.name}}</th>
@@ -42,6 +44,13 @@
 
   </div>
 
-  <div class="footer"></div>
+  <div class="footer">
+    <mat-paginator
+      class="own-table__bottom__paginator"
+      [pageSizeOptions]="[5, 10, 15]"
+      showFirstLastButtons
+      color="warn"
+    ></mat-paginator>
+  </div>
 
 </div>
