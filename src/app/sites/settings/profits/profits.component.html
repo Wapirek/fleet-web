@@ -1,5 +1,6 @@
 <shared-standalone-table-1
   [dataSource]="dataSource"
   [displayedColumns]="displayedColumns"
-  (searcher)="searcher$.next($event)"
+  [state]="initStateTable"
+  (stateChange)="this.stateTable$.next($any($event))"
 ></shared-standalone-table-1>

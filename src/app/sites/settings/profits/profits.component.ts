@@ -3,7 +3,8 @@ import { SettingsService } from 'src/app/sites/settings/_service/settings.servic
 import { MatTableDataSource } from '@angular/material/table';
 import { DisplayedColumnsArray } from 'src/app/sites/settings/profits/_arrays/displayed-columns.array';
 import { ProfitModel } from 'src/app/shared/models/models/settings/profit.model';
-import { Subject, Subscription } from 'rxjs';
+import { startWith, Subject, Subscription, switchMap } from 'rxjs';
+import { StateTableModel } from 'src/app/shared/models/models/state-table.model';
 
 @Component({
   templateUrl: './profits.component.html',
@@ -17,23 +18,41 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
   // aktualny stan tabeli
   dataSource = new MatTableDataSource<ProfitModel>();
 
-  searcher$ = new Subject<string>();
+  // poczatkowy stan danych do tabeli
+  initStateTable: StateTableModel = {
+    pageIndex: 0,
+    pageSize: 5,
+    count: 0,
+    searchTxt: ''
+  };
 
+  // zmienna obserwacyjna odpowiedzi z komponentu tabeli
+  stateTable$ = new Subject<StateTableModel>();
+
+  // subskrypcja elementow w tym komponencie do wylaczenia
   private subscription: Subscription | undefined;
 
   constructor(private settingsService: SettingsService) {}
 
   ngAfterViewInit(): void {
 
-    this.searcher$.subscribe(txt => console.log(txt));
+    // sprawdz stan danych do tabeli nastepenie przekaz je i odpytaj api
+    this.subscription = this.stateTable$.pipe(
+      startWith(this.initStateTable),
+      switchMap((s: StateTableModel) => this.settingsService.getCashFlowList(s))
+    ).subscribe(
+      res => {
 
-    this.dataSource.sort?.sortChange.subscribe(s => console.log(s));
+        // tabela zaczyna numeracje od 0
+        this.initStateTable.pageIndex = res.pageIndex - 1;
 
-    this.settingsService.getCashFlowList()
-      .subscribe(r => {
-        console.log(r);
-        this.dataSource.data = r;
-      })
+        // przypisz ilosc wszysdtkich wyszukanych danych
+        this.initStateTable.count = res.count;
+
+        // pobierz mieso
+        this.dataSource.data = res.data;
+      }
+    );
   }
 
   ngOnDestroy(): void { this.subscription?.unsubscribe(); }

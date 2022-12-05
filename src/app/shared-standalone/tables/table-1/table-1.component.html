@@ -5,7 +5,7 @@
     <input
       class="header__searcher"
       type="text"
-      (input)="searcher.emit($any($event.target).value)"
+      (input)="searcher$.next($any($event.target).value)"
       placeholder="Wyszukaj"
     >
 
@@ -48,6 +48,8 @@
     <mat-paginator
       class="own-table__bottom__paginator"
       [pageSizeOptions]="[5, 10, 15]"
+      [pageSize]="state.pageSize"
+      [length]="state.count"
       showFirstLastButtons
       color="warn"
     ></mat-paginator>
