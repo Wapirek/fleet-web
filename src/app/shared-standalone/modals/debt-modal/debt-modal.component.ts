@@ -4,7 +4,6 @@ import { StructureBuilderHelper } from 'src/app/shared-standalone/modals/debt-mo
 
 @Component({
   standalone: true,
-  selector: 'debt-modal',
   template: `
     <shared-modal-style-1
       [formInitArray]="structureBuilder"

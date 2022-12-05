@@ -6,6 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MainComponent } from 'src/app/sites/settings/main/main.component';
 import { MainResolver } from 'src/app/sites/settings/main/_main-resolver/main.resolver';
 import { MatTableModule } from '@angular/material/table';
+import { Table1Component } from 'src/app/shared-standalone/tables/table-1/table-1.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     SharedModule,
-    MatTableModule
+    MatTableModule,
+    Table1Component
   ]
 })
 export class SettingsModule {}

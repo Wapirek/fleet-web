@@ -17,10 +17,11 @@ export class SettingsService {
     return this.http.post(this.apiUrl + 'userprofile/get-cashflow', {});
   }
 
-  // pobiera liste przyplywow z api,
-  // zwraca gotowa liste
+  // pobiera liste przyplywow z api, zwraca gotowa liste
   getCashFlowList = (): Observable<ProfitModel[]> => this.http
-    .get<ResponseModel<ProfitModel[]>>(this.apiUrl + 'userprofile/get-cashflows')
-    .pipe(map(r => r.response))
+    .get<any>(this.apiUrl + 'userprofile/get-cashflows', {
+      params: { accId: 1 }
+    })
+    .pipe(map(r => r.data.response))
 }
 

@@ -8,6 +8,7 @@ import { EditTransactionComponent } from './edit-transaction/edit-transaction.co
 import {
   MassiveTransactionComponent
 } from 'src/app/shared-standalone/modals/transaction-modal/massive-transaction/massive-transaction.component';
+import { Table1Component } from 'src/app/shared-standalone/tables/table-1/table-1.component';
 
 const routes: Routes = [
   { path: '', component: TransactionsComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
     SharedModule,
     MatTableModule,
     MatPaginatorModule,
-    MassiveTransactionComponent
+    MassiveTransactionComponent,
+    Table1Component
   ]
 })
 export class TransactionsModule {}
