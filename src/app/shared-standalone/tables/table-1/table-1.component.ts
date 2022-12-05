@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DisplayedColumnsModel } from 'src/app/sites/transactions/_arrays/displayed-columns.array';
@@ -17,7 +17,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     MatSortModule
   ]
 })
-export class Table1Component<T> implements OnInit {
+export class Table1Component<T> implements AfterViewInit {
 
   // lista kolumn przypisana do tabeli
   @Input() displayedColumns: DisplayedColumnsModel[] = [];
@@ -28,12 +28,18 @@ export class Table1Component<T> implements OnInit {
   // pole wyszukiwania
   @Output() searcher = new EventEmitter<string>();
 
-  // przypisanie do zmiennych sortowania i pagniacji z html
-  @Input() sort!: MatSort;
-  @Input() paginator!: MatPaginator;
+  // przypisanie do zmiennych sortowania z html
+  @ViewChild(MatSort) sort!: MatSort;
 
-  ngOnInit(): void {
+  // przypisanie do zmiennych pagniacji z html
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngAfterViewInit(): void {
+
+    // dodanie do zrodla danych elemntu sortowania z html
     this.dataSource.sort = this.sort;
+
+    // dodanie do zrodla danych elemntu paginacji z html
     this.dataSource.paginator = this.paginator;
   }
 }

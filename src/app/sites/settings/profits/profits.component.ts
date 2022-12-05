@@ -1,23 +1,15 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { SettingsService } from 'src/app/sites/settings/_service/settings.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { DisplayedColumnsArray } from 'src/app/sites/settings/profits/_arrays/displayed-columns.array';
 import { ProfitModel } from 'src/app/shared/models/models/settings/profit.model';
-import { first, Subject, Subscription } from 'rxjs';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
   templateUrl: './profits.component.html',
   styleUrls: ['./profits.component.scss']
 })
-export class ProfitsComponent implements OnInit, OnDestroy {
-
-  @ViewChild(MatSort) sort!: MatSort;
-
-
-  // getting paginator emitter from material component
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+export class ProfitsComponent implements AfterViewInit, OnDestroy {
 
   // lista kolumn przypisana do tabeli
   displayedColumns = DisplayedColumnsArray;
@@ -31,11 +23,11 @@ export class ProfitsComponent implements OnInit, OnDestroy {
 
   constructor(private settingsService: SettingsService) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
 
-    this.dataSource.connect().subscribe(s => console.log(s))
+    this.searcher$.subscribe(txt => console.log(txt));
 
-    this.sort?.sortChange.subscribe(s => console.log(s))
+    this.dataSource.sort?.sortChange.subscribe(s => console.log(s));
 
     this.settingsService.getCashFlowList()
       .subscribe(r => {
