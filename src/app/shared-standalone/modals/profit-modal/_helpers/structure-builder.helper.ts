@@ -11,7 +11,7 @@ interface StructureBuilderModel {
 
 export const StructureBuilderHelper = (): StructureBuilderModel => {
   return {
-    title: 'Zarządzaj przychodem',
+    title: 'Dodaj przychód',
     fields: [
       [
         {

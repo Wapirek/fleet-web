@@ -20,10 +20,10 @@ export const FormBuilderHelper = (fb: FormBuilder, item: ProfitModel | null): Fo
     ])
   ],
   periodicityDay: [
-    item?.periodicityDay ?? 0,
+    item?.periodicityDay ?? 1,
     Validators.compose([
       Validators.required,
-      Validators.min(0),
+      Validators.min(1),
       Validators.max(366)
     ])
   ],

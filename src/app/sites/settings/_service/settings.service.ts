@@ -1,19 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { ProfitModel } from 'src/app/shared/models/models/settings/profit.model';
 import { map } from 'rxjs/operators';
 import { PagApiResponseModel } from 'src/app/shared/models/models/pag-api-response.model';
 import { StateTableModel } from 'src/app/shared/models/models/state-table.model';
 import { PagServiceResponseModel } from 'src/app/shared/models/models/pag-service-response.model';
+import { AuthService } from 'src/app/auth/_services/auth.service';
+import { ResponseModel } from 'src/app/shared/models/models/response.model';
 
 @Injectable({ providedIn: 'root' })
 export class SettingsService {
 
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) {}
+
+  // dodaj element przyplywu do api, zwraca gotowy przychod
+  addCashFlow = (profit: ProfitModel): Observable<ProfitModel> => this.http
+    .post<ResponseModel<ProfitModel>>(this.apiUrl + 'userprofile/add-cashflow', {
+      accountId: this.authService.user.getValue()?.id ?? -1,
+      cashFlowKind: 'Przychód',
+      source: profit.source,
+      charge: profit.charge,
+      nextCashFlow: profit.nextCashFlow,
+      periodicityDay: profit.periodicityDay
+    } as ProfitModel)
+    .pipe(map(val => {
+      if (val.statusCode === 400) { throwError(new Error()); }
+
+      return val.response;
+    }))
 
   getCashFlow(): Observable<any> {
     return this.http.post(this.apiUrl + 'userprofile/get-cashflow', {});
@@ -22,7 +43,7 @@ export class SettingsService {
   // pobiera liste przyplywow z api, zwraca gotowa liste
   getCashFlowList = (state: StateTableModel): Observable<PagServiceResponseModel<ProfitModel[]>> => this.http
     .get<PagApiResponseModel<ProfitModel[]>>(this.apiUrl + 'userprofile/get-cashflows', {
-      params: { accId: 1, pageSize: state.pageSize, pageIndex: state.pageIndex + 1 }
+      params: { accId: this.authService.user.getValue()?.id ?? -1, pageSize: state.pageSize, pageIndex: state.pageIndex + 1 }
     })
     .pipe(
       map(val => {
