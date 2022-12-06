@@ -1,4 +1,5 @@
 import { FieldModel } from 'src/app/shared/models/models/field.model';
+import { CreateTomorrowTimeHelper } from 'src/app/shared-standalone/modals/profit-modal/_helpers/create-tomorrow-time.helper';
 
 interface StructureBuilderModel {
   title: string;
@@ -50,7 +51,8 @@ export const StructureBuilderHelper = (): StructureBuilderModel => {
           width: '160px',
           required: true,
           readonly: false,
-          inputType: 'date'
+          inputType: 'date',
+          min: CreateTomorrowTimeHelper()
         }
       ]
     ],

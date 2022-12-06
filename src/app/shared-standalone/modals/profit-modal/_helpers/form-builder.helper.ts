@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfitModel } from 'src/app/shared/models/models/settings/profit.model';
 import { PricePatternHelper } from 'src/app/shared/helpers/price-pattern.helper';
+import { CreateTomorrowTimeHelper } from 'src/app/shared-standalone/modals/profit-modal/_helpers/create-tomorrow-time.helper';
 
 export const FormBuilderHelper = (fb: FormBuilder, item: ProfitModel | null): FormGroup => fb.group({
   source: [
@@ -28,10 +29,7 @@ export const FormBuilderHelper = (fb: FormBuilder, item: ProfitModel | null): Fo
     ])
   ],
   nextCashFlow: [
-    item?.nextCashFlow ?? new Date().toISOString().slice(0, 10),
-    Validators.compose([
-      Validators.required
-    ])
+    item?.nextCashFlow ?? CreateTomorrowTimeHelper(),
+    Validators.compose([Validators.required])
   ],
 });
-

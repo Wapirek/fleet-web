@@ -5,9 +5,11 @@ import { User } from 'src/app/auth/_models/user.model';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { ProfitModalComponent } from 'src/app/shared-standalone/modals/profit-modal/profit-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first, Subscription, switchMap } from 'rxjs';
+import { filter, first, merge, of, Subscription, switchMap } from 'rxjs';
 import { ProfitModel } from 'src/app/shared/models/models/settings/profit.model';
 import { SettingsService } from 'src/app/sites/settings/_service/settings.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'settings-main',
@@ -28,7 +30,8 @@ export class MainComponent implements OnDestroy {
   constructor(
     private settingsService: SettingsService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {
 
     this.subscription = this.activatedRoute.data.subscribe(({ response }) => {
@@ -54,27 +57,42 @@ export class MainComponent implements OnDestroy {
   }
 
   private manageProfit(): void {
+
+    // sprawdza czy istnieje derektywa do umieszczenia modala
     if (!this.modalHost) { return; }
+
+    // miejsce komponentu modalnego
     const componentRef = this.modalHost.viewContainerRef.createComponent(ProfitModalComponent);
 
-    const sub1 = componentRef.instance.closeModal.subscribe(() => componentRef.destroy());
+    const sub = merge(
+      componentRef.instance.closeModal.pipe(map(() => 'closeModal')),
+      componentRef.instance.goTo.pipe(map(() => 'goTo')),
+      componentRef.instance.save
+    ).pipe(
+      map(res => {
+        switch (res) {
+          case 'closeModal':
+            componentRef.destroy();
+            return false;
+          case 'goTo':
+            this.router.navigate(['przychody'], { relativeTo: this.activatedRoute }).then();
+            componentRef.destroy();
+            return false;
+          default:
+            return res;
+        }
+      }),
+      filter(res => res),
+      switchMap((form: any) => this.settingsService.addCashFlow(form as ProfitModel)), first()
+    ).subscribe(
+      () => {
+        this.snackBar.open('Przychód dodany');
+        componentRef.destroy();
+      },
+      () => this.snackBar.open('Co poszło nie tak')
+    )
 
-    const sub2 = componentRef.instance.goTo.subscribe(() => {
-      componentRef.destroy();
-      this.router.navigate(['przychody'], { relativeTo: this.activatedRoute }).then()
-    });
-
-    componentRef.instance.save
-      .pipe(
-        switchMap((form: any) => this.settingsService.addCashFlow(form as ProfitModel)),
-        first()
-      )
-      .subscribe((profit: ProfitModel) => {
-        console.log(profit);
-      });
-
-    this.subscription.add(sub1);
-    this.subscription.add(sub2);
+    this.subscription.add(sub);
   }
 
   ngOnDestroy(): void { this.subscription.unsubscribe(); }

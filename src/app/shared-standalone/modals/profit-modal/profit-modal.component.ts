@@ -41,6 +41,5 @@ export class ProfitModalComponent {
 
   // przycisk potwierdzający zapis
   @Output() save = new EventEmitter<any>();
-
   constructor(private formBuilder: FormBuilder) {}
 }
