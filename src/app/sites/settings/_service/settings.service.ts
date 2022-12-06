@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ProfitModel } from 'src/app/shared/models/models/settings/profit.model';
 import { map } from 'rxjs/operators';
 import { PagApiResponseModel } from 'src/app/shared/models/models/pag-api-response.model';
@@ -30,11 +30,7 @@ export class SettingsService {
       nextCashFlow: profit.nextCashFlow,
       periodicityDay: profit.periodicityDay
     } as ProfitModel)
-    .pipe(map(val => {
-      if (val.statusCode === 400) { throwError(new Error()); }
-
-      return val.response;
-    }))
+    .pipe(map(val => val.response))
 
   getCashFlow(): Observable<any> {
     return this.http.post(this.apiUrl + 'userprofile/get-cashflow', {});

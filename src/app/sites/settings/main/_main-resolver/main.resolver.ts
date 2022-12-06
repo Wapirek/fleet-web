@@ -14,9 +14,6 @@ export class MainResolver implements Resolve<User | null> {
   constructor(private authService: AuthService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User | null> {
-    return this.authService.user
-      .pipe(
-        first()
-      );
+    return this.authService.user.pipe(first());
   }
 }

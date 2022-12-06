@@ -1,11 +1,10 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { StructureBuilderHelper } from 'src/app/sites/settings/main/_helpers/structure-builder.helper';
 import { AuthService } from 'src/app/auth/_services/auth.service';
-import { User } from 'src/app/auth/_models/user.model';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { ProfitModalComponent } from 'src/app/shared-standalone/modals/profit-modal/profit-modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, first, merge, of, Subscription, switchMap } from 'rxjs';
+import { filter, first, merge, Subscription, switchMap } from 'rxjs';
 import { ProfitModel } from 'src/app/shared/models/models/settings/profit.model';
 import { SettingsService } from 'src/app/sites/settings/_service/settings.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -28,21 +27,13 @@ export class MainComponent implements OnDestroy {
   private subscription!: Subscription;
 
   constructor(
+    private authService: AuthService,
     private settingsService: SettingsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar
   ) {
-
-    this.subscription = this.activatedRoute.data.subscribe(({ response }) => {
-
-      // set response data as User
-      const user = response as User | null;
-
-      if (user) {
-        this.skeleton.leftSide.user.name = response?.name ?? '';
-      }
-    });
+    this.skeleton.leftSide.user.name = this.authService.user.getValue()?.name ?? '';
   }
 
   // jedna funkcja do ktorej przychodza eventy z przyciskow
@@ -64,7 +55,7 @@ export class MainComponent implements OnDestroy {
     // miejsce komponentu modalnego
     const componentRef = this.modalHost.viewContainerRef.createComponent(ProfitModalComponent);
 
-    const sub = merge(
+    this.subscription = merge(
       componentRef.instance.closeModal.pipe(map(() => 'closeModal')),
       componentRef.instance.goTo.pipe(map(() => 'goTo')),
       componentRef.instance.save
@@ -91,8 +82,6 @@ export class MainComponent implements OnDestroy {
       },
       () => this.snackBar.open('Co poszło nie tak')
     )
-
-    this.subscription.add(sub);
   }
 
   ngOnDestroy(): void { this.subscription.unsubscribe(); }

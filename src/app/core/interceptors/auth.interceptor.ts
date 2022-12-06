@@ -17,10 +17,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         exhaustMap(
           (user: User | null) => {
             if (user) {
-              console.log('asds');
-              req = req.clone({ setHeaders: {
-                  Authorization: `Bearer ${user.tokenFunc}` }
-              });
+              req = req.clone({ setHeaders: { Authorization: `Bearer ${user.tokenFunc}` } });
             }
             return next.handle(req);
           }
