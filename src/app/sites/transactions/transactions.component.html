@@ -17,6 +17,8 @@
   <shared-standalone-table-1
     [dataSource]="dataSource"
     [displayedColumns]="displayedColumns"
+    [state]="initStateTable"
+    (stateChange)="this.stateTable$.next($any($event))"
   ></shared-standalone-table-1>
 
 </div>

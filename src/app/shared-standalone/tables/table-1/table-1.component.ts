@@ -27,6 +27,7 @@ export class Table1Component<T> implements AfterViewInit {
   // przypisanie do zmiennych pagniacji z html
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  // ilosc wszystkich elementow, ktore istnieja w bazie o danym parametrze
   @Input() count = 0;
 
   // lista kolumn przypisana do tabeli
@@ -41,6 +42,9 @@ export class Table1Component<T> implements AfterViewInit {
   // binder laczacy state rodzica z stanem tabeli
   @Input() state!: StateTableModel;
   @Output() stateChange = new EventEmitter<StateTableModel>();
+
+  // zwroc wybrany element
+  @Output() selectedId = new EventEmitter<number>();
 
   ngAfterViewInit(): void {
 
@@ -63,7 +67,6 @@ export class Table1Component<T> implements AfterViewInit {
         this.state.pageIndex = (term as PageEvent).pageIndex;
         this.state.pageSize = (term as PageEvent).pageSize;
       }
-
 
       // odeslij gotowy stan tabeli
       this.stateChange.emit(this.state);

@@ -4,7 +4,8 @@ import { DisplayedColumnsArray, DisplayedColumnsModel } from 'src/app/sites/tran
 import { MatTableDataSource } from '@angular/material/table';
 import { TransactionModel } from 'src/app/shared/models/models/transaction/transaction.model';
 import { TransactionsService } from 'src/app/sites/transactions/_services/transactions.service';
-import { debounceTime, distinctUntilChanged, merge, startWith, Subject, Subscription, switchMap } from 'rxjs';
+import { startWith, Subject, Subscription, switchMap } from 'rxjs';
+import { StateTableModel } from 'src/app/shared/models/models/state-table.model';
 
 @Component({
   selector: 'app-transactions',
@@ -22,24 +23,34 @@ export class TransactionsComponent implements OnInit {
   // aktualny stan tabeli
   dataSource: MatTableDataSource<TransactionModel> = new MatTableDataSource<TransactionModel>();
 
-  // aktywny pole wyszukiwania
-  searcher$ = new Subject<string>();
+  // zmienna obserwacyjna odpowiedzi z komponentu tabeli
+  stateTable$ = new Subject<StateTableModel>();
+
+  // poczatkowy stan danych do tabeli
+  initStateTable: StateTableModel = {
+    pageIndex: 0,
+    pageSize: 5,
+    count: 0,
+    searchTxt: ''
+  };
 
   constructor(private transactionsService: TransactionsService) {}
 
   private subscription: Subscription | undefined;
 
   ngOnInit(): void {
-    this.subscription = merge(
-      this.searcher$.pipe(debounceTime(600), distinctUntilChanged()),
-    ).pipe(
-      startWith({}),
-      switchMap((searchTerm: string | {}) => {
-        return this.transactionsService.getListOfInstance()
-      })
+
+    // sprawdz stan danych do tabeli nastepenie przekaz je i odpytaj api
+    this.subscription = this.stateTable$.pipe(
+      startWith(this.initStateTable),
+      switchMap((s: StateTableModel) => this.transactionsService.getListOfInstance())
     ).subscribe(
-      (result: TransactionModel[]) => this.dataSource.data = result
-    )
+      res => {
+
+        // pobierz mieso
+        this.dataSource.data = res;
+      }
+    );
   }
 
   addTransaction(): void {}
