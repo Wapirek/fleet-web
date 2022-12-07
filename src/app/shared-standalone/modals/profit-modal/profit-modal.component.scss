@@ -2,7 +2,7 @@
 @import "src/app/shared/styles/elements";
 @import "src/app/shared/styles/animations";
 
-.goto-list-btn {
+.goto-list-btn, .remove-list-btn {
   position: relative;
   background-color: transparent;
   border: 0;
@@ -34,3 +34,5 @@
 
   &:hover::before { opacity: .4; }
 }
+
+.remove-list-btn { color: $my-red; }

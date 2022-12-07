@@ -1,6 +1,9 @@
+<ng-template appPlaceholder></ng-template>
+
 <shared-standalone-table-1
   [dataSource]="dataSource"
   [displayedColumns]="displayedColumns"
-  [state]="initStateTable"
+  [(state)]="stateTable"
   (stateChange)="this.stateTable$.next($any($event))"
+  (selectedId)="selectProfit($event)"
 ></shared-standalone-table-1>

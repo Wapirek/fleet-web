@@ -1,0 +1,20 @@
+<shared-modal-style-1
+  [formInitArray]="skeleton.fields"
+  [title]="skeleton.title"
+  [cmpForm]="cmpForm"
+  (closeModal)="closeModal.emit()"
+  (save)="save.emit($event)"
+>
+  <button *ngIf="!profitModel.source; else removeBtn" class="goto-list-btn" (click)="goTo.emit()">
+    <mat-icon inline="false">{{skeleton.goToBtn.icon}}</mat-icon>
+    <span>{{skeleton.goToBtn.nameBtn}}</span>
+  </button>
+
+  <ng-template #removeBtn>
+    <button class="remove-list-btn" (click)="remove.emit()">
+      <mat-icon inline="false">{{skeleton.removeBtn.icon}}</mat-icon>
+      <span>{{skeleton.removeBtn.nameBtn}}</span>
+    </button>
+  </ng-template>
+
+</shared-modal-style-1>

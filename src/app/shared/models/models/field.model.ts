@@ -9,4 +9,5 @@ export interface FieldModel {
   readonly?: boolean;
   defaultValue?: string | number;
   inputType: FieldInputType;
+  min?: number | string;
 }

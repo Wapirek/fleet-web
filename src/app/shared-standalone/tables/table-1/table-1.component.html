@@ -37,7 +37,7 @@
         mat-row
         *matRowDef="let row;
           columns: displayedColumns | DisplayColsName;"
-        [routerLink]="row.id"
+        (click)="selectedId.emit(row)"
       ></tr>
 
     </table>

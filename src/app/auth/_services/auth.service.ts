@@ -38,6 +38,11 @@ export class AuthService {
     // dekoduj token
     const decodedToken = this.jwtHelper.decodeToken(userData.token);
 
+    if (!decodedToken) {
+      this.logout();
+      return;
+    }
+
     // jesli istnieja to zostana przypisane do obiektu
     const user = new User(
       userData.username,
@@ -73,6 +78,8 @@ export class AuthService {
 
     // dekoduj token
     const decodedToken = this.jwtHelper.decodeToken(token);
+
+    if (!decodedToken) { this.logout(); }
 
     // zaladuj dane do glownego obiektu
     const userData = new User(email, decodedToken.nameid, token, 99999999);
