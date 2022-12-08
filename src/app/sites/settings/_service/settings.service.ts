@@ -23,7 +23,7 @@ export class SettingsService {
       accountId: this.authService.user.getValue()?.id ?? -1,
       cashFlowKind: 'Przychód',
       source: profit.source,
-      charge: profit.charge,
+      charge: +profit.charge,
       nextCashFlow: profit.nextCashFlow,
       periodicityDay: profit.periodicityDay
     } as ProfitModel)
@@ -56,7 +56,7 @@ export class SettingsService {
       accountId: Number(this.authService.user.getValue()?.id ?? -1),
       cashFlowKind: profit.cashFlowKind ?? 'Przychód',
       source: profit.source,
-      charge: profit.charge,
+      charge: +profit.charge,
       nextCashFlow: profit.nextCashFlow,
       periodicityDay: profit.periodicityDay
     }).pipe(map(val => val.response))

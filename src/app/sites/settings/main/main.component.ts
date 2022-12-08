@@ -1,5 +1,5 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
-import { StructureBuilderHelper } from 'src/app/sites/settings/main/_helpers/structure-builder.helper';
+import { StructureBuilderArray } from 'src/app/sites/settings/main/_arrays/structure-builder.array';
 import { AuthService } from 'src/app/auth/_services/auth.service';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { ProfitModalComponent } from 'src/app/shared-standalone/modals/profit-modal/profit-modal.component';
@@ -22,7 +22,7 @@ export class MainComponent implements OnDestroy {
   modalHost!: PlaceholderDirective;
 
   // struktura html
-  skeleton = StructureBuilderHelper;
+  skeleton = StructureBuilderArray;
 
   private subscription!: Subscription;
 

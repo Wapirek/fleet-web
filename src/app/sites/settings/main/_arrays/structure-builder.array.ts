@@ -20,7 +20,7 @@ interface StructureBuilderModel {
   }[];
 }
 
-export const StructureBuilderHelper: StructureBuilderModel = {
+export const StructureBuilderArray: StructureBuilderModel = {
   leftSide: {
     user: {
       logo: faCircleUser,
@@ -38,7 +38,7 @@ export const StructureBuilderHelper: StructureBuilderModel = {
       codeName: 'profit',
       title: 'Zarządzaj przychodem',
       iconName: 'attach_money',
-      description: '0 zł'
+      description: 'Dodaj przychód'
     },
     {
       codeName: 'setCurrency',

@@ -10,6 +10,8 @@ import { map } from 'rxjs/operators';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/auth/_services/auth.service';
+import { StructureBuilderArray } from 'src/app/sites/settings/profits/_arrays/structure-builder.array';
+import { DatePipe } from '@angular/common';
 
 @Component({
   templateUrl: './profits.component.html',
@@ -38,13 +40,16 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
   // zmienna obserwacyjna odpowiedzi z komponentu tabeli
   stateTable$ = new Subject<StateTableModel>();
 
+  structureBuilder = StructureBuilderArray;
+
   // subskrypcja elementow w tym komponencie do wylaczenia
   private subscription: Subscription | undefined;
 
   constructor(
     private authService: AuthService,
     private settingsService: SettingsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private datePipe: DatePipe
   ) {}
 
   ngAfterViewInit(): void {
@@ -63,13 +68,26 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
         this.stateTable.count = res.count;
 
         // pobierz mieso
-        this.dataSource.data = res.data;
+        this.dataSource.data = res.data.map(p => {
+
+          // ustaw sformatowana date zanim zostanie wyslana
+          p.nextCashFlow = this.datePipe.transform(p.nextCashFlow, "dd.MM.yyyy") ?? '';
+          return p;
+        });
       }
     );
   }
 
+  eventWidgetSwitch(codeName: 'add_profit' | ''): void {
+    switch (codeName) {
+      case 'add_profit':
+        this.openModalProfit({} as ProfitModel, true);
+        break;
+    }
+  }
+
   // po kliknieciu z listy elementu wyswietlamy modal z przychodem
-  selectProfit(evt: any): void {
+  openModalProfit(evt: any, isNewProfit = false): void {
 
     // sprawdza czy istnieje derektywa do umieszczenia modala
     if (!this.modalHost) { return; }
@@ -81,11 +99,17 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
     const profit = (evt as ProfitModel);
 
     // utwórz date na nowo
-    profit.nextCashFlow = new Date((profit.nextCashFlow) as Date)
-      .toISOString().slice(0, 10);
+    profit.nextCashFlow = profit.nextCashFlow
+      ? new Date((profit.nextCashFlow) as Date).toISOString().slice(0, 10)
+      : undefined;
 
     // przypisz caly obiekt
     componentRef.instance.profitModel = profit;
+
+    // wykonaj wlasciwa operacje dla nowego i edytowaneg przychodu
+    const operationApiSub = (res: ProfitModel) => isNewProfit
+      ? this.settingsService.addCashFlow(res)
+      : this.settingsService.updateCashFlow(res);
 
     this.subscription = merge(
       componentRef.instance.closeModal.pipe(map(() => 'closeModal')),
@@ -104,7 +128,7 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
       filter(res => res),
       switchMap(
         (res: any) => (res as ProfitModel).source
-          ? this.settingsService.updateCashFlow(res as ProfitModel)
+          ? operationApiSub(res)
           : this.settingsService.deleteCashFlow(profit.source)
       ),
       first()
