@@ -1,9 +1,19 @@
 <ng-template appPlaceholder></ng-template>
 
+<div class="widgets">
+  <button
+    class="widgets__btn"
+    *ngFor="let btn of structureBuilder.widgets"
+    (click)="eventWidgetSwitch(btn.codeName)"
+  >
+    <mat-icon>{{btn.icon}}</mat-icon> {{btn.name}}
+  </button>
+</div>
+
 <shared-standalone-table-1
   [dataSource]="dataSource"
   [displayedColumns]="displayedColumns"
   [(state)]="stateTable"
   (stateChange)="this.stateTable$.next($any($event))"
-  (selectedId)="selectProfit($event)"
+  (selectedId)="openModalProfit($event)"
 ></shared-standalone-table-1>

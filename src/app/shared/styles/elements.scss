@@ -29,6 +29,7 @@
   cursor: pointer;
   z-index: 1;
   font-size: 1rem;
+  box-shadow: $box-shadow-1;
 
   &::before {
     content: '';

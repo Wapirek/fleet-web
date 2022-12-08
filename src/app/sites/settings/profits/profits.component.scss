@@ -5,64 +5,17 @@
   height: 0;
 }
 
-.my-table {
-  margin-top: 20px;
-  background-color: $my-dark-blue;
-  box-shadow: $box-shadow-1;
-  border-radius: 5px;
-  padding: 10px 0;
-  flex: 1;
+.widgets {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 
-  &__header {
-    padding: 5px 10px;
-
-    &__searcher {
-      border: 0;
-      border-radius: 5px;
-      background-color: rgba($my-cool-blue, .1);
-      padding: 7px 15px;
-      font-size: .9rem;
-      color: $my-white;
-    }
-  }
-
-  &__fix {
-    overflow: auto;
-
-    ::ng-deep table.mat-table {
-      table-layout: fixed;
-      background-color: transparent;
-      width: 100%;
-
-      thead tr.mat-header-row.cdk-header-row.ng-star-inserted {
-        font-size: 1rem !important;
-        height: 40px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
-        th.mat-header-cell { color: $my-white; }
-      }
-
-      tbody tr.mat-row.cdk-row.ng-star-inserted {
-        border-bottom: 1px solid $my-grey;
-        height: 40px;
-        cursor: pointer;
-
-        td.mat-cell {
-          color: $my-grey;
-          font-size: .9rem;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-
-        &:hover { opacity: .8; }
-      }
-    }
-  }
-
-  &__bottom {
-    margin-top: 10px;
+  &__btn {
+    @include btnGreyTem1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 }
