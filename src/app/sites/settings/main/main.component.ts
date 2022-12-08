@@ -24,7 +24,8 @@ export class MainComponent implements OnDestroy {
   // struktura html
   skeleton = StructureBuilderArray;
 
-  private subscription!: Subscription;
+  // subskrypcja elementow w tym komponencie do wylaczenia
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private authService: AuthService,
@@ -55,7 +56,7 @@ export class MainComponent implements OnDestroy {
     // miejsce komponentu modalnego
     const componentRef = this.modalHost.viewContainerRef.createComponent(ProfitModalComponent);
 
-    this.subscription = merge(
+    const sub = merge(
       componentRef.instance.closeModal.pipe(map(() => 'closeModal')),
       componentRef.instance.goTo.pipe(map(() => 'goTo')),
       componentRef.instance.save
@@ -82,6 +83,8 @@ export class MainComponent implements OnDestroy {
       },
       () => this.snackBar.open('Co poszło nie tak')
     )
+
+    this.subscription.add(sub);
   }
 
   ngOnDestroy(): void { this.subscription.unsubscribe(); }
