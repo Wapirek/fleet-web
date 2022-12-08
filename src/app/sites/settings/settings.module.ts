@@ -7,7 +7,6 @@ import { MainComponent } from 'src/app/sites/settings/main/main.component';
 import { MainResolver } from 'src/app/sites/settings/main/_main-resolver/main.resolver';
 import { MatTableModule } from '@angular/material/table';
 import { Table1Component } from 'src/app/shared-standalone/tables/table-1/table-1.component';
-import { DatePipe } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -31,8 +30,7 @@ const routes: Routes = [
     SharedModule,
     MatTableModule,
     Table1Component
-  ],
-  providers: [DatePipe]
+  ]
 })
 export class SettingsModule {}
 

@@ -1,27 +1,8 @@
 @import "src/app/shared/styles/variables";
 @import "src/app/shared/styles/elements";
 
-::ng-deep td.mat-cell.cdk-cell.cdk-column-expandedDetail.mat-column-expandedDetail {
-  height: 0;
-}
-
 .container {
   margin-top: 20px;
 
   .header { @include skeletonHeader1; }
-
-  .widgets {
-    margin: 20px 0;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-
-    &__btn {
-      @include btnGreyTem1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-    }
-  }
 }

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DisplayedColumnsModel } from 'src/app/sites/transactions/_arrays/displayed-columns.array';
+import { DisplayedColumnsModel } from 'src/app/shared/models/structure-html/displayed-columns.model';
 
 @Pipe({ name: 'DisplayColsName' })
 export class DisplayColsNamePipe implements PipeTransform {

@@ -1,31 +1,25 @@
 import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
-
-export declare type CodeNameWidget = 'add_transaction' | 'list_category';
+import { ButtonModel } from 'src/app/shared/models/structure-html/button.model';
 
 interface StructureBuilderModel {
   header: HeaderModel;
-  widgets: {
-    name: string;
-    codeName: CodeNameWidget;
-    icon: string;
-  }[];
+  widgets: ButtonModel[];
 }
 
 export const StructureBuilderHelper: StructureBuilderModel = {
-  header: {
-    icon: 'payments',
-    title: 'Transakcje'
-  },
+  header: { icon: 'payments', title: 'Transakcje' },
   widgets: [
     {
-      name: 'Nowa transakcja',
+      displayName: 'Nowa transakcja',
       codeName: 'add_transaction',
-      icon: 'add'
+      iconName: 'playlist_add',
+      btnType: 'button'
     },
     {
-      name: 'Kategorie',
+      displayName: 'Kategorie',
       codeName: 'list_category',
-      icon: 'list'
+      iconName: 'list',
+      btnType: 'button'
     }
   ]
 }

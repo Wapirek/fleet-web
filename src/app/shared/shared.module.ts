@@ -17,11 +17,14 @@ import { ModalStyle1Component } from './components/modals/modal-style-1/modal-st
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReadObjectAsIndexPipe } from './pipes/read-object-as-index/read-object-as-index.pipe';
 import { DisplayColsNamePipe } from 'src/app/shared/pipes/display-cols-name/display-cols-name.pipe';
+import { ButtonsBar1Component } from 'src/app/shared/components/widgets/buttons-bar-1/buttons-bar-1.component';
 
 @NgModule({
   declarations: [
+
+    // components scratch
     MyCard1Component,
-    DictArrayCardPipe,
+    ButtonsBar1Component,
     BarChartComponent,
     PieChartComponent,
 
@@ -33,7 +36,8 @@ import { DisplayColsNamePipe } from 'src/app/shared/pipes/display-cols-name/disp
 
     // pipes
     ReadObjectAsIndexPipe,
-    DisplayColsNamePipe
+    DisplayColsNamePipe,
+    DictArrayCardPipe,
   ],
   imports: [
 
@@ -58,14 +62,16 @@ import { DisplayColsNamePipe } from 'src/app/shared/pipes/display-cols-name/disp
     RouterModule,
     ReactiveFormsModule,
 
-    // created
+    // components scratch
     MyCard1Component,
     BarChartComponent,
     PieChartComponent,
+    ButtonsBar1Component,
 
     // pipes
     ReadObjectAsIndexPipe,
     DisplayColsNamePipe,
+    DictArrayCardPipe,
 
     // modals
     ModalStyle1Component,
@@ -78,9 +84,6 @@ import { DisplayColsNamePipe } from 'src/app/shared/pipes/display-cols-name/disp
 
     // icons
     FontAwesomeModule,
-
-    // read-object-as-index
-    DictArrayCardPipe,
 
     // directives
     PlaceholderDirective
