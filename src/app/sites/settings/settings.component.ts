@@ -19,7 +19,7 @@ import { CreateTxtFromPathHelper } from 'src/app/shared/helpers/create-txt-from-
 })
 export class SettingsComponent implements OnInit, OnDestroy {
 
-  // obiekt budujacy glowony header
+  // obiekt budujacy glowony header-1
   header: HeaderModel = { icon: 'tune', title: '' };
 
   // w tym miejscu beda przypisywane subskrypcje
