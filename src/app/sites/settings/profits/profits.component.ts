@@ -10,13 +10,10 @@ import { map } from 'rxjs/operators';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/auth/_services/auth.service';
-import { StructureBuilderArray } from 'src/app/sites/settings/profits/_arrays/structure-builder.array';
 import { DatePipe } from '@angular/common';
+import { ButtonModel } from 'src/app/shared/models/structure-html/button.model';
 
-@Component({
-  templateUrl: './profits.component.html',
-  styleUrls: ['./profits.component.scss']
-})
+@Component({ templateUrl: './profits.component.html' })
 export class ProfitsComponent implements AfterViewInit, OnDestroy {
 
   // ustawienie modala w aktualnym templacie html
@@ -40,7 +37,14 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
   // zmienna obserwacyjna odpowiedzi z komponentu tabeli
   stateTable$ = new Subject<StateTableModel>();
 
-  structureBuilder = StructureBuilderArray;
+  widgetButtons: ButtonModel[] = [
+    {
+      codeName: 'addProfit',
+      displayName: 'Dodaj przychód',
+      iconName: 'playlist_add',
+      btnType: 'button'
+    }
+  ];
 
   // subskrypcja elementow w tym komponencie do wylaczenia
   private subscription: Subscription | undefined;
@@ -48,8 +52,7 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private settingsService: SettingsService,
-    private snackBar: MatSnackBar,
-    private datePipe: DatePipe
+    private snackBar: MatSnackBar
   ) {}
 
   ngAfterViewInit(): void {
@@ -68,19 +71,14 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
         this.stateTable.count = res.count;
 
         // pobierz mieso
-        this.dataSource.data = res.data.map(p => {
-
-          // ustaw sformatowana date zanim zostanie wyslana
-          p.nextCashFlow = this.datePipe.transform(p.nextCashFlow, "dd.MM.yyyy") ?? '';
-          return p;
-        });
+        this.dataSource.data = res.data;
       }
     );
   }
 
-  eventWidgetSwitch(codeName: 'add_profit' | ''): void {
+  eventWidgetSwitch(codeName: string): void {
     switch (codeName) {
-      case 'add_profit':
+      case 'addProfit':
         this.openModalProfit({} as ProfitModel, true);
         break;
     }

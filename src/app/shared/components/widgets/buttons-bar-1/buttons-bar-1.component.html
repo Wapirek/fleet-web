@@ -1,0 +1,11 @@
+<div class="container">
+
+  <button
+    class="container__btn"
+    *ngFor="let btn of buttons"
+    (click)="btnOutput.emit(btn.codeName)"
+  >
+    <mat-icon>{{btn.iconName}}</mat-icon> {{btn.displayName}}
+  </button>
+
+</div>

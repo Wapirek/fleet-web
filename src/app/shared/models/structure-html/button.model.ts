@@ -4,4 +4,5 @@ export interface ButtonModel {
   codeName: string;
   displayName: string;
   btnType: StructureBuilderBottomBtn;
+  iconName?: string;
 }

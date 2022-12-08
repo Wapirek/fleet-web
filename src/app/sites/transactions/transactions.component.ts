@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CodeNameWidget, StructureBuilderHelper } from 'src/app/sites/transactions/_helpers/structure-builder.helper';
-import { DisplayedColumnsArray, DisplayedColumnsModel } from 'src/app/sites/transactions/_arrays/displayed-columns.array';
+import { DisplayedColumnsArray } from 'src/app/sites/transactions/_arrays/displayed-columns.array';
 import { MatTableDataSource } from '@angular/material/table';
 import { TransactionModel } from 'src/app/shared/models/models/transaction/transaction.model';
 import { TransactionsService } from 'src/app/sites/transactions/_services/transactions.service';
 import { startWith, Subject, Subscription, switchMap } from 'rxjs';
 import { StateTableModel } from 'src/app/shared/models/models/state-table.model';
+import { DisplayedColumnsModel } from 'src/app/shared/models/structure-html/displayed-columns.model';
 
 @Component({
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })
-export class TransactionsComponent implements OnInit {
+export class TransactionsComponent implements OnInit, OnDestroy {
 
   // szkielet templatu
   skeleton = StructureBuilderHelper;
@@ -67,4 +68,6 @@ export class TransactionsComponent implements OnInit {
   }
 
   showListCategory(): void {}
+
+  ngOnDestroy(): void { this.subscription?.unsubscribe(); }
 }

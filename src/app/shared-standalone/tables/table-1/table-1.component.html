@@ -28,15 +28,25 @@
           [width]="col.width"
         >{{col.name}}</th>
 
-        <td mat-cell *matCellDef="let element">{{element[col.codeName]}}</td>
+        <ng-container [ngSwitch]="col.cellType">
+
+          <ng-container *ngSwitchCase="'date'">
+            <td mat-cell *matCellDef="let element">{{element[col.codeName] | date: "MM.dd.yyyy"}}</td>
+          </ng-container>
+
+          <ng-container *ngSwitchDefault>
+            <td mat-cell *matCellDef="let element">{{element[col.codeName]}}</td>
+          </ng-container>
+
+        </ng-container>
+
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns | DisplayColsName"></tr>
 
       <tr
         mat-row
-        *matRowDef="let row;
-          columns: displayedColumns | DisplayColsName;"
+        *matRowDef="let row; columns: displayedColumns | DisplayColsName;"
         (click)="selectedId.emit(row)"
       ></tr>
 

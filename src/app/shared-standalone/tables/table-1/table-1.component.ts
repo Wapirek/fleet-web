@@ -1,11 +1,12 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { DisplayedColumnsModel } from 'src/app/sites/transactions/_arrays/displayed-columns.array';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
-import { debounceTime, distinctUntilChanged, merge, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, merge, Subject, Subscription } from 'rxjs';
 import { StateTableModel } from 'src/app/shared/models/models/state-table.model';
+import { DisplayedColumnsModel } from 'src/app/shared/models/structure-html/displayed-columns.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   standalone: true,
@@ -17,9 +18,10 @@ import { StateTableModel } from 'src/app/shared/models/models/state-table.model'
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
-  ]
+  ],
+  providers: [DatePipe]
 })
-export class Table1Component<T> implements AfterViewInit {
+export class Table1Component<T> implements AfterViewInit, OnDestroy {
 
   // przypisanie do zmiennych sortowania z html
   @ViewChild(MatSort) sort!: MatSort;
@@ -46,9 +48,11 @@ export class Table1Component<T> implements AfterViewInit {
   // zwroc wybrany element
   @Output() selectedId = new EventEmitter<number>();
 
+  private subscription!: Subscription;
+
   ngAfterViewInit(): void {
 
-    merge(
+    this.subscription = merge(
       this.paginator?.page,
       this.sort?.sortChange,
       this.searcher$.pipe(debounceTime(600), distinctUntilChanged())
@@ -72,4 +76,6 @@ export class Table1Component<T> implements AfterViewInit {
       this.stateChange.emit(this.state);
     })
   }
+
+  ngOnDestroy(): void { this.subscription.unsubscribe(); }
 }
