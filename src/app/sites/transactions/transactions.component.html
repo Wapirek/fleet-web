@@ -5,14 +5,10 @@
     <h2>{{skeleton.header.title}}</h2>
   </div>
 
-  <div class="widgets">
-
-    <button class="widgets__btn" *ngFor="let btn of skeleton.widgets" (click)="eventWidgetSwitch(btn.codeName)">
-      <mat-icon>{{btn.icon}}</mat-icon>
-      {{btn.name}}
-    </button>
-
-  </div>
+  <shared-buttons-bar-1
+    [buttons]="skeleton.widgets"
+    (btnOutput)="eventWidgetSwitch($event)"
+  ></shared-buttons-bar-1>
 
   <shared-standalone-table-1
     [dataSource]="dataSource"

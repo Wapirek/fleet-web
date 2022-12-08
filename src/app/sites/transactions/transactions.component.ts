@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CodeNameWidget, StructureBuilderHelper } from 'src/app/sites/transactions/_helpers/structure-builder.helper';
+import { Component, OnInit } from '@angular/core';
+import { StructureBuilderHelper } from 'src/app/sites/transactions/_helpers/structure-builder.helper';
 import { DisplayedColumnsArray } from 'src/app/sites/transactions/_arrays/displayed-columns.array';
 import { MatTableDataSource } from '@angular/material/table';
 import { TransactionModel } from 'src/app/shared/models/models/transaction/transaction.model';
 import { TransactionsService } from 'src/app/sites/transactions/_services/transactions.service';
-import { startWith, Subject, Subscription, switchMap } from 'rxjs';
+import { first, startWith, Subject, switchMap } from 'rxjs';
 import { StateTableModel } from 'src/app/shared/models/models/state-table.model';
 import { DisplayedColumnsModel } from 'src/app/shared/models/structure-html/displayed-columns.model';
 
@@ -13,7 +13,7 @@ import { DisplayedColumnsModel } from 'src/app/shared/models/structure-html/disp
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })
-export class TransactionsComponent implements OnInit, OnDestroy {
+export class TransactionsComponent implements OnInit {
 
   // szkielet templatu
   skeleton = StructureBuilderHelper;
@@ -37,14 +37,13 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
   constructor(private transactionsService: TransactionsService) {}
 
-  private subscription: Subscription | undefined;
-
   ngOnInit(): void {
 
     // sprawdz stan danych do tabeli nastepenie przekaz je i odpytaj api
-    this.subscription = this.stateTable$.pipe(
+    this.stateTable$.pipe(
       startWith(this.initStateTable),
-      switchMap((s: StateTableModel) => this.transactionsService.getListOfInstance())
+      switchMap((s: StateTableModel) => this.transactionsService.getListOfInstance()),
+      first()
     ).subscribe(
       res => {
 
@@ -56,8 +55,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
   addTransaction(): void {}
 
-  eventWidgetSwitch(codeNameWidget: CodeNameWidget): void {
-    switch (codeNameWidget) {
+  eventWidgetSwitch(codeName: string): void {
+    switch (codeName) {
       case 'add_transaction':
         this.addTransaction();
         break;
@@ -68,6 +67,4 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   }
 
   showListCategory(): void {}
-
-  ngOnDestroy(): void { this.subscription?.unsubscribe(); }
 }
