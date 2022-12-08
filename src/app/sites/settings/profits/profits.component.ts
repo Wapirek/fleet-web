@@ -11,6 +11,7 @@ import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.dire
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/auth/_services/auth.service';
 import { StructureBuilderArray } from 'src/app/sites/settings/profits/_arrays/structure-builder.array';
+import { DatePipe } from '@angular/common';
 
 @Component({
   templateUrl: './profits.component.html',
@@ -47,7 +48,8 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private settingsService: SettingsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private datePipe: DatePipe
   ) {}
 
   ngAfterViewInit(): void {
@@ -66,7 +68,12 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
         this.stateTable.count = res.count;
 
         // pobierz mieso
-        this.dataSource.data = res.data;
+        this.dataSource.data = res.data.map(p => {
+
+          // ustaw sformatowana date zanim zostanie wyslana
+          p.nextCashFlow = this.datePipe.transform(p.nextCashFlow, "dd.MM.yyyy") ?? '';
+          return p;
+        });
       }
     );
   }
