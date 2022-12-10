@@ -1,12 +1,9 @@
 
 <ng-template appPlaceholder></ng-template>
 
-<div class="container" #start>
+<shared-header-1 [header]="skeleton.header"></shared-header-1>
 
-  <div class="header">
-    <mat-icon>{{skeleton.header.icon}}</mat-icon>
-    <h2>{{skeleton.header?.title}}</h2>
-  </div>
+<div class="container" #start>
 
   <section class="widgets">
     <app-my-card-1 *ngFor="let card of (skeleton.cards | dictArrayCard)"

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { ShortBtnCodeName, StructureBuilderHelper, StructureBuilderModel } from 'src/app/sites/dashboard/_helpers/structure-builder.helper';
+import { ShortBtnCodeName, StructureBuilderArray, StructureBuilderModel } from 'src/app/sites/dashboard/_arrays/structure-builder.array';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { TransactionModalComponent } from 'src/app/shared-standalone/modals/transaction-modal/transaction-modal.component';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class DashboardComponent {
   @ViewChild(PlaceholderDirective, { static: true })
   modalHost!: PlaceholderDirective;
 
-  skeleton: StructureBuilderModel = StructureBuilderHelper;
+  skeleton: StructureBuilderModel = StructureBuilderArray;
 
   constructor(private router: Router) {}
 
