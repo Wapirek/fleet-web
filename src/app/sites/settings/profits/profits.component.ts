@@ -10,8 +10,9 @@ import { map } from 'rxjs/operators';
 import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.directive';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/auth/_services/auth.service';
-import { DatePipe } from '@angular/common';
 import { ButtonModel } from 'src/app/shared/models/structure-html/button.model';
+import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({ templateUrl: './profits.component.html' })
 export class ProfitsComponent implements AfterViewInit, OnDestroy {
@@ -19,6 +20,14 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
   // ustawienie modala w aktualnym templacie html
   @ViewChild(PlaceholderDirective, { static: true })
   modalHost!: PlaceholderDirective;
+
+  header: HeaderModel = {
+    titles: [
+      { codeName:'settings', displayName: 'Ustawienia' },
+      { codeName: 'profits', displayName: 'Przychody' }
+    ],
+    icon: 'tune'
+  };
 
   // lista kolumn przypisana do tabeli
   displayedColumns = DisplayedColumnsArray;
@@ -47,18 +56,20 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
   ];
 
   // subskrypcja elementow w tym komponencie do wylaczenia
-  private subscription: Subscription | undefined;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private authService: AuthService,
     private settingsService: SettingsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngAfterViewInit(): void {
 
     // sprawdz stan danych do tabeli nastepenie przekaz je i odpytaj api
-    this.subscription = this.stateTable$.pipe(
+    const sub = this.stateTable$.pipe(
       startWith(this.stateTable),
       switchMap((s: StateTableModel) => this.settingsService.getCashFlowList(s))
     ).subscribe(
@@ -74,14 +85,27 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
         this.dataSource.data = res.data;
       }
     );
+
+    this.subscription.add(sub);
   }
 
+  // pobrany event z przycisku
   eventWidgetSwitch(codeName: string): void {
     switch (codeName) {
       case 'addProfit':
         this.openModalProfit({} as ProfitModel, true);
         break;
     }
+  }
+
+  // po kliknieciu w breadCrumb pobierana zostaja nazwa elementu
+  goTo(title: string): void {
+
+    // slownik z lista sciezek
+    const pathList: { [key: string]: string } = { settings: '../' };
+
+    // przejscie do konkretnej sciezki
+    this.router.navigate([pathList[title]], { relativeTo: this.activatedRoute });
   }
 
   // po kliknieciu z listy elementu wyswietlamy modal z przychodem
@@ -109,7 +133,7 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
       ? this.settingsService.addCashFlow(res)
       : this.settingsService.updateCashFlow(res);
 
-    this.subscription = merge(
+    const sub = merge(
       componentRef.instance.closeModal.pipe(map(() => 'closeModal')),
       componentRef.instance.save,
       componentRef.instance.remove.pipe(map(() => 'remove'))
@@ -141,7 +165,9 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
         this.snackBar.open('Co poszło nie tak');
       }
     )
+
+    this.subscription.add(sub);
   }
 
-  ngOnDestroy(): void { this.subscription?.unsubscribe(); }
+  ngOnDestroy(): void { this.subscription.unsubscribe(); }
 }

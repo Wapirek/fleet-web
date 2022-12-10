@@ -48,11 +48,12 @@ export class Table1Component<T> implements AfterViewInit, OnDestroy {
   // zwroc wybrany element
   @Output() selectedId = new EventEmitter<number>();
 
-  private subscription!: Subscription;
+  // subskrypcja elementow w tym komponencie do wylaczenia
+  private subscription = new Subscription();
 
   ngAfterViewInit(): void {
 
-    this.subscription = merge(
+    const sub = merge(
       this.paginator?.page,
       this.sort?.sortChange,
       this.searcher$.pipe(debounceTime(600), distinctUntilChanged())
@@ -75,6 +76,8 @@ export class Table1Component<T> implements AfterViewInit, OnDestroy {
       // odeslij gotowy stan tabeli
       this.stateChange.emit(this.state);
     })
+
+    this.subscription.add(sub);
   }
 
   ngOnDestroy(): void { this.subscription.unsubscribe(); }

@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ReadObjectAsIndexPipe } from './pipes/read-object-as-index/read-object-as-index.pipe';
 import { DisplayColsNamePipe } from 'src/app/shared/pipes/display-cols-name/display-cols-name.pipe';
 import { ButtonsBar1Component } from 'src/app/shared/components/widgets/buttons-bar-1/buttons-bar-1.component';
+import { Header1Component } from 'src/app/shared/components/templates/header-1/header-1.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ButtonsBar1Component } from 'src/app/shared/components/widgets/buttons-
     // components scratch
     MyCard1Component,
     ButtonsBar1Component,
+    Header1Component,
     BarChartComponent,
     PieChartComponent,
 
@@ -64,6 +66,7 @@ import { ButtonsBar1Component } from 'src/app/shared/components/widgets/buttons-
 
     // components scratch
     MyCard1Component,
+    Header1Component,
     BarChartComponent,
     PieChartComponent,
     ButtonsBar1Component,

@@ -7,7 +7,7 @@ interface StructureBuilderModel {
 }
 
 export const StructureBuilderHelper: StructureBuilderModel = {
-  header: { icon: 'payments', title: 'Transakcje' },
+  header: { icon: 'payments', titles: [ { codeName: 'transactions', displayName: 'Transakcje' } ] },
   widgets: [
     {
       displayName: 'Nowa transakcja',

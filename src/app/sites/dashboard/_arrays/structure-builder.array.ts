@@ -50,9 +50,9 @@ export interface StructureBuilderModel {
   }[];
 }
 
-export const StructureBuilderHelper: StructureBuilderModel = {
+export const StructureBuilderArray: StructureBuilderModel = {
   header: {
-    title: 'Dashboard',
+    titles: [{ codeName: 'dashboard', displayName: 'Dashboard' }],
     icon: 'dashboard'
   },
   cards: {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StructureBuilderHelper } from 'src/app/sites/statistics/_helpers/structure-builder.helper';
+import { StructureBuilderArray } from 'src/app/sites/statistics/_arrays/structure-builder.array';
 
 @Component({
   selector: 'app-statistics',
@@ -8,6 +8,6 @@ import { StructureBuilderHelper } from 'src/app/sites/statistics/_helpers/struct
 })
 export class StatisticsComponent {
 
-  skeleton = StructureBuilderHelper;
+  skeleton = StructureBuilderArray;
 
 }

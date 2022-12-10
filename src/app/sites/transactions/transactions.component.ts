@@ -9,9 +9,7 @@ import { StateTableModel } from 'src/app/shared/models/models/state-table.model'
 import { DisplayedColumnsModel } from 'src/app/shared/models/structure-html/displayed-columns.model';
 
 @Component({
-  selector: 'app-transactions',
   templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss']
 })
 export class TransactionsComponent implements OnInit {
 

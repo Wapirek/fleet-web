@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonModel } from 'src/app/shared/models/structure-html/button.model';
-import { OptionsModel } from 'src/app/shared/components/widgets/_models/options.model';
+import { OptionsModel } from 'src/app/shared/components/widgets/buttons-bar-1/_models/options.model';
 
 @Component({
   selector: 'shared-buttons-bar-1',

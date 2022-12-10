@@ -1,5 +1,7 @@
 <ng-template appPlaceholder></ng-template>
 
+<shared-header-1 [header]="header" (outputTitle)="goTo($event)"></shared-header-1>
+
 <shared-buttons-bar-1
   [buttons]="widgetButtons"
   (btnOutput)="eventWidgetSwitch($event)"

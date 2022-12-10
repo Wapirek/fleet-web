@@ -12,10 +12,10 @@ interface StructureBuilderModel {
   }
 }
 
-export const StructureBuilderHelper: StructureBuilderModel = {
+export const StructureBuilderArray: StructureBuilderModel = {
   header: {
     icon: 'pie_chart',
-    title: 'Statystyki'
+    titles: [{ codeName: 'statistics', displayName: 'Statystyki' }]
   },
   charts: {
     bar: {
