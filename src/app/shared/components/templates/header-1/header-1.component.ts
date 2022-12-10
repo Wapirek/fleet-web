@@ -6,10 +6,10 @@ import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
   template: `
     <div class="header">
       <mat-icon>{{header.icon}}</mat-icon>
-      <div>
-        <span *ngFor="let title of header.titleName" class="header__title" (click)="titleCmp.emit(title)">
-          {{title}}
-        </span>
+      <div class="header__title">
+        <a *ngFor="let title of header.titles" (click)="outputTitle.emit(title.codeName)">
+          {{title.displayName}}
+        </a>
       </div>
     </div>
   `,
@@ -21,5 +21,5 @@ export class Header1Component {
   @Input() header!: HeaderModel;
 
   // Zwraca tytul ktory zostal klikniety
-  @Output() titleCmp = new EventEmitter<string>();
+  @Output() outputTitle = new EventEmitter<string>();
 }

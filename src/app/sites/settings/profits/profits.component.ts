@@ -11,6 +11,8 @@ import { PlaceholderDirective } from 'src/app/shared/directives/placeholder.dire
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/auth/_services/auth.service';
 import { ButtonModel } from 'src/app/shared/models/structure-html/button.model';
+import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({ templateUrl: './profits.component.html' })
 export class ProfitsComponent implements AfterViewInit, OnDestroy {
@@ -18,6 +20,14 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
   // ustawienie modala w aktualnym templacie html
   @ViewChild(PlaceholderDirective, { static: true })
   modalHost!: PlaceholderDirective;
+
+  header: HeaderModel = {
+    titles: [
+      { codeName:'settings', displayName: 'Ustawienia' },
+      { codeName: 'profits', displayName: 'Przychody' }
+    ],
+    icon: 'tune'
+  };
 
   // lista kolumn przypisana do tabeli
   displayedColumns = DisplayedColumnsArray;
@@ -51,7 +61,9 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private settingsService: SettingsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngAfterViewInit(): void {
@@ -84,6 +96,16 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
         this.openModalProfit({} as ProfitModel, true);
         break;
     }
+  }
+
+  // po kliknieciu w breadCrumb pobierana zostaja nazwa elementu
+  goTo(title: string): void {
+
+    // slownik z lista sciezek
+    const pathList: { [key: string]: string } = { settings: '../' };
+
+    // przejscie do konkretnej sciezki
+    this.router.navigate([pathList[title]], { relativeTo: this.activatedRoute });
   }
 
   // po kliknieciu z listy elementu wyswietlamy modal z przychodem

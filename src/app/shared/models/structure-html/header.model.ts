@@ -1,5 +1,8 @@
 export interface HeaderModel {
   icon: string;
   title?: string;
-  titleName?: string[];
+  titles?: {
+    codeName: string;
+    displayName: string;
+  }[];
 }

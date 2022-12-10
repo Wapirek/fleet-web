@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MainResolver } from './main.resolver';
+import { SettingsResolver } from 'src/app/sites/settings/_resolvers/settings.resolver';
 
 describe('MainResolver', () => {
-  let resolver: MainResolver;
+  let resolver: SettingsResolver;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    resolver = TestBed.inject(MainResolver);
+    resolver = TestBed.inject(SettingsResolver);
   });
 
   it('should be created', () => {

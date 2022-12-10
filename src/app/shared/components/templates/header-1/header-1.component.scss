@@ -11,21 +11,25 @@
   background: $my-dark-blue-linear;
   align-items: center;
   border-radius: 5px;
-  gap: 10px;
+  gap: 5px;
 
-  mat-icon, &__title { color: $my-white; }
+  mat-icon, &__title a { color: $my-white; }
 
-  &__title {
+  &__title a {
     cursor: pointer;
     font-size: 1.3rem;
 
-    &:hover { opacity: .8; }
-    &:first-child::before { content: ''; }
-
     &::before {
       content: '/';
+      margin: 0 5px;
       font-size: 1.5rem;
       color: $my-cool-blue;
+      text-decoration: initial;
     }
+
+    &:hover { color: $my-grey; }
+    &:hover::before { color: $my-cool-blue; }
+
+    &:last-child { color: $my-white; cursor: initial; }
   }
 }

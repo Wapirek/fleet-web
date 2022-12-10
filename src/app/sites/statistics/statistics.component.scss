@@ -16,9 +16,7 @@
 
     .center-top, .center-bottom, .right-side { @include templateBg1; }
 
-    .center-top {
-      grid-area: center-top;
-    }
+    .center-top { grid-area: center-top; }
 
     .center-bottom {
       grid-area: center-bottom;

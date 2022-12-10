@@ -15,7 +15,7 @@ interface StructureBuilderModel {
 export const StructureBuilderArray: StructureBuilderModel = {
   header: {
     icon: 'pie_chart',
-    titleName: ['Statystyki']
+    titles: [{ codeName: 'statistics', displayName: 'Statystyki' }]
   },
   charts: {
     bar: {
