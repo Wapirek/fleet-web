@@ -125,6 +125,9 @@ export class ProfitsComponent implements AfterViewInit, OnDestroy {
       ? new Date((profit.nextCashFlow) as Date).toISOString().slice(0, 10)
       : undefined;
 
+    // ukryj przycisk
+    if (isNewProfit) { componentRef.instance.options = { hiddenLinkAndRemove: true }; }
+
     // przypisz caly obiekt
     componentRef.instance.profitModel = profit;
 
