@@ -31,8 +31,9 @@ export class SettingsService {
 
   // kasowanie przychodu
   deleteCashFlow = (source: string): Observable<string> => this.http
-    .delete<ResponseModel<any>>(this.apiUrl + 'userprofile/delete-cashflow', {
-      body: { accountId: this.authService.user.getValue()?.id ?? -1, source }
+    .post<ResponseModel<any>>(this.apiUrl + 'userprofile/delete-cashflow', {
+      accountId: this.authService.user.getValue()?.id ?? -1,
+      source
     }).pipe(map(() => `${source} usuniety`))
 
   // pobiera liste przyplywow z api, zwraca gotowa liste
@@ -52,7 +53,7 @@ export class SettingsService {
     )
 
   updateCashFlow = (profit: ProfitModel): Observable<ProfitModel> => this.http
-    .put<ResponseModel<ProfitModel>>(this.apiUrl + 'userprofile/update-cashflow', {
+    .post<ResponseModel<ProfitModel>>(this.apiUrl + 'userprofile/update-cashflow', {
       accountId: Number(this.authService.user.getValue()?.id ?? -1),
       cashFlowKind: profit.cashFlowKind ?? 'Przychód',
       source: profit.source,

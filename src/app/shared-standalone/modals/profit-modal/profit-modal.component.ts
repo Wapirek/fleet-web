@@ -20,6 +20,11 @@ export class ProfitModalComponent implements OnInit {
   // przypisz istniejacy element jesli istnieje
   @Input() profitModel = {} as ProfitModel;
 
+  // dodatkowe opcje komponentu
+  @Input() options?: { hiddenLinkAndRemove: boolean; } = {
+    hiddenLinkAndRemove: false
+  }
+
   // struktura html
   skeleton!: StructureBuilderModel;
 
