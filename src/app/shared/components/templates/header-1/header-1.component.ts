@@ -7,11 +7,8 @@ import { HeaderModel } from 'src/app/shared/models/structure-html/header.model';
     <div class="header">
       <mat-icon>{{header.icon}}</mat-icon>
       <div>
-        <span
-          *ngFor="let cmpTitle of header.titleName"
-          class="header__title"
-        >
-          {{cmpTitle}}
+        <span *ngFor="let title of header.titleName" class="header__title" (click)="titleCmp.emit(title)">
+          {{title}}
         </span>
       </div>
     </div>
