@@ -1,48 +1,90 @@
 @import "src/app/shared/styles/variables";
+@import "src/app/shared/styles/elements";
 
-.wrapper {
-  max-width: 500px;
-  background-color: rgba(0, 0, 0, .1);
-  margin: 80px auto;
-  padding: 10px 20px;
+@media (min-width: 0) {
+  .background {
+    display: flex;
+    padding: 80px 0;
 
-  .form {
-    margin: 30px 15px;
-
-    &__row {
-      margin: 20px auto;
+    .container {
+      margin: auto;
+      height: 500px;
+      width: 800px;
+      border-radius: 5px;
       display: flex;
-      flex-direction: column;
-      max-width: 220px;
+      padding: 5px;
+      position: relative;
+      box-sizing: border-box;
 
-      &__label {
-        color: $my-grey;
-        font-size: 1rem;
+      &::after {
+        @include bgUnderPseudoClass;
+        width: 100%;
+        opacity: .1;
       }
 
-      &__input {
-        padding: 8px;
-        background-color: $my-grey-2;
-        border: 0;
+      .left {
+        width: 300px;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        border-bottom: 3px solid $my-cool-blue;
+        border-top: 3px solid $my-white;
         border-radius: 5px;
-        color: $my-white;
+        box-sizing: border-box;
+
+        &::before {
+          @include bgUnderPseudoClass;
+          background: $my-white;
+          opacity: .1;
+        }
+
+        &__up {
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          font-size: 1.3rem;
+
+          &__title {
+            display: flex;
+            align-items: center;
+            color: $my-white;
+            gap: 5px;
+          }
+
+          &__bait {
+            font-weight: lighter;
+            font-size: 1.4rem;
+
+            em {
+              font-weight: inherit;
+              font-style: inherit;
+              color: $my-cool-blue;
+            }
+          }
+        }
+
+
+        &__logo {
+          border-radius: 5px;
+          width: 300px;
+        }
+
       }
-    }
 
-    &__bottom {
-      display: flex;
-      justify-content: center;
+      &__right {
+        width: 500px;
+        height: 100%;
 
-      &__submit {
-        color: $my-white;
-        background-color: $my-cool-blue;
-        border-radius: 5px;
-        border: 0;
-        padding: 8px 20px;
-        cursor: pointer;
 
-        &:disabled { opacity: .5; }
+
+
       }
     }
   }
 }
+
+

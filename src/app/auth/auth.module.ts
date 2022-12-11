@@ -4,6 +4,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 const routes: Route[] = [
@@ -19,7 +20,8 @@ const routes: Route[] = [
   imports: [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    SharedModule
   ]
 })
 export class AuthModule {}
