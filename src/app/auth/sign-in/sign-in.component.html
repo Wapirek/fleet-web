@@ -21,23 +21,49 @@
 
     </div>
 
-
     <div class="right">
 
-      <div class="right__up"></div>
+      <div class="right__up">
 
-      <div class="right__center">
+        <div class="right__up__right">
 
-        <div class="item">
-
-          <label for="username" class="item__label"></label>
-
-          <input id="username" type="text">
+          <span class="right__up__right__txt">Nie masz konta?</span>
+          <button class="right__up__right__btn">Zarejestruj się</button>
 
         </div>
 
       </div>
 
+      <form
+        class="right__center"
+        [formGroup]="cmpForm"
+        (ngSubmit)="login()"
+      >
+
+        <div *ngFor="let field of structureBuilderArray.fields" class="item">
+
+          <label [for]="field.codeName" class="item__label">{{field.labelName}}</label>
+
+          <input
+            class="item__input"
+            [id]="field.codeName"
+            [type]="field.inputType"
+            [formControlName]="field.codeName"
+            [placeholder]="field.displayName"
+          >
+
+        </div>
+
+        <div class="right__center__button">
+          <button class="right__center__button__btn" type="submit">Zaloguj sie</button>
+          <span class="right__center__button__reminder">Nie pamietasz hasła?</span>
+        </div>
+
+      </form>
+
+      <div class="right__bottom">
+        © Wszelkie prawa zastrzeżone - Fleet Corp.
+      </div>
 
     </div>
 

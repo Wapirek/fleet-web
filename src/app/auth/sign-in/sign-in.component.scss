@@ -15,6 +15,7 @@
       padding: 5px;
       position: relative;
       box-sizing: border-box;
+      box-shadow: $box-shadow-1;
 
       &::after {
         @include bgUnderPseudoClass;
@@ -23,13 +24,13 @@
       }
 
       .left {
+        padding: 20px;
         width: 300px;
-        height: 100%;
         position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
         border-bottom: 3px solid $my-cool-blue;
         border-top: 3px solid $my-white;
         border-radius: 5px;
@@ -42,11 +43,10 @@
         }
 
         &__up {
-          padding: 20px;
           display: flex;
           flex-direction: column;
-          gap: 20px;
           font-size: 1.3rem;
+          gap: 15px;
 
           &__title {
             display: flex;
@@ -72,12 +72,91 @@
           border-radius: 5px;
           width: 250px;
         }
-
       }
 
-      &__right {
+      .right {
+        padding: 20px;
         width: 500px;
-        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__up {
+          display: flex;
+          justify-content: flex-end;
+
+          &__right {
+
+            &__txt {
+              color: $my-grey;
+              margin-right: 10px;
+            }
+
+            &__btn {
+              @include btnLightTem2;
+              background-color: $my-white;
+            }
+
+          }
+        }
+
+        &__center {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          margin: 0 auto;
+
+          .item {
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+
+            &__label {
+              font-weight: lighter;
+              font-size: .9rem;
+            }
+
+            &__input {
+              padding: 10px;
+              background-color: rgba($my-white, .1);
+              color: $my-white;
+              border-radius: 5px;
+              border: 0;
+            }
+          }
+
+          &__button {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            &__btn {
+              @include btnLightTem2;
+              background-color: $my-cool-blue;
+              color: $my-white;
+              padding: 10px;
+            }
+
+            &__reminder {
+              font-weight: lighter;
+              font-size: .9rem;
+              color: $my-blue-bell;
+              cursor: pointer;
+              text-align: right;
+
+              &:hover { opacity: .8; }
+            }
+          }
+        }
+
+        &__bottom {
+          text-align: center;
+          font-size: .9rem;
+          color: $my-grey;
+          font-weight: lighter;
+        }
       }
     }
   }

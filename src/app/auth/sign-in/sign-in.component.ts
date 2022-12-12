@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/auth/_services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { FormBuilderHelper } from 'src/app/auth/sign-in/_helpers/form-builder.helper';
+import { StructureBuilderArray } from 'src/app/auth/sign-in/_arrays/structure-builder.array';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent {
 
-  mainForm!: FormGroup;
+  structureBuilderArray = StructureBuilderArray;
+  cmpForm: FormGroup = FormBuilderHelper(this.formBuilder);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -21,35 +24,13 @@ export class SignInComponent implements OnInit {
     private router: Router,
   ) {}
 
-  ngOnInit(): void {
-
-    this.mainForm = this.formBuilder.group({
-      username: [
-        '',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(255),
-        ])
-      ],
-      password: [
-        '',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(255),
-        ])
-      ],
-    })
-  }
-
   login(): void {
 
-    if (!this.mainForm.valid) { return; }
+    if (!this.cmpForm.valid) { return; }
 
     this.authService.signIn(
-      this.mainForm.get('username')?.value,
-      this.mainForm.get('password')?.value,
+      this.cmpForm.get('username')?.value,
+      this.cmpForm.get('password')?.value,
     ).subscribe(
       (msg: string) => this.router.navigate([''])
         .then(() => this.snackBar.open(msg)),
