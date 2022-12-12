@@ -33,7 +33,7 @@ export class NavbarComponent {
       .subscribe((user: User | null) => this.username = user?.name ?? '');
   }
 
-  // logout function and go to authorization
+  // logout function and go to sign
   logout(): void {
     this.authService.logout().pipe(first()).subscribe(
       (res: {msg: string}) => this.router.navigate(['/autoryzacja'])

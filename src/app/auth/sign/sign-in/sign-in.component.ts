@@ -4,11 +4,11 @@ import { AuthService } from 'src/app/auth/_services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FormBuilderHelper } from 'src/app/auth/sign-in/_helpers/form-builder.helper';
-import { StructureBuilderArray } from 'src/app/auth/sign-in/_arrays/structure-builder.array';
+import { FormBuilderHelper } from 'src/app/auth/sign/sign-in/_helpers/form-builder.helper';
+import { StructureBuilderArray } from 'src/app/auth/sign/sign-in/_arrays/structure-builder.array';
 
 @Component({
-  selector: 'app-sign-in',
+  selector: 'app-sign',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })

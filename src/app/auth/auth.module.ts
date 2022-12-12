@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { SignInComponent } from 'src/app/auth/sign/sign-in/sign-in.component';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { SignComponent } from 'src/app/auth/sign/sign.component';
 
 
 const routes: Route[] = [
-  { path: '', component: SignInComponent },
+  {
+    path: '',
+    component: SignComponent,
+    children: [
+      { path: '', component: SignInComponent }
+    ]
+  },
   { path: 'wylogowanie', component: SignOutComponent }
 ];
 
 @NgModule({
   declarations: [
+    SignComponent,
     SignInComponent,
     SignOutComponent
   ],
