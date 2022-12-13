@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SignComponent } from 'src/app/auth/sign/sign.component';
+import { SignUpComponent } from 'src/app/auth/sign/sign-up/sign-up.component';
 
 
 const routes: Route[] = [
@@ -13,7 +14,8 @@ const routes: Route[] = [
     path: '',
     component: SignComponent,
     children: [
-      { path: '', component: SignInComponent }
+      { path: '', component: SignInComponent },
+      { path: 'rejestracja', component: SignUpComponent },
     ]
   },
   { path: 'wylogowanie', component: SignOutComponent }
@@ -23,6 +25,7 @@ const routes: Route[] = [
   declarations: [
     SignComponent,
     SignInComponent,
+    SignUpComponent,
     SignOutComponent
   ],
   imports: [

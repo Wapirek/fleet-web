@@ -1,21 +1,15 @@
-<div class="right">
+<div class="container">
 
-  <div class="right__up">
+  <div class="top">
 
-    <div class="right__up__right">
-
-      <span class="right__up__right__txt">Nie masz konta?</span>
-      <button class="right__up__right__btn">Zarejestruj się</button>
-
+    <div class="top__right">
+      <span class="top__right__txt">{{structureBuilderArray.register.label}}</span>
+      <button class="top__right__btn">{{structureBuilderArray.register.label}}</button>
     </div>
 
   </div>
 
-  <form
-    class="right__center"
-    [formGroup]="cmpForm"
-    (ngSubmit)="login()"
-  >
+  <form class="form" [formGroup]="cmpForm" (ngSubmit)="login()">
 
     <div *ngFor="let field of structureBuilderArray.fields" class="item">
 
@@ -31,15 +25,13 @@
 
     </div>
 
-    <div class="right__center__button">
-      <button class="right__center__button__btn" type="submit">Zaloguj sie</button>
-      <span class="right__center__button__reminder">Nie pamietasz hasła?</span>
+    <div class="form__button">
+      <input class="form__button__btn" type="submit" [value]="structureBuilderArray.login.btn">
+      <span class="form__button__reminder">{{structureBuilderArray.login.reminder}}</span>
     </div>
 
   </form>
 
-  <div class="right__bottom">
-    © Wszelkie prawa zastrzeżone - Fleet Corp.
-  </div>
+  <div class="rights">{{structureBuilderArray.rights}}</div>
 
 </div>
