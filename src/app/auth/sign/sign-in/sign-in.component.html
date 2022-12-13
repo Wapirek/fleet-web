@@ -1,10 +1,17 @@
 <div class="container">
 
+  <img class="img-mobile" src="assets/images/logo.png" alt="logo statku">
+
   <div class="top">
 
     <div class="top__right">
-      <span class="top__right__txt">{{structureBuilderArray.register.label}}</span>
-      <button class="top__right__btn">{{structureBuilderArray.register.label}}</button>
+
+      <span class="top__right__txt">{{structureBuilderArray.register.description}}</span>
+
+      <a [routerLink]="structureBuilderArray.register.btn.path" class="top__right__btn">
+        {{structureBuilderArray.register.btn.displayName}}
+      </a>
+
     </div>
 
   </div>

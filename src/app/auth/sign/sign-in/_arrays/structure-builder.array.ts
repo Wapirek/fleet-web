@@ -1,7 +1,13 @@
 import { FieldModel } from 'src/app/shared/models/models/field.model';
 
 interface StructureBuilderModel {
-  register: { label: string; btn: string; };
+  register: {
+    description: string;
+    btn: {
+      path: string;
+      displayName: string;
+    }
+  };
   fields: FieldModel[];
   login: { btn: string; reminder: string; };
   rights: string;
@@ -9,8 +15,11 @@ interface StructureBuilderModel {
 
 export const StructureBuilderArray: StructureBuilderModel = {
   register: {
-    label: 'Nie masz konta?',
-    btn: 'Zarejestruj się'
+    description: 'Nie masz konta?',
+    btn: {
+      path: 'rejestracja',
+      displayName: 'Zarejestruj się'
+    }
   },
   fields: [
     {
