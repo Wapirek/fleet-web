@@ -8,9 +8,8 @@ import { FormBuilderHelper } from 'src/app/auth/sign/sign-in/_helpers/form-build
 import { StructureBuilderArray } from 'src/app/auth/sign/sign-in/_arrays/structure-builder.array';
 
 @Component({
-  selector: 'app-sign',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  templateUrl: '../_template/template.component.html',
+  styleUrls: ['../_template/template.component.scss']
 })
 export class SignInComponent {
 
@@ -24,12 +23,12 @@ export class SignInComponent {
     private router: Router,
   ) {}
 
-  login(): void {
+  save(): void {
 
     if (!this.cmpForm.valid) { return; }
 
     this.authService.signIn(
-      this.cmpForm.get('username')?.value,
+      this.cmpForm.get('login')?.value,
       this.cmpForm.get('password')?.value,
     ).subscribe(
       (msg: string) => this.router.navigate([''])

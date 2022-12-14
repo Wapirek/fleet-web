@@ -6,17 +6,17 @@
 
     <div class="top__right">
 
-      <span class="top__right__txt">{{structureBuilderArray.register.description}}</span>
+      <span class="top__right__txt">{{structureBuilderArray.top.description}}</span>
 
-      <a [routerLink]="structureBuilderArray.register.btn.path" class="top__right__btn">
-        {{structureBuilderArray.register.btn.displayName}}
+      <a [routerLink]="structureBuilderArray.top.btn.path" class="top__right__btn">
+        {{structureBuilderArray.top.btn.displayName}}
       </a>
 
     </div>
 
   </div>
 
-  <form class="form" [formGroup]="cmpForm" (ngSubmit)="login()">
+  <form class="form" [formGroup]="cmpForm" (ngSubmit)="save()">
 
     <div *ngFor="let field of structureBuilderArray.fields" class="item">
 
@@ -33,8 +33,16 @@
     </div>
 
     <div class="form__button">
-      <input class="form__button__btn" type="submit" [value]="structureBuilderArray.login.btn">
-      <span class="form__button__reminder">{{structureBuilderArray.login.reminder}}</span>
+
+      <input
+        class="form__button__btn"
+        type="submit"
+        [disabled]="cmpForm.invalid"
+        [value]="structureBuilderArray.saveBtn.btn"
+      >
+
+      <span class="form__button__reminder">{{structureBuilderArray.saveBtn.reminder}}</span>
+
     </div>
 
   </form>

@@ -2,20 +2,28 @@ import { StructureBuilderModel } from 'src/app/auth/_models/structure-builder.mo
 
 export const StructureBuilderArray: StructureBuilderModel = {
   top: {
-    description: 'Nie masz konta?',
+    description: 'Jesteś zarejestrowany?',
     btn: {
-      path: 'rejestracja',
-      displayName: 'Zarejestruj się'
+      path: '',
+      displayName: 'Zaloguj się'
     }
   },
   fields: [
     {
-      codeName: 'login',
+      codeName: 'username',
       displayName: 'Login',
       labelName: 'Login użytkownika',
       width: 200,
       required: true,
       inputType: 'text'
+    },
+    {
+      codeName: 'email',
+      displayName: 'Email',
+      labelName: 'Email użytkownika',
+      width: 200,
+      required: true,
+      inputType: 'email'
     },
     {
       codeName: 'password',
@@ -24,11 +32,19 @@ export const StructureBuilderArray: StructureBuilderModel = {
       width: 200,
       required: true,
       inputType: 'password'
+    },
+    {
+      codeName: 'confirmPassword',
+      displayName: 'Potwierdź hasło',
+      labelName: 'Potwierdź hasło',
+      width: 200,
+      required: true,
+      inputType: 'password'
     }
   ],
   saveBtn: {
-    btn: 'Zaloguj się',
-    reminder: 'Nie pamiętasz hasła?'
+    btn: 'Zarejestruj się',
+    reminder: ''
   },
   rights: '© Wszelkie prawa zastrzeżone - Fleet Corp.'
 }

@@ -1,7 +1,7 @@
 import { FormBuilder, Validators } from '@angular/forms';
 
 export const FormBuilderHelper = (fb: FormBuilder) => fb.group({
-  username: [
+  login: [
     '',
     Validators.compose([
       Validators.required,
