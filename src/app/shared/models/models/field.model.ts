@@ -1,4 +1,4 @@
-declare type FieldInputType = 'text' | 'number' | 'date' | 'button' | 'checkbox';
+declare type FieldInputType = 'text' | 'number' | 'date' | 'button' | 'checkbox' | 'password' | 'email';
 
 export interface FieldModel {
   codeName: string;

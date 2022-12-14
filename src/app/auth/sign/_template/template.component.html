@@ -1,0 +1,52 @@
+<div class="container">
+
+  <img class="img-mobile" src="assets/images/logo.png" alt="logo statku">
+
+  <div class="top">
+
+    <div class="top__right">
+
+      <span class="top__right__txt">{{structureBuilderArray.top.description}}</span>
+
+      <a [routerLink]="structureBuilderArray.top.btn.path" class="top__right__btn">
+        {{structureBuilderArray.top.btn.displayName}}
+      </a>
+
+    </div>
+
+  </div>
+
+  <form class="form" [formGroup]="cmpForm" (ngSubmit)="save()">
+
+    <div *ngFor="let field of structureBuilderArray.fields" class="item">
+
+      <label [for]="field.codeName" class="item__label">{{field.labelName}}</label>
+
+      <input
+        class="item__input"
+        [id]="field.codeName"
+        [type]="field.inputType"
+        [formControlName]="field.codeName"
+        [placeholder]="field.displayName"
+      >
+
+    </div>
+
+    <div class="form__button">
+
+      <input
+        class="form__button__btn"
+        type="submit"
+        [disabled]="cmpForm.invalid"
+        [value]="structureBuilderArray.saveBtn.btn"
+      >
+
+      <span class="form__button__reminder">{{structureBuilderArray.saveBtn.reminder}}</span>
+
+    </div>
+
+  </form>
+
+  <div class="rights">{{structureBuilderArray.rights}}</div>
+
+</div>

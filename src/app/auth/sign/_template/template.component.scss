@@ -1,0 +1,137 @@
+@import "src/app/shared/styles/variables";
+@import "src/app/shared/styles/elements";
+
+@media (min-width: 0) {
+  .container {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+
+    .img-mobile {
+      margin: 0 auto;
+      width: 180px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: center;
+
+      &__right__txt {
+        font-size: .9rem;
+        color: $my-grey;
+        margin-right: 10px;
+      }
+
+      &__right__btn {
+        cursor: pointer;
+        font-size: .9rem;
+        border: 0;
+        color: $my-cool-blue;
+        background-color: transparent;
+        text-decoration: none;
+
+        &:hover { text-decoration: underline; }
+      }
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .item {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        width: 100%;
+
+        &__label {
+          font-weight: lighter;
+          font-size: .9rem;
+        }
+
+        &__input {
+          padding: 10px;
+          background-color: rgba($my-white, .1);
+          color: $my-white;
+          border-radius: 5px;
+          border: 0;
+        }
+      }
+
+      &__button {
+        display: block;
+        margin-top: 15px;
+        text-align: right;
+
+        &__btn {
+          @include btnLightTem2;
+          background-color: $my-cool-blue;
+          color: $my-white;
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+
+          &:hover { opacity: .8; }
+
+          &:disabled {
+            opacity: .8;
+            cursor: not-allowed;
+          }
+        }
+
+        &__reminder {
+          display: inline;
+          font-weight: lighter;
+          font-size: .9rem;
+          color: $my-blue-bell;
+          cursor: pointer;
+
+          &:hover { opacity: .8; }
+        }
+      }
+    }
+
+    .rights {
+      margin: 20px 0;
+      text-align: center;
+      font-size: .9rem;
+      color: $my-grey;
+      font-weight: lighter;
+    }
+  }
+}
+
+@media (min-width: $min-desktop) {
+  .container {
+    min-height: 500px;
+
+    .img-mobile { display: none; }
+
+    .top {
+      justify-content: flex-end;
+
+      &__right__txt, &__right__btn { font-size: 1rem; }
+
+      &__right__btn {
+        @include btnLightTem2;
+        background-color: rgba($my-white, .4);
+        color: $my-white;
+
+        &:hover { text-decoration: none; }
+      }
+    }
+
+    .form {
+      align-self: center;
+      justify-content: center;
+      min-width: 280px;
+    }
+
+    .rights { margin: 0; }
+  }
+}

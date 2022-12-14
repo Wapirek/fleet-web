@@ -56,9 +56,9 @@ export class AuthService {
   }
 
   // zapytanie do api, majace na pobranie tokena
-  signIn(username: string, password: string): Observable<string> {
+  signIn(login: string, password: string): Observable<string> {
     return this.http.post<AuthResponseModel>(
-      this.apiUrl + 'auth/login', { login: username, password: password }
+      this.apiUrl + 'auth/login', { login, password }
     ).pipe(
       map((res: AuthResponseModel) => {
         this.handleAuthentication(res.response.email, res.response.token);
