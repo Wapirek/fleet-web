@@ -10,7 +10,7 @@ export const StructureBuilderArray: StructureBuilderModel = {
   },
   fields: [
     {
-      codeName: 'username',
+      codeName: 'login',
       displayName: 'Login',
       labelName: 'Login użytkownika',
       width: 200,

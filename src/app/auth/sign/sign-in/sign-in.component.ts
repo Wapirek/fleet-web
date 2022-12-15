@@ -33,7 +33,10 @@ export class SignInComponent {
     ).subscribe(
       (msg: string) => this.router.navigate([''])
         .then(() => this.snackBar.open(msg)),
-      (err: HttpErrorResponse) => this.snackBar.open(err.error.message)
+      (err: HttpErrorResponse) => {
+        this.cmpForm.reset();
+        this.snackBar.open(err.error.message);
+      }
     )
   }
 }

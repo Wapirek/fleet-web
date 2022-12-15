@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { AuthResponseModel } from 'src/app/auth/_services/_models/auth-response.model';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ResponseModel } from 'src/app/shared/models/models/response.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -57,12 +58,24 @@ export class AuthService {
 
   // zapytanie do api, majace na pobranie tokena
   signIn(login: string, password: string): Observable<string> {
-    return this.http.post<AuthResponseModel>(
+    return this.http.post<ResponseModel<AuthResponseModel>>(
       this.apiUrl + 'auth/login', { login, password }
     ).pipe(
-      map((res: AuthResponseModel) => {
+      map((res: ResponseModel<AuthResponseModel>) => {
         this.handleAuthentication(res.response.email, res.response.token);
         return res.message;
+      })
+    );
+  }
+
+  // zapytanie do api, majace na pobranie tokena
+  signUp(login: string, email: string, password: string): Observable<string> {
+    return this.http.post<ResponseModel<AuthResponseModel>>(
+      this.apiUrl + 'auth/register', { login, email, password }
+    ).pipe(
+      map((res: ResponseModel<AuthResponseModel>) => {
+        this.handleAuthentication(res.response.email, res.response.token);
+        return res.message ?? 'Rejestracja przebiegła pomyślnie';
       })
     );
   }

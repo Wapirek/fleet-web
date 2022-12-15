@@ -1,7 +1,7 @@
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 export const FormBuilderHelper = (fb: FormBuilder) => fb.group({
-  username: [
+  login: [
     '',
     Validators.compose([
       Validators.required,
@@ -13,6 +13,7 @@ export const FormBuilderHelper = (fb: FormBuilder) => fb.group({
     '',
     Validators.compose([
       Validators.required,
+      Validators.email,
       Validators.minLength(1),
       Validators.maxLength(255)
     ])
@@ -21,7 +22,7 @@ export const FormBuilderHelper = (fb: FormBuilder) => fb.group({
     '',
     Validators.compose([
       Validators.required,
-      Validators.minLength(1),
+      Validators.minLength(5),
       Validators.maxLength(255)
     ])
   ],
@@ -29,8 +30,7 @@ export const FormBuilderHelper = (fb: FormBuilder) => fb.group({
     '',
     Validators.compose([
       Validators.required,
-      Validators.minLength(1),
-      Validators.maxLength(255)
+      checkPasswords
     ])
   ]
 }, {

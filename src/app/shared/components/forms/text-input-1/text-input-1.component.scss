@@ -1,0 +1,43 @@
+@import "src/app/shared/styles/variables";
+@import "src/app/shared/styles/elements";
+
+.item {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  position: relative;
+
+  &__label {
+    font-weight: lighter;
+    font-size: .9rem;
+  }
+
+  &__input {
+    padding: 10px;
+    background-color: rgba($my-white, .1);
+    color: $my-white;
+    border-radius: 5px;
+    border: 0;
+    border-bottom: 1px groove $my-navy-blue;
+
+    &--invalid {
+      color: $my-red;
+      border-bottom: 1px groove $my-red;
+    }
+  }
+
+  .invalid-feedback {
+    position: absolute;
+    top: 26px;
+    right: 5px;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: $my-red;
+    cursor: pointer;
+
+    &:hover { opacity: .8; }
+  }
+}
