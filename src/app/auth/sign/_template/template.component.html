@@ -21,7 +21,7 @@
     <shared-text-input-1
       *ngFor="let field of structureBuilderArray.fields"
       [field]="field"
-      [formControl]='$any(cmpForm.controls[field.codeName]) | formControl'
+      [formControl]='cmpForm.controls[field.codeName] | formControl'
     ></shared-text-input-1>
 
     <div class="form__button">
@@ -29,7 +29,7 @@
       <input
         class="form__button__btn"
         type="submit"
-        [disabled]="false"
+        [disabled]="cmpForm.invalid"
         [value]="structureBuilderArray.saveBtn.btn"
       >
 

@@ -8,7 +8,11 @@
     [type]="field.inputType"
     [formControl]="$any(ngControl.control)"
     [placeholder]="field.displayName"
-    [ngClass]="{ 'item__input--invalid': ngControl.touched && ngControl.invalid }"
+    [ngClass]="{
+      'item__input--invalid': ngControl.touched && ngControl.invalid
+        || ((field.codeName === 'confirmPassword' || field.codeName === 'password')
+          && ngControl.control?.parent?.errors?.notSame)
+    }"
   >
 
   <mat-icon
@@ -33,7 +37,8 @@
   >error</mat-icon>
 
   <mat-icon
-    *ngIf="(ngControl.touched || ngControl.dirty) && ngControl.control?.errors?.notSame"
+    *ngIf="(field.codeName === 'confirmPassword' || field.codeName === 'password')
+      && ngControl.control?.parent?.errors?.notSame"
     class="invalid-feedback"
     [matTooltip]="'Hasła do siebie nie pasują'"
     inline="true"
