@@ -18,26 +18,18 @@
 
   <form class="form" [formGroup]="cmpForm" (ngSubmit)="save()">
 
-    <div *ngFor="let field of structureBuilderArray.fields" class="item">
-
-      <label [for]="field.codeName" class="item__label">{{field.labelName}}</label>
-
-      <input
-        class="item__input"
-        [id]="field.codeName"
-        [type]="field.inputType"
-        [formControlName]="field.codeName"
-        [placeholder]="field.displayName"
-      >
-
-    </div>
+    <shared-text-input-1
+      *ngFor="let field of structureBuilderArray.fields"
+      [field]="field"
+      [formControl]='$any(cmpForm.controls[field.codeName]) | formControl'
+    ></shared-text-input-1>
 
     <div class="form__button">
 
       <input
         class="form__button__btn"
         type="submit"
-        [disabled]="cmpForm.invalid"
+        [disabled]="false"
         [value]="structureBuilderArray.saveBtn.btn"
       >
 

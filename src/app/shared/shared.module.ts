@@ -19,6 +19,9 @@ import { ReadObjectAsIndexPipe } from './pipes/read-object-as-index/read-object-
 import { DisplayColsNamePipe } from 'src/app/shared/pipes/display-cols-name/display-cols-name.pipe';
 import { ButtonsBar1Component } from 'src/app/shared/components/widgets/buttons-bar-1/buttons-bar-1.component';
 import { Header1Component } from 'src/app/shared/components/templates/header-1/header-1.component';
+import { TextInput1Component } from 'src/app/shared/components/forms/text-input-1/text-input-1.component';
+import { FormControlPipe } from 'src/app/shared/components/forms/text-input-1/_pipes/form-control.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { Header1Component } from 'src/app/shared/components/templates/header-1/h
     Header1Component,
     BarChartComponent,
     PieChartComponent,
+    TextInput1Component,
 
     // modal base
     ModalStyle1Component,
@@ -40,6 +44,7 @@ import { Header1Component } from 'src/app/shared/components/templates/header-1/h
     ReadObjectAsIndexPipe,
     DisplayColsNamePipe,
     DictArrayCardPipe,
+    FormControlPipe,
   ],
   imports: [
 
@@ -55,7 +60,8 @@ import { Header1Component } from 'src/app/shared/components/templates/header-1/h
     MatButtonModule,
 
     // icons
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatTooltipModule
   ],
   exports: [
 
@@ -70,11 +76,13 @@ import { Header1Component } from 'src/app/shared/components/templates/header-1/h
     BarChartComponent,
     PieChartComponent,
     ButtonsBar1Component,
+    TextInput1Component,
 
     // pipes
     ReadObjectAsIndexPipe,
     DisplayColsNamePipe,
     DictArrayCardPipe,
+    FormControlPipe,
 
     // modals
     ModalStyle1Component,

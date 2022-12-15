@@ -1,0 +1,49 @@
+<div class="item" *ngIf="field">
+
+  <label [for]="field.codeName" class="item__label">{{field.labelName}}</label>
+
+  <input
+    class="item__input"
+    [id]="field.codeName"
+    [type]="field.inputType"
+    [formControl]="$any(ngControl.control)"
+    [placeholder]="field.displayName"
+    [ngClass]="{ 'item__input--invalid': ngControl.touched && ngControl.invalid }"
+  >
+
+  <mat-icon
+    *ngIf="(ngControl.touched || ngControl.dirty) && ngControl.control?.errors?.required"
+    class="invalid-feedback"
+    [matTooltip]="'Proszę uzupełnij ' + field.labelName"
+    inline="true"
+  >error</mat-icon>
+
+  <mat-icon
+    *ngIf="(ngControl.touched || ngControl.dirty) && ngControl.control?.errors?.minlength"
+    class="invalid-feedback"
+    [matTooltip]="field.labelName + ' minimalna ilość znaków: ' + ngControl.control?.errors?.minlength['requiredLength']"
+    inline="true"
+  >error</mat-icon>
+
+  <mat-icon
+    *ngIf="(ngControl.touched || ngControl.dirty) && ngControl.control?.errors?.maxlength"
+    class="invalid-feedback"
+    [matTooltip]="field.labelName + ' minimalna ilość znaków: ' + ngControl.control?.errors?.maxlength['requiredLength']"
+    inline="true"
+  >error</mat-icon>
+
+  <mat-icon
+    *ngIf="(ngControl.touched || ngControl.dirty) && ngControl.control?.errors?.notSame"
+    class="invalid-feedback"
+    [matTooltip]="'Hasła do siebie nie pasują'"
+    inline="true"
+  >error</mat-icon>
+
+  <mat-icon
+    *ngIf="(ngControl.touched || ngControl.dirty) && ngControl.control?.errors?.email"
+    class="invalid-feedback"
+    [matTooltip]="'Podana fraza nie wygląda jak email'"
+    inline="true"
+  >error</mat-icon>
+
+</div>

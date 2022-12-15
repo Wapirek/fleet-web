@@ -13,6 +13,7 @@ export const FormBuilderHelper = (fb: FormBuilder) => fb.group({
     '',
     Validators.compose([
       Validators.required,
+      Validators.email,
       Validators.minLength(1),
       Validators.maxLength(255)
     ])
@@ -29,8 +30,7 @@ export const FormBuilderHelper = (fb: FormBuilder) => fb.group({
     '',
     Validators.compose([
       Validators.required,
-      Validators.minLength(1),
-      Validators.maxLength(255)
+      checkPasswords
     ])
   ]
 }, {

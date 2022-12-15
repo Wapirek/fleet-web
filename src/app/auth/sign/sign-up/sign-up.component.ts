@@ -24,6 +24,9 @@ export class SignUpComponent {
   // todo register
   save(): void {
 
+    // @ts-ignore
+    console.log(this.cmpForm.controls?.errors?.notSame);
+
     if (!this.cmpForm.valid) { return; }
   }
 }
