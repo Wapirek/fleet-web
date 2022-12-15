@@ -5,6 +5,7 @@ import { FormBuilderHelper } from 'src/app/auth/sign/sign-up/_helpers/form-build
 import { AuthService } from 'src/app/auth/_services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   templateUrl: '../_template/template.component.html',
@@ -25,5 +26,18 @@ export class SignUpComponent {
   save(): void {
 
     if (!this.cmpForm.valid) { return; }
+
+    this.authService.signUp(
+      this.cmpForm.get('login')?.value,
+      this.cmpForm.get('email')?.value,
+      this.cmpForm.get('password')?.value,
+    ).subscribe(
+      (msg: string) => this.router.navigate([''])
+        .then(() => this.snackBar.open(msg)),
+      (err: HttpErrorResponse) => {
+        this.cmpForm.reset();
+        this.snackBar.open(err.error.message);
+      }
+    )
   }
 }
