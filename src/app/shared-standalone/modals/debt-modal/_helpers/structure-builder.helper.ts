@@ -4,7 +4,7 @@ export const StructureBuilderHelper = (): FieldModel[][] => {
   return [
     [ // first row
       {
-        codeName: 'goalName',
+        codeName: 'debtName',
         displayName: 'Nazwa długu',
         labelName: 'Podaj nazwę długu',
         width: '100%',
